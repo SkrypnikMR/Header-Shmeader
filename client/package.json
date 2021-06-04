@@ -1,0 +1,30 @@
+{
+  "name": "header-shmeader",
+  "version": "1.0.0",
+  "description": "Our team react chat project",
+  "main": "index.js",
+  "scripts": {
+    "test": "---"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SkypnikMR/Header-Shmeader.git"
+  },
+  "keywords": [
+    "js",
+    "react",
+    "html",
+    "css",
+    "git",
+    "socket",
+    "server",
+    "express",
+    "socket.io"
+  ],
+  "author": "Header&Shmeader",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SkypnikMR/Header-Shmeader/issues"
+  },
+  "homepage": "https://github.com/SkypnikMR/Header-Shmeader#readme"
+}
