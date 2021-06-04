@@ -23,14 +23,18 @@
     "style-loader": "^2.0.0",
     "webpack": "^5.35.1",
     "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "prop-types": "^15.7.2",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-plugin-jest": "^21.24.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-react-hooks": "^2.3.0"
+
   },
   "dependencies": {
     "@babel/core": "^7.14.3",
     "@babel/preset-react": "^7.13.13",
-    "jquery": "^3.6.0",
-    "lodash": "^4.17.21",
-    "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
@@ -42,8 +46,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint",
-      "pre-push": "npm run build"
+      "pre-commit": "yarn lint",
+      "pre-push": "yarn build"
     }
   }
 }
