@@ -181,6 +181,6 @@ describe('AccountManager login', () => {
         };
         const testAccManager = new AccountManager(connect);
         await testAccManager.login(req, res);
-        expect(res.json).toHaveBeenCalledWith({message: 'Something wrong. Please try again.'});
+        expect(res.json).toHaveBeenCalledWith({ message: 'Something wrong. Please try again.' });
     })
 })

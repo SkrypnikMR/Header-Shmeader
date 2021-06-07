@@ -14,6 +14,7 @@ describe('makeDB', () => {
     it('should return some result from db and makeDB.close close connection', async () => {
         const result = await makeDB.query('SELECT * FROM testJest');
         expect(result).toEqual([{ firstName: "MaxTest", id: 1 }]);
+        
         makeDB.close();
     })
 })

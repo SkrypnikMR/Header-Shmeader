@@ -25,7 +25,7 @@ class AccountManager {
             if (!isMatch) return res.status(400).json({ message: 'Wrong User or Password' });
             const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '8h' });
             res.status(200).json({ token });
-        } catch (e) {res.status(500).json({ message: 'Something wrong. Please try again.' }); }
+        } catch (e) { res.status(500).json({ message: 'Something wrong. Please try again.' }); }
     }
 }
 
