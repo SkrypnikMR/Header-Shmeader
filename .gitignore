@@ -4,3 +4,6 @@ coverage
 node_modules
 .vs
 package-lock.json
+dist 
+vscode
+.vscode
