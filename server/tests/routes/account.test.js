@@ -3,7 +3,6 @@ const account = require("../../routes/account");
 const request = require("supertest");
 const makeDB = require('../../Controllers/Connector');
 
-
 describe("account", () => {
     let app = null;
     beforeEach(() => {
@@ -15,7 +14,10 @@ describe("account", () => {
     afterEach(() => app = null)
     afterAll(() => makeDB.close());
     it("expect POST account/registartion with such user exsits", async () => {
-        const { body, status } = await request(app).post("/api/account/registration").send({ email: 'SkripnikMRW@gmail.com', password: 'somePassword' });
+        const { body, status } = await request(app).post("/api/account/registration").send({
+            email: 'SkripnikMRW@gmail.com',
+            password: 'somePassword'
+        });
         expect(body).toEqual({ "message": "such user exists" });
         expect(status).toBe(400);
     });
@@ -37,17 +39,26 @@ describe("account", () => {
         expect(status).toBe(500);
     });
     it("expect POST account/login with Wrong User or Password wrong password", async () => {
-        const { body, status } = await request(app).post("/api/account/login").send({ email: 'SkripnikMRW@gmail.com', password: 'somePassword' });
+        const { body, status } = await request(app).post("/api/account/login").send({
+            email: 'SkripnikMRW@gmail.com',
+            password: 'somePassword'
+        });
         expect(body).toEqual({ "message": "Wrong User or Password" });
         expect(status).toBe(400);
     });
     it("expect POST account/login with Wrong User or Password wrong login", async () => {
-        const { body, status } = await request(app).post("/api/account/login").send({ email: 'SkripniksMRW@gmail.com', password: 'somePassword' });
+        const { body, status } = await request(app).post("/api/account/login").send({
+            email: 'SkripniksMRW@gmail.com',
+            password: 'somePassword'
+        });
         expect(body).toEqual({ "message": "Wrong User or Password" });
         expect(status).toBe(400);
     });
     it("expect POST account/login with token", async () => {
-        const { body, status } = await request(app).post("/api/account/login").send({ email: 'SkripnikMRW@gmail.com', password: 'kekShrek' });
+        const { body, status } = await request(app).post("/api/account/login").send({
+            email: 'SkripnikMRW@gmail.com',
+            password: 'kekShrek'
+        });
         expect(status).toBe(200);
         expect(body.token).toBeDefined();
         expect(body.message).not.toBeDefined();
@@ -55,8 +66,7 @@ describe("account", () => {
     it("expect POST account/login with 500 and Something wrong. Please try again.", async () => {
         const app = express();
         app.use("/api/account", account);
-        const { body, status } = await request(app).post("/api/account/login").send({sad:'bad'});
-        console.log(body);
+        const { body, status } = await request(app).post("/api/account/login").send({ sad: 'bad' });
         expect(status).toBe(500);
         expect(body).toEqual({ "message": "Something wrong. Please try again." });
     });
