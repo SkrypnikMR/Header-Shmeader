@@ -10,10 +10,6 @@ const makeDB = (databaseName) => {
         insecureAuth: true,
         options: { trustedConnection: true }
     });
-    connection.connect(function (err) {
-        if (err) throw err;
-        console.log('mySQL connected');
-    });
     return {
         query(sql, args) {
             return util.promisify(connection.query)
