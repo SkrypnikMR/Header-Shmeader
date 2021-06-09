@@ -1,21 +1,46 @@
-import React from 'react'
-import classes from './Input.css'
+import React from 'react';
+import PropTypes from 'prop-types';
+import classes from './Input.css';
 
-const Input = props => {
-  const cls = [classes.Input]
+const Input = ({
+    id,
+    label,
+    value,
+    onChange,
+    placeholder,
+    errorMessage,
+    name,
+    type = "text",
+}) => {
+    const cls = [classes.Input];
 
-  return(
-    <div className={cls.join(' ')}>
-      <label>{props.label}</label>
-      <input 
-        type="text"
-        value={props.value}
-        onChange={props.onChange}
-        placeholder={props.placeholder}
-      />
-      <span>{props.errorMessage}</span>
-    </div>
-  )
-}
+    const handleChange = event => onChange(event);
+    
+    return (
+        <div className={cls.join(' ')}>
+            {!!label && <label id={id} htmlFor={id}>{label}</label>}
+            <input
+                id={id}
+                name={name}
+                type={type}
+                value={value}
+                onChange={onChange}
+                placeholder={placeholder}
+            />
+            {!!errorMessage && <span>{errorMessage}</span>}
+        </div>
+    );
+};
 
-export default Input
+Input.propTypes = {
+    name: PropTypes.string,
+    type: PropTypes.string,
+    id: PropTypes.string.isRequired,
+    label: PropTypes.string,
+    value: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
+    placeholder: PropTypes.string.isRequired,
+    errorMessage: PropTypes.string,
+};
+
+export default Input;
