@@ -1,3 +1,3 @@
-import Index from './Index.jsx';
+import Input from './Input.jsx';
 
-export default Index;
+export default Input;
