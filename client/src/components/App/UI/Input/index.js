@@ -1,3 +1,3 @@
-import Index from './Index';
+import Index from './Index.jsx';
 
 export default Index;

@@ -6,7 +6,7 @@ const Input = props => {
 
   return(
     <div className={cls.join(' ')}>
-      <label htmlFor={htmlFor}>{props.label}</label>
+      <label>{props.label}</label>
       <input 
         type="text"
         value={props.value}
