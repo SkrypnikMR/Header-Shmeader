@@ -3,7 +3,7 @@
     "plugins": [
         "jest",
         "react-hooks"
-    ],
+    ],  
     "env": {
         "jest": true,
         "es6": true,
