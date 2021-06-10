@@ -4,7 +4,6 @@ import Input from '../UI/Input';
 const App = () => {
     const [inputValue, setInputValue] = React.useState('');
     const handleMockFunc = event => setInputValue(event.target.value);
-    console.log(inputValue, 'INPUT VALUE');
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
             <Input
