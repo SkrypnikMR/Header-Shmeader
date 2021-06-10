@@ -8,14 +8,14 @@ const colorDefault = 'black';
 export const StLabel = styled.label`
    ${({ margin = '0 0 3px 0' }) => margin && `margin: ${margin}`};
    padding: 0;
-   ${({ cursor = "pointer" }) => cursor && `cursor: ${cursor}`};
-   ${({ display = "block" }) => display && `display: ${display}`};
-   ${({ fontWeight = "bold" }) => fontWeight && `font-weight: ${fontWeight}`};
+   ${({ cursor = 'pointer' }) => cursor && `cursor: ${cursor}`};
+   ${({ display = 'block' }) => display && `display: ${display}`};
+   ${({ fontWeight = 'bold' }) => fontWeight && `font-weight: ${fontWeight}`};
 `;
 
 export const StInput = styled.input`
     width: 100%;
-    height: ${({ inputHeight = "100%" }) => inputHeight};
+    height: ${({ inputHeight = '100%' }) => inputHeight};
     padding: ${({ padding = '5px' }) => padding};
     ${({ margin }) => margin && `margin: ${margin}`};
     ${({ borderColor }) => borderColor && `border: 1px solid ${borderColor}`};
@@ -23,7 +23,7 @@ export const StInput = styled.input`
   
     ${({ brRadius }) => brRadius && `border-radius: ${brRadius}`};
     background-color: ${({ bgColor = bgInpColorDefault }) => (bgColor)};
-    ${({ outlineInput = "none" }) => outlineInput && `outline: ${outlineInput}`};
+    ${({ outlineInput = 'none' }) => outlineInput && `outline: ${outlineInput}`};
     ${({ cursorType }) => cursorType && `cursor: ${cursorType}`};
   
     ${({ fontWeight }) => fontWeight && `font-weight: ${fontWeight}`};
@@ -31,7 +31,7 @@ export const StInput = styled.input`
     font-size: ${({ fontSizeInp = '14px' }) => fontSizeInp};
     ${({ textAlignInput }) => textAlignInput && `text-align: ${textAlignInput}`}
     
-    ${({ transition = "all 300ms ease-in-out" }) => transition && `transition: ${transition}`};
+    ${({ transition = 'all 300ms ease-in-out' }) => transition && `transition: ${transition}`};
     &:focus {
       background:${({ bgFocusColor = bgFocusColorDefault }) => bgFocusColor};
       color: ${({ focusColor = focusColorDefault }) => focusColor};
@@ -47,10 +47,10 @@ export const StInput = styled.input`
 `;
 
 export const StErrorSpan = styled.span`
-    color: ${({ color = "red" }) => color}; // ToDo Move color to color matrix
+    color: ${({ color = 'red' }) => color}; // ToDo Move color to color matrix
 `;
 
 export const StInputContainer = styled.div`
-    ${({ width = "100%" }) => width && `width: ${width}`};
-    ${({ height = "30px" }) => height && `height: ${height}`};
+    ${({ width = '100%' }) => width && `width: ${width}`};
+    ${({ height = '30px' }) => height && `height: ${height}`};
 `;
