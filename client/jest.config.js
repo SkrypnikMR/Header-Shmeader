@@ -2,10 +2,10 @@ module.exports = {
     collectCoverage: true,
     moduleFileExtensions: [
         "js",
-        "jsx"
+        "jsx",
     ],
     globals: {
-        window: true
+        window: true,
     },
     collectCoverageFrom: ["**/*.jsx", "**/*.js"],
     moduleDirectories: ["node_modules", ".", "src"],
@@ -26,7 +26,7 @@ module.exports = {
         "package.json",
     ],
     moduleNameMapper: {
-        "^.+\\.(css|scss)$": "identity-obj-proxy"
+        "^.+\\.(css|scss)$": "identity-obj-proxy",
     },
     testEnvironment: 'jsdom',
-}
+};
