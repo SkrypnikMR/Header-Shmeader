@@ -57,7 +57,6 @@
     "lint": "eslint . ",
     "test": "jest",
     "test-update": "jest --update-snapshot"
-
   },
   "husky": {
     "hooks": {
