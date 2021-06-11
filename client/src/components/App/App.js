@@ -20,10 +20,13 @@ const App = () => {
             <Button   
                 id="mock"
                 onClick={handleMockFunc}
+                content="Button"
                 title="Button"
-            >
-                title=Button
-            </Button>
+                name="name"
+                type="button"
+                value="value"
+                isDisabled="false"
+            />
         </div>
     );
 };

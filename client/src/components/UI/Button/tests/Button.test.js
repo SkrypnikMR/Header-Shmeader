@@ -9,6 +9,10 @@ describe('Button', () => {
             id: 'id',
             onClick: jest.fn(),
             title: 'Button',
+            name: 'name',
+            type: 'Button',
+            value: 'value',
+            isDisabled: 'false',
         };
     });
     it('Should match snapshot', () => {
