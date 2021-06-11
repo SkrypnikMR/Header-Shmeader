@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App Should match snapshot 1`] = `"<div style=\\"display:flex;justify-content:center\\"><div width=\\"175px\\" class=\\"styled__StInputContainer-w3ykst-3 drdgxX\\"><label for=\\"mock\\" class=\\"styled__StLabel-w3ykst-0 fgdcha\\">Test Label</label><input type=\\"text\\" id=\\"mock\\" value=\\"\\" placeholder=\\"test placeholder\\" class=\\"styled__StInput-w3ykst-1 gaokAt\\"/><span class=\\"styled__StErrorSpan-w3ykst-2 gtUgdW\\">errorMessage</span></div></div>"`;
+exports[`App Should match snapshot 1`] = `"<button id=\\"mock\\" type=\\"submit\\" class=\\"styled__StButton-sc-1a6hck8-0 rdDrX\\">Button</button>"`;

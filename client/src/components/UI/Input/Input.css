@@ -1,5 +1,5 @@
 /* ToDO Remove this styles */
-.Input {
+ .Input {
   margin-bottom: 15px;
 }
 .Input label {
@@ -25,4 +25,4 @@
 }
 .Input.invalid label {
   color: red;
-}
+} 
