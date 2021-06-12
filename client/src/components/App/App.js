@@ -1,13 +1,16 @@
 import * as React from 'react';
-import Button from '../UI/Button';
-import Input from '../UI/Input';
+import Registration from '../Registration';
 
 const App = () => {
-    const [inputValue, setInputValue] = React.useState('');
-    const handleMockFunc = event => setInputValue(event.target.value);
-    
     return (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Registration />
+    );
+};
+
+export default App;
+
+
+/*         <div style={{ display: 'flex', justifyContent: 'center' }}>
             <Input
                 width="175px"
                 id="mock"
@@ -17,7 +20,7 @@ const App = () => {
                 errorMessage="errorMessage"
                 onChange={handleMockFunc}
             />
-            <Button   
+            <Button
                 id="mock"
                 onClick={handleMockFunc}
                 content="Button"
@@ -27,8 +30,4 @@ const App = () => {
                 value="value"
                 isDisabled={false}
             />
-        </div>
-    );
-};
-
-export default App;
+        </div> */

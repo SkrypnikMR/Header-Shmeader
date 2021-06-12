@@ -9,6 +9,7 @@ const disabledBorder = '1px solid #999999';
 
 export const StButton = styled.button`
   ${({ margin = '0 0 3px 0' }) => margin && `margin: ${margin}`};
+  font-family: 'Play', sans-serif;
   padding: ${({ padding = '5px' }) => padding};
   width: ${({ width = '170px' }) => width};
   height: ${({ height = '35px' }) => height};

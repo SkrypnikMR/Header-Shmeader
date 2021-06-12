@@ -9,21 +9,29 @@ const Input = ({
     width,
     label,
     value,
+    height,
+    margin,
     onChange,
     maxLength,
+    inputHeight,
+    borderRadius,
     placeholder, // ToDo add text from translation lib React i18 next
     errorMessage,
+
+
 }) => (
-    <StInputContainer width={width}>
+    <StInputContainer width={width} height={height}>
         {!!label && <StLabel htmlFor={id}>{label}</StLabel>}
         <StInput
             id={id}
             name={name}
             type={type}
             value={value}
-            margin='0 0 5px'
-            maxLength={maxLength}
+            margin={margin}
             onChange={onChange}
+            maxLength={maxLength}
+            borderRadius={borderRadius}
+            inputHeight={inputHeight}
             placeholder={placeholder}
         />
         {!!errorMessage && <StErrorSpan>{errorMessage}</StErrorSpan>}
@@ -37,8 +45,12 @@ Input.propTypes = {
     label: PropTypes.string,
     width: PropTypes.string,
     value: PropTypes.string,
-    onChange: PropTypes.func.isRequired,
+    margin: PropTypes.string,
+    height: PropTypes.string,
+    inputHeight: PropTypes.string,
     maxLength: PropTypes.number,
+    onChange: PropTypes.func.isRequired,
+    borderRadius: PropTypes.string,
     placeholder: PropTypes.string.isRequired,
     errorMessage: PropTypes.string,
 };
