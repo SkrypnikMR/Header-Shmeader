@@ -25,7 +25,7 @@ const App = () => {
                 name="name"
                 type="button"
                 value="value"
-                isDisabled="false"
+                isDisabled={false}
             />
         </div>
     );
