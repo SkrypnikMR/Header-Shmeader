@@ -2,7 +2,7 @@ import { takeEvery, call, select, put } from 'redux-saga/effects';
 import { actionTypes } from './actionTypes';
 import { regValues } from './selectors';
 import { postRequest } from '../../helpers/requests';
-import { setRegistrationSuccess, clearRegistrationInputs } from './actions';
+import { setRegistrationValue, clearRegistrationInputs } from './actions';
 import { routes } from '../../contsants/routes';
 
 export function* workerRegistration() {
@@ -11,12 +11,12 @@ export function* workerRegistration() {
         const serverAnswer = yield call(postRequest, routes.account.registration, data);
         if (serverAnswer.message === 'done') {
             yield (put(clearRegistrationInputs()));
-            yield put(setRegistrationSuccess(true));
+            yield put(setRegistrationValue({ name: 'success', value: true }));
         } else {
-            yield put(setRegistrationSuccess(false));
+            yield put(setRegistrationValue({ name: 'success', value: false }));
         }
     } catch (e) {
-        yield put(setRegistrationSuccess(false));
+        yield put(setRegistrationValue({ name: 'success', value: false }));
     }
 }
 

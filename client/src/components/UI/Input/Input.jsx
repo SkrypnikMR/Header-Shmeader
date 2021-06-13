@@ -20,7 +20,7 @@ const Input = ({
 
 
 }) => {
-    const handleOnchange = e => onChange(e.target.value);
+    const handleOnchange = e => onChange({ name: e.target.name, value: e.target.value });
     return (
         <StInputContainer width={width} height={height}>
             {!!label && <StLabel htmlFor={id}>{label}</StLabel>}

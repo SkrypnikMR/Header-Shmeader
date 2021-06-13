@@ -5,8 +5,7 @@ import Input from '../Ui/Input';
 import Button from '../UI/Button';
 import { regInputs } from '../../contsants/componentsСonsts';
 
-const Registration = (props) => {
-    const { sendRegistrationRequest } = props;
+const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields }) => {
     return (
         <Form>
             <p>Sign Up</p>
@@ -15,12 +14,13 @@ const Registration = (props) => {
                     width="80%"
                     id={input.id}
                     key={input.id}
+                    name={input.id}
                     height="100px"
                     inputHeight="50px"
                     borderRadius="5px"
                     label={input.label}
-                    value={props[input.id]}
-                    onChange={props[`${input.id}Func`]}
+                    value={fields[input.id]}
+                    onChange={setRegistrationValue}
                     placeholder={input.placeholder}
                 />
             ))}
@@ -31,6 +31,8 @@ const Registration = (props) => {
 
 Registration.propTypes = {
     sendRegistrationRequest: PropTypes.func.isRequired,
+    setRegistrationValue: PropTypes.func.isRequired,
+    fields: PropTypes.object.isRequired,
 };
 
 export default Registration;
