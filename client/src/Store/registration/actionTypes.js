@@ -6,4 +6,5 @@ export const actionTypes = {
     SET_LASTNAME_VALUE: '@@registration/SET_LASTNAME_VALUE',
     SEND_REGISTRATION_REQUEST: '@@registration/SEND_REGISTRATION_REQUEST',
     SET_SUCCESS_VALUE: '@@registration/SET_SUCCESS_VALUE',
+    CLEAR_INPUTS_VALUES: '@@registration/CLEAR_INPUTS_VALUES',
 };

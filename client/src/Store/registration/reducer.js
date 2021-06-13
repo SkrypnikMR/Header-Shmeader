@@ -6,7 +6,7 @@ export const initialState = {
     confirm: '',
     firstName: '',
     lastName: '',
-    success: '',
+    success: null,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -22,9 +22,10 @@ export const reducer = (state = initialState, action) => {
         case actionTypes.SET_LASTNAME_VALUE:
             return { ...state, lastName: action.payload };
         case actionTypes.SET_SUCCESS_VALUE:
+            return { ...state, success: action.payload };
+        case actionTypes.CLEAR_INPUTS_VALUES:
             return {
                 ...state,
-                success: action.payload,
                 email: '',
                 password: '',
                 confirm: '',

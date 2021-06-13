@@ -7,3 +7,4 @@ export const setFirstNameValue = payload => ({ type: actionTypes.SET_FIRSTNAME_V
 export const setLastNameValue = payload => ({ type: actionTypes.SET_LASTNAME_VALUE, payload });
 export const setRegistrationSuccess = payload => ({ type: actionTypes.SET_SUCCESS_VALUE, payload });
 export const sendRegistrationRequest = payload => ({ type: actionTypes.SEND_REGISTRATION_REQUEST, payload });
+export const clearRegistrationInputs = () => ({ type: actionTypes.CLEAR_INPUTS_VALUES });
