@@ -1,21 +1,20 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Provider } from 'react-redux';
-import createSagaMiddleware from '@redux-saga/core';
-import { createStore, applyMiddleware, compose } from 'redux';
+import configureStore from 'redux-mock-store';
 import App from '../App';
-import rootReducer from '../../../Store';
-import { watcherRegistration } from '../../../Store/registration/sagas';
 
-const saga = createSagaMiddleware();
-
-const store = createStore(
-    rootReducer,
-    compose(
-        applyMiddleware(saga),
-    ),
-);
-saga.run(watcherRegistration);
+const mockStore = configureStore();
+const store = mockStore({
+    registration: {
+        email: '',
+        password: '',
+        confirm: '',
+        firstName: '',
+        lastName: '',
+        success: null,
+    },
+});
 
 describe('App', () => {
     it('Should match snapshot', () => {
