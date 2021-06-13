@@ -3,11 +3,12 @@ import { actionTypes } from './actionTypes';
 import { regValues } from './selectors';
 import { postRequest } from '../../helpers/requests';
 import { setRegistrationSuccess } from './actions';
+import { routes } from '../../contsants/routes';
 
 export function* workerRegistration() {
     try {
         const data = yield select(regValues);
-        const serverAnswer = yield call(postRequest, 'http://localhost:2282/api/account/registration', data);
+        const serverAnswer = yield call(postRequest, routes.account.registration, data);
         if (serverAnswer.message === 'done') {
             yield put(setRegistrationSuccess(true));
         } else {

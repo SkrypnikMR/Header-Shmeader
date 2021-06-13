@@ -6,7 +6,6 @@ class AccountManager {
     constructor(connect) { this.connect = connect }
     registration = async (req, res) => {
         try {
-            console.log(req.body);
             const { email, password, firstName, lastName } = req.body;
             const candidate = await this.connect.query(`SELECT * FROM users WHERE email = '${email}'`);
             if (candidate.length > 0) return res.status(400).json({ message: 'such user exists' });
