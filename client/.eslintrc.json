@@ -3,7 +3,7 @@
     "plugins": [
         "jest",
         "react-hooks"
-    ],  
+    ],
     "env": {
         "jest": true,
         "es6": true,
@@ -58,6 +58,7 @@
         "import/no-extraneous-dependencies": "off",
         "function-paren-newline": "off",
         "import/no-dynamic-require": "off",
+        "import/no-absolute-path": "off",
         "consistent-return": "off",
         "react/forbid-prop-types": "off",
         "no-use-before-define": [

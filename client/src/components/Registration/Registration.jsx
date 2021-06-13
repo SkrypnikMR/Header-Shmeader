@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { regInputs } from '/src/contsants/componentsСonsts';
 import Form from '../UI/Form';
 import Input from '../Ui/Input';
 import Button from '../UI/Button';
-import { regInputs } from '../../contsants/componentsСonsts';
 
 const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields }) => {
     return (

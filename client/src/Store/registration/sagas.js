@@ -1,9 +1,9 @@
 import { takeEvery, call, select, put } from 'redux-saga/effects';
+import { postRequest } from '/src/helpers/requests';
+import { routes } from '/src/contsants/routes';
 import { actionTypes } from './actionTypes';
 import { regValues } from './selectors';
-import { postRequest } from '../../helpers/requests';
 import { setRegistrationValue, clearRegistrationInputs } from './actions';
-import { routes } from '../../contsants/routes';
 
 export function* workerRegistration() {
     try {
