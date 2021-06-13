@@ -17,8 +17,6 @@ const Input = ({
     borderRadius,
     placeholder, // ToDo add text from translation lib React i18 next
     errorMessage,
-
-
 }) => {
     const handleOnchange = e => onChange({ name: e.target.name, value: e.target.value });
     return (
