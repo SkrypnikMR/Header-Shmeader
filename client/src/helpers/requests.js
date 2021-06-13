@@ -1,7 +1,11 @@
+import { routes } from '../contsants/routes';
+
+const { baseUrl } = routes;
+
 export const getRequest = async (url, optionalHeaders = {}) => {
   const headers = Object.assign({}, optionalHeaders);
   const options = { method: 'GET', headers };
-  const answer = await fetch(url, options);
+  const answer = await fetch(`${baseUrl}${url}`, options);
   const result = await answer.json();
   return result;
 };
@@ -13,7 +17,7 @@ export const postRequest = async (url, body, optionalHeaders = {}) => {
     headers,
     body: JSON.stringify(body),
   };
-  const answer = await fetch(url, options);
+  const answer = await fetch(`${baseUrl}${url}`, options);
   const result = await answer.json();
   return result;
 };
@@ -25,7 +29,7 @@ export const putRequest = async (url, body, optionalHeaders = {}) => {
     headers,
     body: JSON.stringify(body),
   };
-  const answer = await fetch(url, options);
+  const answer = await fetch(`${baseUrl}${url}`, options);
   const result = await answer.json();
   return result;
 };
