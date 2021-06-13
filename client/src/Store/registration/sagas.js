@@ -1,5 +1,5 @@
 import { takeEvery, call, select, put } from 'redux-saga/effects';
-import * as AT from './actionTypes';
+import { actionTypes } from './actionTypes';
 import { regValues } from './selectors';
 import { postRequest } from '../../helpers/requests';
 import { setRegistrationSuccess } from './actions';
@@ -17,5 +17,5 @@ export function* workerRegistration() {
 }
 
 export function* watcherRegistration() {
-    yield takeEvery(AT.SEND_REGISTRATION_REQUEST, workerRegistration);
+    yield takeEvery(actionTypes.SEND_REGISTRATION_REQUEST, workerRegistration);
 }
