@@ -34,6 +34,7 @@
     "jest": "^27.0.4",
     "path": "^0.12.7",
     "prop-types": "^15.7.2",
+    "redux-saga-test-plan": "^4.0.1",
     "sass": "^1.32.11",
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0",

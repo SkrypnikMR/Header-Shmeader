@@ -13,9 +13,9 @@ const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields })
                 <Input
                     width="80%"
                     id={input.id}
+                    height="100px"
                     key={input.id}
                     name={input.id}
-                    height="100px"
                     inputHeight="50px"
                     borderRadius="5px"
                     label={input.label}
@@ -24,7 +24,12 @@ const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields })
                     placeholder={input.placeholder}
                 />
             ))}
-            <Button id="registration" onClick={sendRegistrationRequest} content="Submit" height="50px" />
+            <Button
+                height="50px"
+                content="Submit"
+                id="registration"
+                onClick={sendRegistrationRequest}
+            />
         </Form>
     );
 };

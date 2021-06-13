@@ -12,9 +12,3 @@ export const regValues = createSelector(
         lastName: registration.lastName,
     }),
 );
-
-export const registrationField = createSelector(
-    registrationStore,
-    (_registration, id) => id,
-    (registration, id) => registration[id],
-);

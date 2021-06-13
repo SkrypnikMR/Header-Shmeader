@@ -20,18 +20,14 @@ describe('getRequest', () => {
         const optionalHeader = { Authorization: 'someToken' };
         const options = {
             method: 'GET',
-            headers: { 'Content-Type': 'application/json', Authorization: 'someToken' },
+            headers: { Authorization: 'someToken' },
         };
         await getRequest(url, optionalHeader);
         expect(global.fetch).toHaveBeenCalledWith(url, options);
     });
     it('should call fetch , and answer json without optional header', async () => {
-        const options = {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-        };
         await getRequest(url);
-        expect(global.fetch).toHaveBeenCalledWith(url, options);
+        expect(global.fetch).toHaveBeenCalledWith(url, { headers: {}, method: 'GET' });
         global.fetch().then(answer => expect(answer.json).toHaveBeenCalled());
     });
     it('should return asnwer', async () => {
@@ -77,7 +73,7 @@ describe('postRequest', () => {
         });
     });
     it('should return asnwer', async () => {
-        const result = await getRequest(url);
+        const result = await postRequest(url);
         expect(result).toEqual(postAnswer);
     });
 });
