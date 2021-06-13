@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Form from '../UI/Form';
 import Input from '../Ui/Input';
 import Button from '../UI/Button';
-import { regInputs } from '../../contsants/components_consts';
+import { regInputs } from '../../contsants/componentsСonsts';
 
 function Registration(props) {
     const { sendRegistrationRequest } = props;
