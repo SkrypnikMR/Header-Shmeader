@@ -4,6 +4,18 @@
         "@babel/preset-react"
     ],
     "plugins": [
+        [
+            "module-resolver",
+            {
+                "root": [
+                    "./src"
+                ],
+                "alias": {
+                    "js": "./src",
+                    "jsx": "./src"
+                }
+            }
+        ],
         "@babel/plugin-transform-runtime",
         [
             "styled-components",

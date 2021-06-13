@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { regInputs } from '/src/contsants/componentsСonsts';
+import { regInputs } from './src/contsants/componentsСonsts';
 import Form from '../UI/Form';
 import Input from '../Ui/Input';
 import Button from '../UI/Button';

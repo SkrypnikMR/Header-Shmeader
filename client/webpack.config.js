@@ -31,8 +31,8 @@ module.exports = {
     },
     resolve: {
         alias: {
-            js: path.resolve(__dirname, './js'),
-            jsx: path.resolve(__dirname, './js'),
+            js: path.resolve(__dirname, './src'),
+            jsx: path.resolve(__dirname, './src'),
         },
     },
     module: {

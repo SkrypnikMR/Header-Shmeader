@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Form from '../Form.jsx';
-import Button from '/src/components/Button';
+import Button from '../../Button';
 
 describe('Form', () => {
     let props;

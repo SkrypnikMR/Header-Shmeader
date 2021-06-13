@@ -1,6 +1,6 @@
 import { takeEvery, call, select, put } from 'redux-saga/effects';
-import { postRequest } from '/src/helpers/requests';
-import { routes } from '/src/contsants/routes';
+import { postRequest } from './src/helpers/requests';
+import { routes } from './src/contsants/routes';
 import { actionTypes } from './actionTypes';
 import { regValues } from './selectors';
 import { setRegistrationValue, clearRegistrationInputs } from './actions';
