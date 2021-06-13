@@ -5,7 +5,7 @@ import Input from '../Ui/Input';
 import Button from '../UI/Button';
 import { regInputs } from '../../contsants/componentsСonsts';
 
-function Registration(props) {
+const Registration = (props) => {
     const { sendRegistrationRequest } = props;
     return (
         <Form>
@@ -29,7 +29,7 @@ function Registration(props) {
             <Button id="registration" onClick={sendRegistrationRequest} content="Submit" height="50px" />
         </Form>
     );
-}
+};
 Registration.propTypes = {
     sendRegistrationRequest: PropTypes.func.isRequired,
 };
