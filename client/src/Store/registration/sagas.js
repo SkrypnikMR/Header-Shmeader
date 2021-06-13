@@ -10,7 +10,9 @@ export function* workerRegistration() {
         const serverAnswer = yield call(postRequest, 'http://localhost:2282/api/account/registration', data);
         if (serverAnswer.message === 'done') {
             yield put(setRegistrationSuccess(true));
-        } else yield put(setRegistrationSuccess(false));
+        } else {
+            yield put(setRegistrationSuccess(false));
+        }
     } catch (e) {
         yield put(setRegistrationSuccess(false));
     }
