@@ -1,7 +1,7 @@
 import * as actions from '../actions';
 import { actionTypes } from '../actionTypes';
 
-describe('actions', () => {
+describe('registration actions', () => {
     describe('actions.setRegistrationValue', () => {
         it('toBe defined', () => {
             expect(actions.setRegistrationValue).toBeDefined();
