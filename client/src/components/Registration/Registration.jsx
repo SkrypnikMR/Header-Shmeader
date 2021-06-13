@@ -30,7 +30,9 @@ const Registration = (props) => {
         </Form>
     );
 };
+
 Registration.propTypes = {
     sendRegistrationRequest: PropTypes.func.isRequired,
 };
+
 export default Registration;
