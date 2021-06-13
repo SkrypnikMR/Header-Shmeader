@@ -22,6 +22,6 @@ export const reducer = (state = initialState, action) => {
                 firstName: '',
                 lastName: '',
             };
-        default: return state;
+        default: return { ...state };
     }
 };
