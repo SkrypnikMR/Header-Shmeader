@@ -19,24 +19,27 @@ const Input = ({
     errorMessage,
 
 
-}) => (
-    <StInputContainer width={width} height={height}>
-        {!!label && <StLabel htmlFor={id}>{label}</StLabel>}
-        <StInput
-            id={id}
-            name={name}
-            type={type}
-            value={value}
-            margin={margin}
-            onChange={onChange}
-            maxLength={maxLength}
-            borderRadius={borderRadius}
-            inputHeight={inputHeight}
-            placeholder={placeholder}
-        />
-        {!!errorMessage && <StErrorSpan>{errorMessage}</StErrorSpan>}
-    </StInputContainer>
-);
+}) => {
+    const handleOnchange = e => onChange(e.target.value);
+    return (
+        <StInputContainer width={width} height={height}>
+            {!!label && <StLabel htmlFor={id}>{label}</StLabel>}
+            <StInput
+                id={id}
+                name={name}
+                type={type}
+                value={value}
+                margin={margin}
+                onChange={handleOnchange}
+                maxLength={maxLength}
+                borderRadius={borderRadius}
+                inputHeight={inputHeight}
+                placeholder={placeholder}
+            />
+            {!!errorMessage && <StErrorSpan>{errorMessage}</StErrorSpan>}
+        </StInputContainer>
+    );
+};
 
 Input.propTypes = {
     id: PropTypes.string.isRequired,

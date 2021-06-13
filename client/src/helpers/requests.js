@@ -1,8 +1,9 @@
 export const getRequest = async (url, optionalHeaders = {}) => {
-  const headers = Object.assign({ 'Content-Type': 'application/json' }, optionalHeaders);
+  const headers = Object.assign({}, optionalHeaders);
   const options = { method: 'GET', headers };
   const answer = await fetch(url, options);
-  return answer.json();
+  const result = await answer.json();
+  return result;
 };
 export const postRequest = async (url, body, optionalHeaders = {}) => {
   const headers = Object.assign({ 'Content-Type': 'application/json' }, optionalHeaders);
@@ -12,7 +13,8 @@ export const postRequest = async (url, body, optionalHeaders = {}) => {
     body: JSON.stringify(body),
   };
   const answer = await fetch(url, options);
-  return answer.json();
+  const result = await answer.json();
+  return result;
 };
 
 export const putRequest = async (url, body, optionalHeaders = {}) => {
@@ -23,6 +25,7 @@ export const putRequest = async (url, body, optionalHeaders = {}) => {
     body: JSON.stringify(body),
   };
   const answer = await fetch(url, options);
-  return answer.json();
+  const result = await answer.json();
+  return result;
 };
 export const createAuthHeader = (support) => { return { Authorization: support.getCookie('token') }; };

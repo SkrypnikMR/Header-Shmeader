@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Form from '../UI/Form';
 import Input from '../Ui/Input';
 import Button from '../UI/Button';
 import { regInputs } from '../../contsants/components_consts';
 
-function Registration() {
+function Registration(props) {
+    const { sendRegistrationRequest } = props;
     return (
         <Form>
             <p>Sign Up</p>
@@ -18,14 +20,17 @@ function Registration() {
                         inputHeight="50px"
                         borderRadius="5px"
                         label={input.label}
-                        onChange={() => { }}
+                        value={props[input.id]}
+                        onChange={props[`${input.id}Func`]}
                         placeholder={input.placeholder}
                     />
                 );
             })}
-            <Button id="registration" onClick={() => { }} content="Submit" height="50px" />
+            <Button id="registration" onClick={sendRegistrationRequest} content="Submit" height="50px" />
         </Form>
     );
 }
-
+Registration.propTypes = {
+    sendRegistrationRequest: PropTypes.func.isRequired,
+};
 export default Registration;
