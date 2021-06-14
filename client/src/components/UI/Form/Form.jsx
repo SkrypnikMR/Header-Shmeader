@@ -1,9 +1,14 @@
 import React from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { StFormDiv } from './styled';
 
 const Form = ({ children }) => <StFormDiv>{children}</StFormDiv>;
 
-Form.propTypes = { children: propTypes.array };
+Form.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+    ]).isRequired,
+};
 
 export default Form;

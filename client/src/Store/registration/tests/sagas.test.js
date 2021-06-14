@@ -2,7 +2,7 @@ import { expectSaga, testSaga } from 'redux-saga-test-plan';
 import * as sagas from '../sagas';
 import { regValues } from '../selectors';
 import { postRequest } from '../../../helpers/requests';
-import { setRegistrationValue, clearRegistrationInputs } from '../actions';
+import { setRegistrationValue, clearRegistrationInputs, reciveErrorRequest, reciveSuccessRequest } from '../actions';
 import { actionTypes } from '../actionTypes';
 import { routes } from '../../../contsants/routes';
 
@@ -11,7 +11,6 @@ describe('registrationSaga', () => {
         let action;
         beforeEach(() => {
             action = {
-                payload: {},
                 type: actionTypes.SEND_REGISTRATION_REQUEST,
             };
         });
@@ -28,6 +27,8 @@ describe('registrationSaga', () => {
                 .next()
                 .put(setRegistrationValue({ name: 'success', value: true }))
                 .next()
+                .put(reciveSuccessRequest())
+                .next()
                 .isDone();
         });
         it('should call workerRegistration , serverAnswer !== done ', () => {
@@ -38,6 +39,8 @@ describe('registrationSaga', () => {
                 .call(postRequest, path, authValue)
                 .next({ message: 'such exists user' })
                 .put(setRegistrationValue({ name: 'success', value: false }))
+                .next()
+                .put(reciveErrorRequest())
                 .next()
                 .isDone();
         });

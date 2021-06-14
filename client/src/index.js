@@ -6,7 +6,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from '@redux-saga/core';
 import rootReducer from './Store';
 import App from './components/App';
-import { watcherRegistration } from './Store/registration/sagas';
+import rootSaga from './Store/saga';
 
 const devTools = window?.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 const saga = createSagaMiddleware();
@@ -18,7 +18,7 @@ const store = createStore(
         devTools,
     ),
 );
-saga.run(watcherRegistration);
+saga.run(rootSaga);
 
 render(
     <Provider store={store}>

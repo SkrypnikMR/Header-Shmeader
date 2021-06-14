@@ -22,14 +22,8 @@ describe('registration actions', () => {
             expect(typeof actions.sendRegistrationRequest).toBe('function');
         });
         it('should return value', () => {
-            const payload = {
-                lastName: 'Scr',
-                firstName: 'Max',
-                email: 'emailValue',
-                password: 'somePassword',
-            };
-            expect(actions.sendRegistrationRequest(payload))
-                .toEqual({ type: actionTypes.SEND_REGISTRATION_REQUEST, payload });
+            expect(actions.sendRegistrationRequest())
+                .toEqual({ type: actionTypes.SEND_REGISTRATION_REQUEST });
         });
     });
     describe('actions.clearRegistrationInputs', () => {
@@ -42,6 +36,30 @@ describe('registration actions', () => {
         it('should return value', () => {
             expect(actions.clearRegistrationInputs())
                 .toEqual({ type: actionTypes.CLEAR_INPUTS_VALUES });
+        });
+    });
+    describe('actions.reciveSuccessRequest', () => {
+        it('toBe defined', () => {
+            expect(actions.reciveSuccessRequest).toBeDefined();
+        });
+        it('toBe function', () => {
+            expect(typeof actions.reciveSuccessRequest).toBe('function');
+        });
+        it('should return value', () => {
+            expect(actions.reciveSuccessRequest())
+                .toEqual({ type: actionTypes.REGISTRATION_REQUEST_SUCCESS });
+        });
+    });
+    describe('actions.reciveErrorRequest', () => {
+        it('toBe defined', () => {
+            expect(actions.reciveErrorRequest).toBeDefined();
+        });
+        it('toBe function', () => {
+            expect(typeof actions.reciveErrorRequest).toBe('function');
+        });
+        it('should return value', () => {
+            expect(actions.reciveErrorRequest())
+                .toEqual({ type: actionTypes.REGISTRATION_REQUEST_ERROR });
         });
     });
 });
