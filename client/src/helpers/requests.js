@@ -34,3 +34,4 @@ export const putRequest = async (url, body, optionalHeaders = {}) => {
   return result;
 };
 export const createAuthHeader = (support) => { return { Authorization: support.getCookie('token') }; };
+export const createLogHeader = (support) => { return { Login: support.getCookie('token') }; };
