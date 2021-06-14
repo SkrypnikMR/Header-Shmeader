@@ -23,3 +23,14 @@ export const regInputs = [{
     label: 'Last name',
     placeholder: 'Enter your Last name...',
 }];
+
+export const logInputs = [{
+  id: 'email',
+  label: 'Email',
+  placeholder: 'Enter your email...',
+},
+{
+  id: 'password',
+  label: 'Password',
+  placeholder: 'Enter your password...',
+}];
