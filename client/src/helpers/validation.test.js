@@ -13,21 +13,21 @@ describe('validation', () => {
                 email: 'keepcalm312000',
                 password: 'asdasdsadsad',
             };
-            expect(validation.loginValidation(candidate)).toBe('Invalid email!');
+            expect(validation.loginValidation(candidate)).toEqual({ message: 'Invalid email', isValid: false });
         });
         it('should return "Invalid password" ', () => {
             const candidate = {
                 email: 'keepcalm312000@gmail.com',
                 password: 'asd',
             };
-            expect(validation.loginValidation(candidate)).toBe('Invalid password!');
+            expect(validation.loginValidation(candidate)).toEqual({ message: 'Invalid password', isValid: false });
         });
         it('should return false ', () => {
             const candidate = {
                 email: 'keepcalm312000@gmail.com',
                 password: 'asdasdsad',
             };
-            expect(validation.loginValidation(candidate)).toBe(false);
+            expect(validation.loginValidation(candidate)).toEqual({ message: '', isValid: true });
         });
     });
     describe('registrationValidation', () => {
@@ -45,7 +45,7 @@ describe('validation', () => {
                 lastName: 'Rashev',
                 confirm: 'asdasdsadsad',
             };
-            expect(validation.registrationValidation(candidate)).toBe('Invalid email!');
+            expect(validation.registrationValidation(candidate)).toEqual({ message: 'Invalid email', isValid: false });
         });
         it('should return "Invalid password" ', () => {
             const candidate = {
@@ -53,9 +53,9 @@ describe('validation', () => {
                 password: 'asd',
                 firstName: 'Alexey',
                 lastName: 'Rashev',
-                confirm: 'asdasdsadsad',
+                confirm: 'asd',
             };
-            expect(validation.registrationValidation(candidate)).toBe('Invalid password!');
+            expect(validation.registrationValidation(candidate)).toEqual({ message: 'Invalid password', isValid: false });
         });
         it('should return "Invalid First name!" ', () => {
             const candidate = {
@@ -65,7 +65,7 @@ describe('validation', () => {
                 lastName: 'Rashev',
                 confirm: 'asdasdsad',
             };
-            expect(validation.registrationValidation(candidate)).toBe('Invalid First name!');
+            expect(validation.registrationValidation(candidate)).toEqual({ message: 'Invalid firstName', isValid: false });
         });
         it('should return "Invalid Last name!" ', () => {
             const candidate = {
@@ -75,7 +75,7 @@ describe('validation', () => {
                 lastName: 'R',
                 confirm: 'asdasdsad',
             };
-            expect(validation.registrationValidation(candidate)).toBe('Invalid Last name!');
+            expect(validation.registrationValidation(candidate)).toEqual({ message: 'Invalid lastName', isValid: false });
         });
         it('should return password mismatch ', () => {
             const candidate = {
@@ -85,7 +85,7 @@ describe('validation', () => {
                 lastName: 'Rashev',
                 confirm: 'asdasdsadsad',
             };
-            expect(validation.registrationValidation(candidate)).toBe('Password mismatch');
+            expect(validation.registrationValidation(candidate)).toEqual({ message: 'Password mismatch', isValid: false });
         });
         it('should return false', () => {
             const candidate = {
@@ -95,7 +95,7 @@ describe('validation', () => {
                 lastName: 'Rashev',
                 confirm: 'asdasdsadsad',
             };
-            expect(validation.registrationValidation(candidate)).toBe(false);
+            expect(validation.registrationValidation(candidate)).toEqual({ message: '', isValid: true });
         });
     });
 });
