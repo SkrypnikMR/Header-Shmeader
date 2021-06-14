@@ -29,6 +29,12 @@ module.exports = {
     entry: {
         bundle: getPath('index.js'),
     },
+    resolve: {
+        alias: {
+            js: path.resolve(__dirname, './src'),
+            jsx: path.resolve(__dirname, './src'),
+        },
+    },
     module: {
         rules: [
             getStyleLoader(/\.css$/),

@@ -45,9 +45,9 @@ const Button = ({
         transition={transition}
         focusColor={focusColor}
     >
-    {content}
+        {content}
     </StButton>
-  ); 
+);
 
 Button.propTypes = {
     id: PropTypes.string.isRequired,

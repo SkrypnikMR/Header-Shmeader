@@ -1,0 +1,112 @@
+Redux:
+
+------
+CreateStore:
+Глобальное хранилище приложения создаётся в отдельном файле, который как правило называется store.js:
+// Код файла store.js
+import { createStore } from 'redux';
+
+const store = createStore(reducer);
+
+export default store;
+
+
+------
+reducer():
+reducer — чистая функция которая будет отвечать за обновление состояния. 
+
+Так выглядит базовая функция reducer:
+
+function reducer(state, action) {
+    switch(action.type) {
+        case ACTION_1: return { value: action.value_1 };
+        case ACTION_2: return { value: action.value_2 };
+        
+        default: return state;
+    }
+}
+
+
+------
+dispatch():
+Что бы обновить store необходимо вызвать метод dispatch(). Он вызывается у объекта store который вы создаёте в store.js.
+
+
+------
+actionCreator():
+На самом деле передавать объект события напрямую в dispatch() является признаком плохого тона. Для этого нужно использовать функцию под названием actionCreator. Она делает ровно то что и ожидается. Создаёт событие! Вызов этой функции нужно передавать как аргумент в dispatch а в actionCreator передавать необходимое значение (value). Базовый actionCreator выглядит следующим образом:
+
+function action_1(value) {
+    return { 
+        type: ACTION_1,
+        value_1: value
+    };
+}
+
+export default action_1;
+
+Таким образом вызов dispatch должен выглядеть так:
+
+store.dispatch(action_1("Some value"));
+
+С использованием actionCreator код становится более чистым.
+
+
+------
+Actions:
+actions это константы, описывающие событие. Обычно это просто строка с названием описывающее событие.
+
+
+------
+getState():
+для просмотра значение store нужно использовать данный метод
+
+
+------
+subscribe():
+Данный метод принимает функцию, которая будет вызывается каждый раз после обновления store.
+
+
+------
+combineReducers():
+combineReducers() позволяет объединить несколько редьюсеров в один.
+
+
+------
+initialState:
+initialState — объект, представляющий начальное состояние хранилища. Он является вторым не обязательным аргументом метода createStore(). С созданием хранилища можно сразу объявить начальное состояние для его полей. Этот объект желательно создавать, даже в тех случаях, когда объявления начального состояния не требуется.
+
+------React-redux------
+
+------
+Provider:
+Для использование store в компоненте вам необходимо передавать его в пропсы:
+
+ReactDOM.render(<Main store={store} />, document.getElementById('root'));
+
+И после использовать в компоненте: this.props.state. Для этого react-redux предостовляет метод Provider:
+
+ReactDOM.render(
+    <Provider store={store}>
+        <Main />
+    </Provider>, 
+document.getElementById('root'));
+
+Таким образом метод connect сможет использовать store. В противном случае вы получите ошибку: Error: Could not find «store» in the context of «Connect(Main)»
+
+React-redux.mapStateToProps():
+Этот метод вызывается всякий раз, когда происходит обновление store и именно он передаёт необходимые свойства из store в компонент.
+
+------
+mapDispatchToProps():
+Эта функция передаёт в компонент методы для обновления необходимого поля store. Что бы не вызывать dispatch напрямую из компонента вы будете использовать данный метод для того что бы передавать в props метод вызов которого приведёт к вызову dispatch и обновлению соответствующего поля.
+
+
+------
+connect()
+connect связывает mapStateToProps и mapDispatchToProps с компонентом и передает необходимые поля и методы в него. Возвращает она новый компонент-обёртку для вашего компонента. 
+
+
+Больше информации на:
+ https://habr.com/en/post/498860/
+ https://redux.js.org/introduction/getting-started

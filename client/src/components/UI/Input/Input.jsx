@@ -9,26 +9,35 @@ const Input = ({
     width,
     label,
     value,
+    height,
+    margin,
     onChange,
     maxLength,
+    inputHeight,
+    borderRadius,
     placeholder, // ToDo add text from translation lib React i18 next
     errorMessage,
-}) => (
-    <StInputContainer width={width}>
-        {!!label && <StLabel htmlFor={id}>{label}</StLabel>}
-        <StInput
-            id={id}
-            name={name}
-            type={type}
-            value={value}
-            margin='0 0 5px'
-            maxLength={maxLength}
-            onChange={onChange}
-            placeholder={placeholder}
-        />
-        {!!errorMessage && <StErrorSpan>{errorMessage}</StErrorSpan>}
-    </StInputContainer>
-);
+}) => {
+    const handleOnchange = e => onChange({ name: e.target.name, value: e.target.value });
+    return (
+        <StInputContainer width={width} height={height}>
+            {!!label && <StLabel htmlFor={id}>{label}</StLabel>}
+            <StInput
+                id={id}
+                name={name}
+                type={type}
+                value={value}
+                margin={margin}
+                onChange={handleOnchange}
+                maxLength={maxLength}
+                borderRadius={borderRadius}
+                inputHeight={inputHeight}
+                placeholder={placeholder}
+            />
+            {!!errorMessage && <StErrorSpan>{errorMessage}</StErrorSpan>}
+        </StInputContainer>
+    );
+};
 
 Input.propTypes = {
     id: PropTypes.string.isRequired,
@@ -37,8 +46,12 @@ Input.propTypes = {
     label: PropTypes.string,
     width: PropTypes.string,
     value: PropTypes.string,
-    onChange: PropTypes.func.isRequired,
+    margin: PropTypes.string,
+    height: PropTypes.string,
+    inputHeight: PropTypes.string,
     maxLength: PropTypes.number,
+    onChange: PropTypes.func.isRequired,
+    borderRadius: PropTypes.string,
     placeholder: PropTypes.string.isRequired,
     errorMessage: PropTypes.string,
 };
