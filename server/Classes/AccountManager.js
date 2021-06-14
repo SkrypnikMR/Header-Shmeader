@@ -19,6 +19,8 @@ class AccountManager {
     }
     login = async (req, res) => {
         try {
+            const {message, isValid} = req.validation
+            if (!isValid) return res.status(400).json({message: message})
             const { email, password } = req.body;
             const users = await this.connect.query(`SELECT * FROM users WHERE email = '${email}' `);
             if (users.length < 1) return res.status(400).json({ message: 'Wrong User or Password' });
