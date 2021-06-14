@@ -8,7 +8,7 @@ import Button from '../UI/Button';
 const Login = ({ sendLoginRequest, setLoginValue, fields }) => {
     return (
         <Form>
-            <p>Sign Up</p>
+            <p>Sign In</p>
             {logInputs.map(input => (
                 <Input
                     width="80%"
