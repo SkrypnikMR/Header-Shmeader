@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { logInputs } from '/src/contsants/componentsСonsts';
+import { NavLink, useHistory } from 'react-router-dom';
 import Form from '../UI/Form';
 import Input from '../Ui/Input';
 import Button from '../UI/Button';
 
 const Login = ({ sendLoginRequest, setLoginValue, fields }) => {
+    const history = useHistory();
+    if (fields.success) history.push('/chat');
     return (
         <Form>
             <p>Sign In</p>
@@ -30,6 +33,10 @@ const Login = ({ sendLoginRequest, setLoginValue, fields }) => {
                 id="login"
                 onClick={sendLoginRequest}
             />
+            <span>
+                Need an account?
+                <NavLink to='/registration'>Register now</NavLink>
+            </span>
         </Form>
     );
 };

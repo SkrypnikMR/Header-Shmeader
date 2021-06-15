@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { regInputs } from '/src/contsants/componentsСonsts';
+import { NavLink, useHistory } from 'react-router-dom';
 import Form from '../UI/Form';
 import Input from '../Ui/Input';
 import Button from '../UI/Button';
 
 const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields }) => {
+    const history = useHistory();
+    if (fields.success) history.push('/');
     return (
         <Form>
             <p>Sign Up</p>
@@ -30,6 +33,10 @@ const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields })
                 id="registration"
                 onClick={sendRegistrationRequest}
             />
+            <span>
+                Already Registered?
+                <NavLink to='/'>Sign In</NavLink>
+            </span>
         </Form>
     );
 };
