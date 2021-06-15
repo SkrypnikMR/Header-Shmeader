@@ -14,6 +14,14 @@ const store = mockStore({
         lastName: '',
         success: null,
     },
+    login: {
+        email: '',
+        password: '',
+        confirm: '',
+        firstName: '',
+        lastName: '',
+        success: null,
+    },
 });
 
 describe('App', () => {
