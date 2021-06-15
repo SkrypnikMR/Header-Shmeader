@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { regInputs } from '/src/contsants/componentsСonsts';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import Form from '../UI/Form';
 import Input from '../Ui/Input';
 import Button from '../UI/Button';
+import { APP_ROUTES } from '/src/contsants/reactRoutes';
 
 const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields }) => {
-    const history = useHistory();
-    if (fields.success) history.push('/');
+    if (fields.success) return <Redirect to={APP_ROUTES.login} />;
     return (
         <Form>
             <p>Sign Up</p>
@@ -35,7 +35,7 @@ const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields })
             />
             <span>
                 Already Registered?
-                <NavLink to='/'>Sign In</NavLink>
+                <NavLink to={APP_ROUTES.login}>Sign In</NavLink>
             </span>
         </Form>
     );

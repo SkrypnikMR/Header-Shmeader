@@ -4,7 +4,6 @@ import { shallow } from 'enzyme';
 import Login from '../Login.jsx';
 import { logInputs } from '/src/contsants/componentsСonsts';
 
-
 describe('Login', () => {
     let props;
     const sendLoginRequest = jest.fn();

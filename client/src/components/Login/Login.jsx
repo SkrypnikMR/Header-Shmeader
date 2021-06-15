@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { logInputs } from '/src/contsants/componentsСonsts';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import Form from '../UI/Form';
 import Input from '../Ui/Input';
 import Button from '../UI/Button';
+import { APP_ROUTES } from '/src/contsants/reactRoutes';
 
 const Login = ({ sendLoginRequest, setLoginValue, fields }) => {
-    const history = useHistory();
-    if (fields.success) history.push('/chat');
+    if (fields.success) return <Redirect to={APP_ROUTES.chat} />;
     return (
         <Form>
             <p>Sign In</p>
@@ -35,7 +35,7 @@ const Login = ({ sendLoginRequest, setLoginValue, fields }) => {
             />
             <span>
                 Need an account?
-                <NavLink to='/registration'>Register now</NavLink>
+                <NavLink to={APP_ROUTES.registration}>Register now</NavLink>
             </span>
         </Form>
     );
