@@ -22,7 +22,15 @@ describe('loginSaga', () => {
                 .select(logValues)
                 .next(logValue)
                 .call(postRequest, path, logValue)
-                .next({ message: 'done' })
+                .next({
+                    token: 'someVeryLongToken',
+                    userInfo: {
+                        id: 1,
+                        firstName: 'Max',
+                        lastName: 'Skrypnik',
+                        email: 'SkripnikMRW@GMAIL.COM',
+                    },
+                })
                 .put(clearLoginInputs())
                 .next()
                 .put(setLoginValue({ name: 'success', value: true }))

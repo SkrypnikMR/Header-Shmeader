@@ -9,7 +9,7 @@ export function* workerLogin() {
     try {
         const data = yield select(logValues);
         const serverAnswer = yield call(postRequest, routes.account.login, data);
-        if (serverAnswer.message === 'done') {
+        if (serverAnswer.token) {
             yield (put(clearLoginInputs()));
             yield put(setLoginValue({ name: 'success', value: true }));
             yield put(reciveSuccessRequest());

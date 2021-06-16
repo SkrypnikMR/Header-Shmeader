@@ -1,6 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Registration from '../Registration.jsx';
+import { shallowSmart } from '/src/helpers/testHelper';
+import { regInputs } from '/src/contsants/componentsСonsts';
+import 'react-router-dom';
 
 describe('Registration', () => {
     let props;
@@ -12,16 +15,18 @@ describe('Registration', () => {
         confrim: '',
         firstName: '',
         lastName: '',
+        success: null,
     };
     beforeEach(() => {
         props = {
             setRegistrationValue,
             sendRegistrationRequest,
             fields,
+            regInputs,
         };
     });
     it('Should match snapshot', () => {
-        const component = shallow(<Registration {...props} />);
+        const component = shallowSmart(<Registration {...props} />);
         expect(component.html()).toMatchSnapshot();
     });
     it('should render p', () => {

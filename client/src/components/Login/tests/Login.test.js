@@ -1,6 +1,8 @@
 import React from 'react';
+import { shallowSmart } from '/src/helpers/testHelper';
 import { shallow } from 'enzyme';
 import Login from '../Login.jsx';
+import { logInputs } from '/src/contsants/componentsСonsts';
 
 describe('Login', () => {
     let props;
@@ -9,16 +11,18 @@ describe('Login', () => {
     const fields = {
         email: '',
         password: '',
+        success: null,
     };
     beforeEach(() => {
         props = {
             setLoginValue,
             sendLoginRequest,
             fields,
+            logInputs,
         };
     });
     it('Should match snapshot', () => {
-        const component = shallow(<Login {...props} />);
+        const component = shallowSmart(<Login {...props} />);
         expect(component.html()).toMatchSnapshot();
     });
     it('should render p', () => {

@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { regInputs } from '/src/contsants/componentsСonsts';
+import { NavLink, Redirect } from 'react-router-dom';
 import Form from '../UI/Form';
 import Input from '../Ui/Input';
 import Button from '../UI/Button';
+import { APP_ROUTES } from '/src/contsants/reactRoutes';
 
 const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields }) => {
+    if (fields.success) return <Redirect to={APP_ROUTES.login} />;
     return (
         <Form>
             <p>Sign Up</p>
@@ -30,6 +33,10 @@ const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields })
                 id="registration"
                 onClick={sendRegistrationRequest}
             />
+            <span>
+                Already Registered?
+                <NavLink to={APP_ROUTES.login}>Sign In</NavLink>
+            </span>
         </Form>
     );
 };
