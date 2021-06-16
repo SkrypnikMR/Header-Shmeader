@@ -1,6 +1,9 @@
 // import styled from 'styled-components';
-export const backgroundImageDark = 'url(client\public\assets\images\dark-theme.jpg) | none | inherit';
-export const backgroundImageLight = 'url(client\public\assets\images\light-theme.jpg) | none | inherit';
+
+export const backgroundUrls = {
+  light: '../../../public/assets/images/lightTheme.jpg',
+  dark: '../../../public/assets/images/darkTheme.jpg',
+};
 
 //Button
 export const bgColorDefault = '#5573C1'; // ToDo all colors move to color matrix
