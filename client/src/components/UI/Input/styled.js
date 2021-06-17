@@ -1,9 +1,5 @@
 import styled from 'styled-components';
-
-const bgInpColorDefault = '#F6F7FA';
-const bgFocusColorDefault = '#716f6f'; // ToDo all colors move to color matrix
-const focusColorDefault = 'white';
-const colorDefault = 'black';
+import { bgInpColorDefault, bgFocusColorDefault, focusColorDefaultInput, colorDefaultInput } from '../baseLayout';
 
 export const StLabel = styled.label`
    ${({ margin = '0 0px 10px 0' }) => margin && `margin: ${margin}`};
@@ -29,22 +25,22 @@ export const StInput = styled.input`
     ${({ cursorType }) => cursorType && `cursor: ${cursorType}`};
     ${({ borderRadius }) => borderRadius && `border-radius: ${borderRadius}`};
     ${({ fontWeight }) => fontWeight && `font-weight: ${fontWeight}`};
-    color: ${({ color = colorDefault }) => color};
+    color: ${({ color = colorDefaultInput }) => color};
     font-size: ${({ fontSizeInp = '14px' }) => fontSizeInp};
     ${({ textAlignInput }) => textAlignInput && `text-align: ${textAlignInput}`}
     
     ${({ transition = 'all 300ms ease-in-out' }) => transition && `transition: ${transition}`};
     &:focus {
       background:${({ bgFocusColor = bgFocusColorDefault }) => bgFocusColor};
-      color: ${({ focusColor = focusColorDefault }) => focusColor};
+      color: ${({ focusColor = focusColorDefaultInput }) => focusColor};
       &::placeholder {
         
-        color: ${({ color = focusColorDefault }) => color};
+        color: ${({ color = focusColorDefaultInput }) => color};
       }
     }
     
     &::placeholder {
-      color: ${({ color = colorDefault }) => color};
+      color: ${({ color = colorDefaultInput }) => color};
       font-size: ${({ fontSizeInp = '14px' }) => fontSizeInp};
     }
 `;

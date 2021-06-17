@@ -12,17 +12,17 @@ const devTools = window?.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS
 const saga = createSagaMiddleware();
 
 const store = createStore(
-    rootReducer,
-    compose(
-        applyMiddleware(saga),
-        devTools,
-    ),
+  rootReducer,
+  compose(
+    applyMiddleware(saga),
+    devTools,
+  ),
 );
 saga.run(rootSaga);
 
 render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
-    document.getElementById('root'),
+  <Provider store={store}>
+    <App />
+  </Provider >,
+  document.getElementById('root'),
 );

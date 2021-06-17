@@ -1,11 +1,5 @@
 import styled from 'styled-components';
-
-const bgColorDefault = '#5573C1'; // ToDo all colors move to color matrix
-const colorDefault = 'white';
-const focusColorDefault = 'black';
-const disabledColor = '#666666';
-const bgColorDisabled = '#cccccc';
-const disabledBorder = '1px solid #999999';
+import { bgColorDefault, colorDefault, focusColorDefault, disabledColor, bgColorDisabled, disabledBorder } from '../baseLayout';
 
 export const StButton = styled.button`
   ${({ margin = '0 0 3px 0' }) => margin && `margin: ${margin}`};
@@ -15,7 +9,7 @@ export const StButton = styled.button`
   height: ${({ height = '35px' }) => height};
   ${({ cursor = 'pointer' }) => cursor && `cursor: ${cursor}`};
   color: ${({ focusColorDefault = colorDefault }) => focusColorDefault};
-  background-color: ${({ bgColor = bgColorDefault }) => bgColor};
+  background-color: ${({ color = bgColorDefault }) => color};
   border-radius: ${({ borderRadius = '7px' }) => borderRadius}; 
   border: ${({ border = 'none' }) => border};
   outline: ${({ outline = 'none' }) => outline};
