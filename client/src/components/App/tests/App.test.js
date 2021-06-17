@@ -31,8 +31,8 @@ const props = {
 };
 
 describe('App', () => {
-    it('Should match snapshot', () => {
-        const component = shallowSmart(<App />, store);
-        expect(component.html()).toMatchSnapshot();
-    });
+  it('Should match snapshot', () => {
+    const component = shallowSmart(<App {...props} />, store);
+    expect(component.html()).toMatchSnapshot();
+  });
 });
