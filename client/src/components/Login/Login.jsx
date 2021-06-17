@@ -2,16 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { logInputs } from '/src/contsants/componentsСonsts';
 import { NavLink, Redirect } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 import Form from '../UI/Form';
 import Input from '../Ui/Input';
 import Button from '../UI/Button';
 import { APP_ROUTES } from '/src/contsants/reactRoutes';
 
 const Login = ({ sendLoginRequest, setLoginValue, fields }) => {
+  const handleOnclick = () => {
+    i18next.changeLanguage('ru');
+    sendLoginRequest();
+    localStorage.setItem('lang', 'ru');
+  };
+  const { t } = useTranslation();
   if (fields.success) return <Redirect to={APP_ROUTES.chat} />;
   return (
     <Form>
-      <p>Sign In</p>
+      <p>{t('authorization')}</p>
       {logInputs.map(input => (
         <Input
           width="80%"
@@ -31,7 +39,7 @@ const Login = ({ sendLoginRequest, setLoginValue, fields }) => {
         height="50px"
         content="Submit"
         id="login"
-        onClick={sendLoginRequest}
+        onClick={handleOnclick}
       />
       <span>
         Need an account?
