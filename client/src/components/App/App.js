@@ -6,7 +6,6 @@ import Login from '../Login';
 import { APP_ROUTES } from '/src/contsants/reactRoutes';
 import { StAppDiv } from './styled';
 
-
 const App = ({ userTheme, userThemeMode }) => {
   return (
     <StAppDiv url={userThemeMode === 'dark' ? userTheme.dark : userTheme.light}>
