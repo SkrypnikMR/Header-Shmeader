@@ -10,11 +10,6 @@ import Button from '../UI/Button';
 import { APP_ROUTES } from '/src/contsants/reactRoutes';
 
 const Login = ({ sendLoginRequest, setLoginValue, fields }) => {
-  const handleOnclick = () => {
-    i18next.changeLanguage('ru');
-    sendLoginRequest();
-    localStorage.setItem('lang', 'ru');
-  };
   const { t } = useTranslation();
   if (fields.success) return <Redirect to={APP_ROUTES.chat} />;
   return (
@@ -39,7 +34,7 @@ const Login = ({ sendLoginRequest, setLoginValue, fields }) => {
         height="50px"
         content="Submit"
         id="login"
-        onClick={handleOnclick}
+        onClick={sendLoginRequest}
       />
       <span>
         Need an account?
