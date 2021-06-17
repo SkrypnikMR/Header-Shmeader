@@ -1,7 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
+import { shallowSmart } from '../../../helpers/testHelper';
 import App from '../App';
 
 const mockStore = configureStore();
@@ -32,8 +31,8 @@ const props = {
 };
 
 describe('App', () => {
-  it('Should match snapshot', () => {
-    const component = shallow(<Provider store={store}><App {...props} /></Provider>);
-    expect(component.html()).toMatchSnapshot();
-  });
+    it('Should match snapshot', () => {
+        const component = shallowSmart(<App />, store);
+        expect(component.html()).toMatchSnapshot();
+    });
 });

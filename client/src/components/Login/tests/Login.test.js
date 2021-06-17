@@ -1,8 +1,6 @@
 import React from 'react';
-import { shallowSmart } from '/src/helpers/testHelper';
-import { shallow } from 'enzyme';
+import { shallowSmart, mountSmart } from '/src/helpers/testHelper';
 import Login from '../Login.jsx';
-import { logInputs } from '/src/contsants/componentsСonsts';
 
 describe('Login', () => {
     let props;
@@ -18,7 +16,6 @@ describe('Login', () => {
             setLoginValue,
             sendLoginRequest,
             fields,
-            logInputs,
         };
     });
     it('Should match snapshot', () => {
@@ -26,25 +23,25 @@ describe('Login', () => {
         expect(component.html()).toMatchSnapshot();
     });
     it('should render p', () => {
-        const component = shallow(<Login {...props} />);
+        const component = mountSmart(<Login {...props} />);
         expect(component.find('p')).toHaveLength(1);
     });
     it('should render inputs', () => {
-        const component = shallow(<Login {...props} />);
+        const component = mountSmart(<Login {...props} />);
         expect(component.find('Input')).toHaveLength(2);
     });
     it('should render button', () => {
-        const component = shallow(<Login {...props} />);
+        const component = mountSmart(<Login {...props} />);
         expect(component.find('Button')).toHaveLength(1);
     });
     it('should click on the button', () => {
-        const component = shallow(<Login {...props} />);
+        const component = mountSmart(<Login {...props} />);
         component.find('Button').simulate('click');
-        expect(sendLoginRequest).toHaveBeenCalledWith();
+        expect(sendLoginRequest).toHaveBeenCalled();
     });
     it('should click change input', () => {
-        const component = shallow(<Login {...props} />);
-        component.find('Input').first().simulate('change', { name: 'email', value: 'emailValue' });
+        const component = mountSmart(<Login {...props} />);
+        component.find('input').first().simulate('change', { target: { name: 'email', value: 'emailValue' } });
         expect(setLoginValue).toHaveBeenCalledWith({ name: 'email', value: 'emailValue' });
     });
 });
