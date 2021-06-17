@@ -7,8 +7,7 @@ import { APP_ROUTES } from '/src/contsants/reactRoutes';
 import { StAppDiv } from './styled';
 
 
-const App = (props) => {
-  const { userTheme, userThemeMode } = props;
+const App = ({ userTheme, userThemeMode }) => {
   return (
     <StAppDiv url={userThemeMode === 'dark' ? userTheme.dark : userTheme.light}>
       <BrowserRouter>
@@ -20,6 +19,7 @@ const App = (props) => {
     </StAppDiv >
   );
 };
+
 App.propTypes = {
   userTheme: PropTypes.object,
   userThemeMode: PropTypes.string,
