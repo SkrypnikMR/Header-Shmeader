@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallowSmart, mountSmart } from '/src/helpers/testHelper';
 import Login from '../Login.jsx';
+import '/src/i18n';
 
 describe('Login', () => {
     let props;

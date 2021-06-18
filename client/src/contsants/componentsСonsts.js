@@ -1,36 +1,36 @@
 export const regInputs = [{
     id: 'email',
-    label: 'Email',
-    placeholder: 'Enter your email...',
+    label: 'emailLabel',
+    placeholder: 'emailPlaceHolder',
 },
 {
     id: 'password',
-    label: 'Password',
-    placeholder: 'Enter your password...',
+    label: 'passwordLabel',
+    placeholder: 'passwordPlaceHolder',
 },
 {
     id: 'confirm',
-    label: 'Confirm',
-    placeholder: 'Confirm your password...',
+    label: 'confirmLabel',
+    placeholder: 'confirmPlaceHolder',
 },
 {
     id: 'firstName',
-    label: 'First name',
-    placeholder: 'Enter your First name...',
+    label: 'firstNameLabel',
+    placeholder: 'firstNamePlaceHolder',
 },
 {
     id: 'lastName',
-    label: 'Last name',
-    placeholder: 'Enter your Last name...',
+    label: 'lastNameLabel',
+    placeholder: 'lastNamePlaceHolder',
 }];
 
 export const logInputs = [{
-  id: 'email',
-  label: 'Email',
-  placeholder: 'Enter your email...',
+    id: 'email',
+    label: 'emailLabel',
+    placeholder: 'emailPlaceHolder',
 },
 {
-  id: 'password',
-  label: 'Password',
-  placeholder: 'Enter your password...',
+    id: 'password',
+    label: 'passwordLabel',
+    placeholder: 'passwordPlaceHolder',
 }];

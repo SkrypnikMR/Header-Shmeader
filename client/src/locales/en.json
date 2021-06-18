@@ -1,0 +1,20 @@
+{
+    "authorization": "Sign In",
+    "registration": "Sign Up",
+    "emailLabel": "Email",
+    "emailPlaceHolder": "Enter your email...",
+    "passwordLabel": "Password",
+    "passwordPlaceHolder": "Enter your password...",
+    "confirmLabel": "Confirm",
+    "confirmPlaceHolder": "Confirm your password...",
+    "firstNameLabel": "First Name",
+    "firstNamePlaceHolder": "Enter your First Name...",
+    "lastNameLabel": "Last Name",
+    "lastNamePlaceHolder": "Enter your Last Name...",
+    "loginBtn": "Login",
+    "regBtn": "Register",
+    "loginSpanText": "Need an account?",
+    "loginLinkText": "Register now",
+    "regSpanText": "Alredy Registred?",
+    "regLinkText": "Sign In"
+}

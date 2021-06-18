@@ -1,0 +1,20 @@
+{
+    "authorization": "Вход",
+    "registration": "Регистрация",
+    "emailLabel": "Электронная почта",
+    "emailPlaceHolder": "Введите свою электронную почту...",
+    "passwordLabel": "Пароль",
+    "passwordPlaceHolder": "Введите свой пароль...",
+    "confirmLabel": "Подтверждение",
+    "confirmPlaceHolder": "Подтвердите свой пароль...",
+    "firstNameLabel": "Имя",
+    "firstNamePlaceHolder": "Введите своё имя...",
+    "lastNameLabel": "Фамилия",
+    "lastNamePlaceHolder": "Введите свою фамилию...",
+    "loginBtn": "Войти",
+    "regBtn": "Зарегестрироваться",
+    "loginSpanText": "Нужен аккаунт?",
+    "loginLinkText": "Перейти к регистрации",
+    "regSpanText": "Уже зарегестрированы?",
+    "regLinkText": "Перейти к авторизации"
+}

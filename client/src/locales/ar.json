@@ -1,0 +1,20 @@
+{
+    "authorization": "مدخل",
+    "registration": "تحقق في",
+    "emailLabel": "تحقق في",
+    "emailPlaceHolder": "...أدخل بريدك الإلكتروني",
+    "passwordLabel": "كلمه السر",
+    "passwordPlaceHolder": "...ادخل رقمك السري",
+    "confirmLabel": "التأكيد",
+    "confirmPlaceHolder": "...أكد رقمك السري",
+    "firstNameLabel": "اسم",
+    "firstNamePlaceHolder": "...يرجى إدخال اسمك",
+    "lastNameLabel": "اسم العائلة",
+    "lastNamePlaceHolder": "...الرجاء إدخال اسمك الأخير",
+    "loginBtn": "ليأتي",
+    "regBtn": "ليأتي",
+    "loginSpanText": "احتاج الى حساب؟",
+    "loginLinkText": "انتقل إلى التسجيل",
+    "regSpanText": "مسجل بالفعل؟",
+    "regLinkText": "انتقل إلى إذن"
+}
