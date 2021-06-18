@@ -23,13 +23,13 @@ describe('AccountManager test', () => {
             expect(typeof new AccountManager().registration).toBe('function');
         })
         it('registration call res status 400 and json message: "such user exsists" ', async () => {
-            const connect = { query: jest.fn().mockResolvedValue([{ someUserInDb: 'Max' }]) }
+            const connect = { query: jest.fn().mockResolvedValue([{ someUserInDb: 'Max@yandex.ru' }]) }
             const req = {
                 body: {
                     email: 'Max@yandex.ru',
                     password: 'somePassword',
-                    firstName: 'Max',
-                    lastName: 'Skrip'
+                    firstName: 'Maxim',
+                    lastName: 'Skripnik'
                 }
             };
             const res = {
@@ -45,12 +45,12 @@ describe('AccountManager test', () => {
             expect(connect.query).toHaveBeenCalledWith(`SELECT * FROM users WHERE email = '${req.body.email}'`)
             expect(res.json).toHaveBeenCalledWith({ message: 'such user exists' });
         })
-        it('registration call res status 200 and json message: "done" ', async () => {
+        it('registration call res status 201 and json message: "done" ', async () => {
             const connect = { query: jest.fn().mockResolvedValue([]) }
             const req = {
                 body: {
                     email: 'Max@yandex.ru',
-                    password: '$2a$12$ztj/cxrVYsXRAbRcc5yZeOw53J1lmAuVUSIw7kMW6XJ4KOpMFGKFy',
+                    password: 'string324',
                     firstName: 'Max',
                     lastName: 'Skrip'
                 }
@@ -68,16 +68,8 @@ describe('AccountManager test', () => {
             expect(connect.query).toHaveBeenCalledWith(`SELECT * FROM users WHERE email = '${req.body.email}'`)
             expect(res.json).toHaveBeenCalledWith({ message: 'done' });
         })
-        it('registration call res status 200 and json message: "done" ', async () => {
-            const connect = { query: jest.fn().mockRejectedValue([]) }
-            const req = {
-                body: {
-                    email: 'Max@yandex.ru',
-                    password: '$2a$12$ztj/cxrVYsXRAbRcc5yZeOw53J1lmAuVUSIw7kMW6XJ4KOpMFGKFy',
-                    firstName: 'Max',
-                    lastName: 'Skrip'
-                }
-            };
+        it('registration call res status 500 and json message: "!done" ', async () => {
+            const req = {};
             const res = {
                 send: function () { },
                 json: jest.fn(),
@@ -86,9 +78,8 @@ describe('AccountManager test', () => {
                     return this;
                 }
             };
-            const testAccManager = new AccountManager(connect);
+            const testAccManager = new AccountManager();
             await testAccManager.registration(req, res);
-            expect(connect.query).toHaveBeenCalledWith(`SELECT * FROM users WHERE email = '${req.body.email}'`)
             expect(res.json).toHaveBeenCalledWith({ message: 'something wrong' });
         })
     })
