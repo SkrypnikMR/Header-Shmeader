@@ -9,7 +9,6 @@ import Form from '../UI/Form';
 import Input from '../Ui/Input';
 import Button from '../UI/Button';
 
-
 const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields }) => {
     const { t } = useTranslation();
     if (fields.success) return <Redirect to={APP_ROUTES.login} />;

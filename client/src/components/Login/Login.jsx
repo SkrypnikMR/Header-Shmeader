@@ -9,7 +9,6 @@ import Form from '../UI/Form';
 import Input from '../Ui/Input';
 import Button from '../UI/Button';
 
-
 const Login = ({ sendLoginRequest, setLoginValue, fields }) => {
   const { t } = useTranslation();
   if (fields.success) return <Redirect to={APP_ROUTES.chat} />;
@@ -54,8 +53,3 @@ Login.propTypes = {
 };
 
 export default Login;
-
-/*     "invalidLogin": "Login must contain from 3 to 18 latin characters and / or numbers.",
-    "invalidPassword": "Password must contain from 5 to 20 latin characters, numbers and / or special symbols.",
-    "invalidConfirm": "Password doesn`t match",
-    "userIsReg": "This user already exists" */

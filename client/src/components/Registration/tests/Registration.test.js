@@ -4,7 +4,6 @@ import { shallowSmart, mountSmart } from '/src/helpers/testHelper';
 import 'react-router-dom';
 import '/src/i18n';
 
-
 describe('Registration', () => {
     let props;
     const sendRegistrationRequest = jest.fn();
