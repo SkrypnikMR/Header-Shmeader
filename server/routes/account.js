@@ -8,5 +8,4 @@ const { registration, login } = accountManager;
 router.post('/registration', registration);
 router.post('/login', login);
 
-
 module.exports = router;
