@@ -14,7 +14,7 @@ describe('registrationSaga', () => {
                 type: actionTypes.SEND_REGISTRATION_REQUEST,
             };
         });
-        const authValue = { login: 'login', password: '123456', confirm: '123456', firstName: 'Max', lastName: 'Skr' };
+        const authValue = { email: 'SkripnikMRW@gmail.com', password: '123456', firstName: 'Max', lastName: 'Skr' };
         const path = `${routes.account.registration}`;
         it('should call workerRegistration without error', () => {
             testSaga(sagas.workerRegistration, action)

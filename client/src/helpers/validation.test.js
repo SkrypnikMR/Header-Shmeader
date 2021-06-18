@@ -65,7 +65,7 @@ describe('validation', () => {
                 lastName: 'Rashev',
                 confirm: 'asdasdsad',
             };
-            expect(validation.registrationValidation(candidate)).toEqual({ message: 'Invalid firstName', isValid: false });
+            expect(validation.registrationValidation(candidate)).toEqual({ message: 'Invalid first Name', isValid: false });
         });
         it('should return "Invalid Last name!" ', () => {
             const candidate = {
@@ -75,7 +75,7 @@ describe('validation', () => {
                 lastName: 'R',
                 confirm: 'asdasdsad',
             };
-            expect(validation.registrationValidation(candidate)).toEqual({ message: 'Invalid lastName', isValid: false });
+            expect(validation.registrationValidation(candidate)).toEqual({ message: 'Invalid last Name', isValid: false });
         });
         it('should return password mismatch ', () => {
             const candidate = {
