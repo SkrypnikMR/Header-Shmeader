@@ -4,7 +4,7 @@ import { regValues } from '../selectors';
 import { postRequest } from '../../../helpers/requests';
 import { setRegistrationValue, clearRegistrationInputs, reciveErrorRequest, reciveSuccessRequest } from '../actions';
 import { actionTypes } from '../actionTypes';
-import { routes } from '../../../contsants/routes';
+import { routes } from '/src/constants/routes';
 
 describe('registrationSaga', () => {
     describe('workerRegistration', () => {
