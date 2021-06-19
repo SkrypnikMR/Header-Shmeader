@@ -6,8 +6,7 @@ import i18next from 'i18next';
 import { actionTypes } from './actionTypes';
 import { regValues } from './selectors';
 import { setRegistrationValue, clearRegistrationInputs, reciveErrorRequest, reciveSuccessRequest } from './actions';
-import { validation } from '../../helpers/validation';
-
+import { validation } from '/src/helpers/validation';
 
 export function* workerRegistration() {
     try {
@@ -15,8 +14,7 @@ export function* workerRegistration() {
         const { registrationValidation } = validation;
         const { message: validateMessage, isValid } = registrationValidation(data);
         if (!isValid) {
-            return NotificationManager
-                .error(`${i18next.t(validateMessage.replace(/ /g, '_').toLowerCase())}`, `${i18next.t('input_error')}`, 2000);
+            return NotificationManager.error(i18next.t(validateMessage), i18next.t('input_error'), 2000);
         }
         const { message } = yield call(postRequest, routes.account.registration, { ...data, confirm: undefined });
         if (message === 'done') {
@@ -27,12 +25,12 @@ export function* workerRegistration() {
         } else {
             yield put(setRegistrationValue({ name: 'success', value: false }));
             yield put(reciveErrorRequest());
-            return NotificationManager
-                .error(`${i18next.t(message.replace(/ /g, '_'))}`, `${i18next.t('reg_error')}`, 2000);
+            return NotificationManager.error(i18next.t(message), i18next.t('reg_error'), 2000);
         }
     } catch (e) {
         yield put(setRegistrationValue({ name: 'success', value: false }));
-        yield put(reciveErrorRequest(''));
+        yield put(reciveErrorRequest());
+        return NotificationManager.error(i18next.t('server_error_text'), i18next.t('server_error'), 2000);
     }
 }
 

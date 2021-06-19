@@ -15,7 +15,7 @@ const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields })
     if (success) return <Redirect to={APP_ROUTES.login} />;
     const handleOnChange = (data) => {
         const { error } = fields;
-        if (error) setRegistrationValue({ name: 'error', value: '' });
+        if (error) setRegistrationValue({ name: 'error', value: null });
         setRegistrationValue(data);
     };
     return (

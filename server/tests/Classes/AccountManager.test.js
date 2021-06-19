@@ -168,7 +168,8 @@ describe('AccountManager test', () => {
                     id: 1,
                     firstName: 'SomeFirstIdName',
                     lastName: 'SomeLastIdName'
-                }
+                },
+                message: 'done'
             });
         })
         it(' login call res.status with 500 and res.json called with message: "Something wrong. Please try again." ', async () => {

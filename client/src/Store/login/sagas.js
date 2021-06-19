@@ -14,8 +14,7 @@ export function* workerLogin() {
         const { loginValidation } = validation;
         const { message: validateMessage, isValid } = loginValidation(data);
         if (!isValid) {
-            return NotificationManager
-                .error(`${i18next.t(validateMessage.replace(/ /g, '_').toLowerCase())}`, `${i18next.t('input_error')}`, 2000);
+            return NotificationManager.error(i18next.t(validateMessage), i18next.t('input_error'), 2000);
         }
         const { token, message } = yield call(postRequest, routes.account.login, data);
         if (token) {
@@ -25,14 +24,12 @@ export function* workerLogin() {
         } else {
             yield put(setLoginValue({ name: 'success', value: false }));
             yield put(reciveErrorRequest());
-            return NotificationManager
-                .error(`${i18next.t(message.replace(/ /g, '_').toLowerCase())}`, `${i18next.t('login_error')}`, 2000);
+            return NotificationManager.error(i18next.t(message), i18next.t('login_error'), 2000);
         }
     } catch (e) {
         yield put(setLoginValue({ name: 'success', value: false }));
         yield put(reciveErrorRequest());
-        return NotificationManager
-            .error(`${i18next.t('server_error_text')}`, `${i18next.t('server_error')}`, 2000);
+        return NotificationManager.error(i18next.t('server_error_text'), i18next.t('server_error'), 2000);
     }
 }
 

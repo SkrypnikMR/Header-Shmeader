@@ -35,7 +35,7 @@ class AccountManager {
                 lastName: user.lastName,
                 email: user.email
             }
-            res.status(200).json({ token, userInfo });
+            res.status(200).json({ token, userInfo, message: 'done' });
         } catch (e) { res.status(500).json({ message: 'something_wrong' }); }
     }
 }
