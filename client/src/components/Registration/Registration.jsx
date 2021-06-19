@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { regInputs } from '/src/contsants/componentsСonsts';
+import { regInputs } from '/src/constants/componentsСonsts';
 import { NavLink, Redirect } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { APP_ROUTES } from '/src/contsants/reactRoutes';
+import { APP_ROUTES } from '/src/constants/reactRoutes';
 import { StRegDiv } from './styled';
 import Form from '../UI/Form';
 import Input from '../Ui/Input';
@@ -11,7 +11,13 @@ import Button from '../UI/Button';
 
 const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields }) => {
     const { t } = useTranslation();
-    if (fields.success) return <Redirect to={APP_ROUTES.login} />;
+    const { success } = fields;
+    if (success) return <Redirect to={APP_ROUTES.login} />;
+    const handleOnChange = (data) => {
+        const { error } = fields;
+        if (error) setRegistrationValue({ name: 'error', value: null });
+        setRegistrationValue(data);
+    };
     return (
         <StRegDiv>
             <Form>
@@ -27,19 +33,19 @@ const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields })
                         borderRadius="5px"
                         label={t(input.label)}
                         value={fields[input.id]}
-                        onChange={setRegistrationValue}
+                        onChange={handleOnChange}
                         placeholder={t(input.placeholder)}
                     />
                 ))}
                 <Button
                     height="50px"
-                    content={t('regBtn')}
+                    content={t('reg_btn')}
                     id="registration"
                     onClick={sendRegistrationRequest}
                 />
                 <span>
-                    {t('regSpanText')}
-                    <NavLink to={APP_ROUTES.login}>{t('regLinkText')}</NavLink>
+                    {t('reg_span_text')}
+                    <NavLink to={APP_ROUTES.login}>{t('reg_link_text')}</NavLink>
                 </span>
             </Form>
         </StRegDiv>

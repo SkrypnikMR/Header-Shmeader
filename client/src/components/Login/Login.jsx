@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { logInputs } from '/src/contsants/componentsСonsts';
+import { logInputs } from '/src/constants/componentsСonsts';
 import { NavLink, Redirect } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { APP_ROUTES } from '/src/contsants/reactRoutes';
+import { APP_ROUTES } from '/src/constants/reactRoutes';
 import { StLoginDiv } from './styled';
 import Form from '../UI/Form';
 import Input from '../Ui/Input';
@@ -33,13 +33,13 @@ const Login = ({ sendLoginRequest, setLoginValue, fields }) => {
         ))}
         <Button
           height="50px"
-          content={t('loginBtn')}
+          content={t('login_btn')}
           id="login"
           onClick={sendLoginRequest}
         />
         <span>
-          {t('loginSpanText')}
-          <NavLink to={APP_ROUTES.registration}>{t('loginLinkText')}</NavLink>
+          {t('login_span_text')}
+          <NavLink to={APP_ROUTES.registration}>{t('login_link_text')}</NavLink>
         </span>
       </Form>
     </StLoginDiv>

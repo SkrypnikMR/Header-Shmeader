@@ -8,6 +8,7 @@ export const initialState = {
     lastName: '',
     success: null,
     isLoading: false,
+    error: null,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -19,7 +20,7 @@ export const reducer = (state = initialState, action) => {
         case actionTypes.REGISTRATION_REQUEST_SUCCESS:
             return { ...state, isLoading: false };
         case actionTypes.REGISTRATION_REQUEST_ERROR:
-            return { ...state, isLoading: false };
+            return { ...state, isLoading: false, error: action.payload };
         case actionTypes.CLEAR_INPUTS_VALUES:
             return {
                 ...state,

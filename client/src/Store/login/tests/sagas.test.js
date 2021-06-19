@@ -4,7 +4,7 @@ import { logValues } from '../selectors';
 import { postRequest } from '../../../helpers/requests';
 import { setLoginValue, clearLoginInputs, reciveErrorRequest, reciveSuccessRequest } from '../actions';
 import { actionTypes } from '../actionTypes';
-import { routes } from '../../../contsants/routes';
+import { routes } from '../../../constants/routes';
 
 describe('loginSaga', () => {
     describe('workerLogin', () => {
