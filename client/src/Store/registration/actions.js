@@ -4,4 +4,4 @@ export const setRegistrationValue = payload => ({ type: actionTypes.SET_VALUE, p
 export const sendRegistrationRequest = () => ({ type: actionTypes.SEND_REGISTRATION_REQUEST });
 export const clearRegistrationInputs = () => ({ type: actionTypes.CLEAR_INPUTS_VALUES });
 export const reciveSuccessRequest = () => ({ type: actionTypes.REGISTRATION_REQUEST_SUCCESS });
-export const reciveErrorRequest = () => ({ type: actionTypes.REGISTRATION_REQUEST_ERROR });
+export const reciveErrorRequest = payload => ({ type: actionTypes.REGISTRATION_REQUEST_ERROR, payload });

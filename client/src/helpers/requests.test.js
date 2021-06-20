@@ -1,6 +1,6 @@
 import 'regenerator-runtime';
 import { getRequest, postRequest, putRequest, createAuthHeader } from './requests';
-import { routes } from '../contsants/routes';
+import { routes } from '../constants/routes';
 
 const { baseUrl } = routes;
 

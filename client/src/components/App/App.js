@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { NotificationContainer } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 import Registration from '../Registration';
 import Login from '../Login';
 import Chat from '../Chat';
@@ -17,6 +19,7 @@ const App = ({ userTheme, userThemeMode }) => {
           <Route path={APP_ROUTES.chat} exact component={Chat} />
         </Switch>
       </BrowserRouter>
+      <NotificationContainer />
     </StAppDiv >
   );
 };

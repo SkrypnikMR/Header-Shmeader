@@ -1,4 +1,4 @@
-import { routes } from '../contsants/routes';
+import { routes } from '../constants/routes';
 
 const { baseUrl } = routes;
 

@@ -4,7 +4,7 @@ import { regValues } from '../selectors';
 import { postRequest } from '../../../helpers/requests';
 import { setRegistrationValue, clearRegistrationInputs, reciveErrorRequest, reciveSuccessRequest } from '../actions';
 import { actionTypes } from '../actionTypes';
-import { routes } from '../../../contsants/routes';
+import { routes } from '/src/constants/routes';
 
 describe('registrationSaga', () => {
     describe('workerRegistration', () => {
@@ -14,7 +14,7 @@ describe('registrationSaga', () => {
                 type: actionTypes.SEND_REGISTRATION_REQUEST,
             };
         });
-        const authValue = { login: 'login', password: '123456', confirm: '123456', firstName: 'Max', lastName: 'Skr' };
+        const authValue = { email: 'SkripnikMRW@gmail.com', password: '123456', firstName: 'Max', lastName: 'Skr' };
         const path = `${routes.account.registration}`;
         it('should call workerRegistration without error', () => {
             testSaga(sagas.workerRegistration, action)

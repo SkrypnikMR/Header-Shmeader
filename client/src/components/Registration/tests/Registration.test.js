@@ -1,8 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import Registration from '../Registration.jsx';
 import { shallowSmart, mountSmart } from '/src/helpers/testHelper';
 import 'react-router-dom';
+import '/src/i18n';
 
 describe('Registration', () => {
     let props;

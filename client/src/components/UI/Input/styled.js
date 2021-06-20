@@ -5,7 +5,7 @@ export const StLabel = styled.label`
    ${({ margin = '0 0px 10px 0' }) => margin && `margin: ${margin}`};
    ${({ display = 'flex' }) => display && `display: ${display}`}
    padding: 0;
-   text-align: center;
+   justify-content: flex-start;
    ${({ cursor = 'pointer' }) => cursor && `cursor: ${cursor}`};
    ${({ display = 'block' }) => display && `display: ${display}`};
    ${({ fontWeight = 'bold' }) => fontWeight && `font-weight: ${fontWeight}`};
@@ -29,7 +29,7 @@ export const StInput = styled.input`
     font-size: ${({ fontSizeInp = '14px' }) => fontSizeInp};
     ${({ textAlignInput }) => textAlignInput && `text-align: ${textAlignInput}`}
     
-    ${({ transition = 'all 300ms ease-in-out' }) => transition && `transition: ${transition}`};
+    ${({ transition = 'all 1000ms ease-in-out' }) => transition && `transition: ${transition}`};
     &:focus {
       background:${({ bgFocusColor = bgFocusColorDefault }) => bgFocusColor};
       color: ${({ focusColor = focusColorDefaultInput }) => focusColor};

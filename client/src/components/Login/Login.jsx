@@ -1,43 +1,48 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { logInputs } from '/src/contsants/componentsСonsts';
+import { logInputs } from '/src/constants/componentsСonsts';
 import { NavLink, Redirect } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { APP_ROUTES } from '/src/constants/reactRoutes';
+import { StLoginDiv } from './styled';
 import Form from '../UI/Form';
 import Input from '../Ui/Input';
 import Button from '../UI/Button';
-import { APP_ROUTES } from '/src/contsants/reactRoutes';
 
 const Login = ({ sendLoginRequest, setLoginValue, fields }) => {
+  const { t } = useTranslation();
   if (fields.success) return <Redirect to={APP_ROUTES.chat} />;
   return (
-    <Form>
-      <p>Sign In</p>
-      {logInputs.map(input => (
-        <Input
-          width="80%"
-          id={input.id}
-          height="100px"
-          key={input.id}
-          name={input.id}
-          inputHeight="50px"
-          borderRadius="5px"
-          label={input.label}
-          value={fields[input.id]}
-          onChange={setLoginValue}
-          placeholder={input.placeholder}
+    <StLoginDiv>
+      <Form>
+        <p>{t('authorization')}</p>
+        {logInputs.map(input => (
+          <Input
+            width="80%"
+            id={input.id}
+            height="100px"
+            key={input.id}
+            name={input.id}
+            inputHeight="50px"
+            borderRadius="5px"
+            label={t(input.label)}
+            value={fields[input.id]}
+            onChange={setLoginValue}
+            placeholder={t(input.placeholder)}
+          />
+        ))}
+        <Button
+          height="50px"
+          content={t('login_btn')}
+          id="login"
+          onClick={sendLoginRequest}
         />
-      ))}
-      <Button
-        height="50px"
-        content="Submit"
-        id="login"
-        onClick={sendLoginRequest}
-      />
-      <span>
-        Need an account?
-        <NavLink to={APP_ROUTES.registration}>Register now</NavLink>
-      </span>
-    </Form>
+        <span>
+          {t('login_span_text')}
+          <NavLink to={APP_ROUTES.registration}>{t('login_link_text')}</NavLink>
+        </span>
+      </Form>
+    </StLoginDiv>
   );
 };
 
