@@ -15,6 +15,11 @@ const Input = ({
     maxLength,
     inputHeight,
     borderRadius,
+    bgColor,
+    padding,
+    bgFocusColor,
+    fontSizeInp,
+    borderColor,
     placeholder, // ToDo add text from translation lib React i18 next
     errorMessage,
 }) => {
@@ -33,6 +38,11 @@ const Input = ({
                 borderRadius={borderRadius}
                 inputHeight={inputHeight}
                 placeholder={placeholder}
+                bgColor={bgColor}
+                padding={padding}
+                borderColor={borderColor}
+                fontSizeInp={fontSizeInp}
+                bgFocusColor={bgFocusColor}
             />
             {!!errorMessage && <StErrorSpan>{errorMessage}</StErrorSpan>}
         </StInputContainer>
@@ -48,12 +58,17 @@ Input.propTypes = {
     value: PropTypes.string,
     margin: PropTypes.string,
     height: PropTypes.string,
+    bgColor: PropTypes.string,
+    padding: PropTypes.string,
+    fontSizeInp: PropTypes.string,
+    borderColor: PropTypes.string,
     inputHeight: PropTypes.string,
     maxLength: PropTypes.number,
     onChange: PropTypes.func.isRequired,
     borderRadius: PropTypes.string,
     placeholder: PropTypes.string.isRequired,
     errorMessage: PropTypes.string,
+    bgFocusColor: PropTypes.string,
 };
 
 export default Input;
