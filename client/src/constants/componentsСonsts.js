@@ -33,7 +33,7 @@ export const logInputs = [{
     label: 'password_label',
     placeholder: 'password_placeholder',
 }];
-export const CPBtns = [{
+export const HEADER_CONTROL_BTNS = [{
     id: 'en',
     content: 'EN',
 },

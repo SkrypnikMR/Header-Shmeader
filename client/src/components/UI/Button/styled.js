@@ -1,5 +1,12 @@
 import styled from 'styled-components';
-import { bgColorDefault, colorDefault, focusColorDefault, disabledColor, bgColorDisabledDefault, disabledBorder } from '../baseLayout';
+import {
+  bgColorDefault,
+  colorDefault,
+  focusColorDefault,
+  disabledColor,
+  bgColorDisabledDefault,
+  disabledBorder,
+} from '../baseLayout';
 
 export const StButton = styled.button`
   ${({ margin = '0 0 3px 0' }) => margin && `margin: ${margin}`};

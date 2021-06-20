@@ -3,13 +3,13 @@ import { StHeader } from './styled';
 import Logo from './Logo';
 import HeaderControlPanel from './HeaderControlPanel';
 
-function Header() {
+const Header = () => {
     return (
         <StHeader >
             <Logo />
             <HeaderControlPanel />
-        </StHeader>
+        </StHeader >
     );
-}
+};
 
 export default Header;
