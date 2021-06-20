@@ -10,7 +10,7 @@ export const bgColorDefault = '#5573C1'; // ToDo all colors move to color matrix
 export const colorDefault = 'white';
 export const focusColorDefault = 'black';
 export const disabledColor = '#666666';
-export const bgColorDisabled = '#cccccc';
+export const bgColorDisabledDefault = '#cccccc';
 export const disabledBorder = '1px solid #999999';
 
 //Input

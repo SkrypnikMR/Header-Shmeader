@@ -23,7 +23,6 @@ export const regInputs = [{
     label: 'last_name_label',
     placeholder: 'last_name_placeholder',
 }];
-
 export const logInputs = [{
     id: 'email',
     label: 'email_label',
@@ -33,4 +32,16 @@ export const logInputs = [{
     id: 'password',
     label: 'password_label',
     placeholder: 'password_placeholder',
+}];
+export const CPBtns = [{
+    id: 'en',
+    content: 'EN',
+},
+{
+    id: 'ru',
+    content: 'RU',
+},
+{
+    id: 'ar',
+    content: 'AR',
 }];
