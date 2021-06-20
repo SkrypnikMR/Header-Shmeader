@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { bgColorDefault, colorDefault, focusColorDefault, disabledColor, bgColorDisabledDefault, disabledBorder } from '../baseLayout';
+import { bgColorDefault, colorDefault, focusColorDefault, disabledColor, bgColorDisabled, disabledBorder } from '../baseLayout';
 
 export const StButton = styled.button`
   ${({ margin = '0 0 3px 0' }) => margin && `margin: ${margin}`};
@@ -8,8 +8,8 @@ export const StButton = styled.button`
   width: ${({ width = '170px' }) => width};
   height: ${({ height = '35px' }) => height};
   ${({ cursor = 'pointer' }) => cursor && `cursor: ${cursor}`};
-  color: ${({ color = colorDefault }) => color};
-  background-color: ${({ bgColor = bgColorDefault }) => bgColor};
+  color: ${({ focusColorDefault = colorDefault }) => focusColorDefault};
+  background-color: ${({ color = bgColorDefault }) => color};
   border-radius: ${({ borderRadius = '7px' }) => borderRadius}; 
   border: ${({ border = 'none' }) => border};
   outline: ${({ outline = 'none' }) => outline};
@@ -24,7 +24,7 @@ export const StButton = styled.button`
     }
   &:disabled{ 
     border: ${({ border = disabledBorder }) => border};
-    background-color: ${({ bgColorDisabled = bgColorDisabledDefault }) => bgColorDisabled};
+    background-color: ${({ bgColor = bgColorDisabled }) => bgColor};
     color: ${({ focusColor = disabledColor }) => focusColor};
     }
 `;

@@ -14,7 +14,6 @@ const Button = ({
     color,
     fontSize,
     fontWeight,
-    bgColorDisabled,
     bgColor,
     bgColorHover,
     height,
@@ -32,7 +31,6 @@ const Button = ({
         type={type}
         value={value}
         title={title}
-        bgColorDisabled={bgColorDisabled}
         borderRadius={borderRadius}
         isDisabled={isDisabled}
         color={color}
@@ -72,7 +70,6 @@ Button.propTypes = {
     content: PropTypes.string,
     transition: PropTypes.string,
     focusColor: PropTypes.string,
-    bgColorDisabled: PropTypes.string,
 };
 
 export default Button;
