@@ -35,13 +35,13 @@ export const logInputs = [{
 }];
 export const HEADER_CONTROL_BTNS = [{
     id: 'en',
-    content: 'EN',
+    content: 'english_translate_btn',
 },
 {
     id: 'ru',
-    content: 'RU',
+    content: 'russian_translate_btn',
 },
 {
     id: 'ar',
-    content: 'AR',
+    content: 'arabian_translate_btn',
 }];
