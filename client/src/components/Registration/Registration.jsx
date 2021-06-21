@@ -39,7 +39,7 @@ const Registration = ({ sendRegistrationRequest, setRegistrationValue, fields })
                 ))}
                 <Button
                     height="50px"
-                    content={t('reg_btn')}
+                    content="reg_btn"
                     id="registration"
                     onClick={sendRegistrationRequest}
                 />

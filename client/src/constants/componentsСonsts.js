@@ -23,7 +23,6 @@ export const regInputs = [{
     label: 'last_name_label',
     placeholder: 'last_name_placeholder',
 }];
-
 export const logInputs = [{
     id: 'email',
     label: 'email_label',
@@ -33,4 +32,16 @@ export const logInputs = [{
     id: 'password',
     label: 'password_label',
     placeholder: 'password_placeholder',
+}];
+export const HEADER_CONTROL_BTNS = [{
+    id: 'en',
+    content: 'english_translate_btn',
+},
+{
+    id: 'ru',
+    content: 'russian_translate_btn',
+},
+{
+    id: 'ar',
+    content: 'arabian_translate_btn',
 }];

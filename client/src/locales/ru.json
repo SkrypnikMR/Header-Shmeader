@@ -32,4 +32,8 @@
     "placeholder_control_input": "Написать сообщение...",
     "user_list": "участники",
     "placeholder_shearch_input": "🔍  Поиск..."
+    "logo": "Header&Shmeader",
+    "english_translate_btn": "EN",
+    "russian_translate_btn": "RU",
+    "arabian_translate_btn": "AR"
 }

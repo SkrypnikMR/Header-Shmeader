@@ -32,4 +32,8 @@
     "placeholder_control_input": "Write a message...",
     "user_list": "users",
     "placeholder_shearch_input": "🔍  Search..."
+    "logo": "Header&Shmeader",
+    "english_translate_btn": "EN",
+    "russian_translate_btn": "RU",
+    "arabian_translate_btn": "AR"
 }

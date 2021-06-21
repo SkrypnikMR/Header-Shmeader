@@ -32,4 +32,8 @@
     "placeholder_control_input": "...لكتابة رسالة",
     "user_list": "المشاركون",
     "placeholder_shearch_input": "...يبحث   🔍"
+    "logo": "Header&Shmeader",
+    "english_translate_btn": "EN",
+    "russian_translate_btn": "RU",
+    "arabian_translate_btn": "AR"
 }

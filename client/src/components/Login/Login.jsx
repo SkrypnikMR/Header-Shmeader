@@ -33,7 +33,7 @@ const Login = ({ sendLoginRequest, setLoginValue, fields }) => {
         ))}
         <Button
           height="50px"
-          content={t('login_btn')}
+          content="login_btn"
           id="login"
           onClick={sendLoginRequest}
         />
