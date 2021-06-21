@@ -7,7 +7,11 @@ const ChatTitle = ({ content }) => {
   const { t } = useTranslation();
   return (
     <StChatTitle>
-      <div>{content}</div>
+      <div>
+        <span>
+          {content}
+        </span>
+      </div>
       <p>{t('user_list')}</p>
     </StChatTitle> 
   );

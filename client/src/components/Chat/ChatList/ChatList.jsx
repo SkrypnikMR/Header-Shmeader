@@ -8,20 +8,6 @@ const ChatList = () => {
     <StChatList>
       <Search />
       <ChatListItems />
-      <ChatListItems />
-      <ChatListItems />
-      <ChatListItems />
-      <ChatListItems />
-      <ChatListItems />
-      <ChatListItems />
-      <ChatListItems />
-      <ChatListItems />
-      <ChatListItems />
-      <ChatListItems />
-      <ChatListItems />
-      <ChatListItems />
-      <ChatListItems />
-      <ChatListItems />
     </StChatList>
   );
 };

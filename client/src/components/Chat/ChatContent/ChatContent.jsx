@@ -4,7 +4,7 @@ import ChatDisplay from './ChatDisplay';
 import ChatControlPanel from './ChatControlPanel';
 import { StChatContant } from './styled';
 
-const ChatContant = () => (
+const ChatContent = () => (
     <StChatContant>
       <ChatTitle />
       <ChatDisplay />
@@ -13,4 +13,4 @@ const ChatContant = () => (
   );
 
 
-export default ChatContant;
+export default ChatContent;

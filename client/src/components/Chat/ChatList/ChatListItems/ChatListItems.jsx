@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { StChatListItems, StPhoto } from './styled';
 
-const ChatListItems = ({ img, content }) => {
+const ChatListItems = ({ color, img, content }) => {
   const [state, setState] = useState({
     error: false,
     src: img,
@@ -10,7 +10,7 @@ const ChatListItems = ({ img, content }) => {
   });
   const onError = () => setState({ ...state, error: true, src: state.defaultImg });
   return (
-    <StChatListItems color="black">
+    <StChatListItems color={color}>
         <StPhoto> 
           <img src={img ? state.src : state.defaultImg} onError={onError} />  
         </StPhoto>
@@ -24,6 +24,7 @@ const ChatListItems = ({ img, content }) => {
 ChatListItems.propTypes = {
   content: PropTypes.string,
   img: PropTypes.any,
+  color: PropTypes.string,
 };
 
 export default ChatListItems;

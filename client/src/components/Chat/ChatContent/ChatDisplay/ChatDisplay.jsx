@@ -6,14 +6,6 @@ const ChatDisplay = () => {
   return (
     <StChatDisplay>
       <ChatMessages/>
-      <ChatMessages/>
-      <ChatMessages/>
-      <ChatMessages/>
-      <ChatMessages/>
-      <ChatMessages/>
-      <ChatMessages/>
-      <ChatMessages/>
-      <ChatMessages/>
     </StChatDisplay>
   );
 };
