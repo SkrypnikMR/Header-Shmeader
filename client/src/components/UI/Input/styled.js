@@ -1,9 +1,12 @@
 import styled from 'styled-components';
-import { bgInpColorDefault, bgFocusColorDefault, focusColorDefaultInput, colorDefaultInput } from '../baseLayout';
+import { 
+  bgInpColorDefault, 
+  bgFocusColorDefault, 
+  focusColorDefaultInput, 
+  colorDefaultInput } from '../baseLayout';
 
 export const StLabel = styled.label`
    ${({ margin = '0 0px 10px 0' }) => margin && `margin: ${margin}`};
-   ${({ display = 'flex' }) => display && `display: ${display}`}
    padding: 0;
    justify-content: flex-start;
    ${({ cursor = 'pointer' }) => cursor && `cursor: ${cursor}`};

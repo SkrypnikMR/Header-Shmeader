@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import { StErrorSpan, StInput, StInputContainer, StLabel } from './styled';
 
 const Input = ({
@@ -15,9 +16,15 @@ const Input = ({
     maxLength,
     inputHeight,
     borderRadius,
-    placeholder, // ToDo add text from translation lib React i18 next
+    bgColor,
+    padding,
+    bgFocusColor,
+    fontSizeInp,
+    borderColor,
+    placeholder,
     errorMessage,
 }) => {
+    const { t } = useTranslation();
     const handleOnchange = e => onChange({ name: e.target.name, value: e.target.value });
     return (
         <StInputContainer width={width} height={height}>
@@ -32,7 +39,12 @@ const Input = ({
                 maxLength={maxLength}
                 borderRadius={borderRadius}
                 inputHeight={inputHeight}
-                placeholder={placeholder}
+                placeholder={t(placeholder)}
+                bgColor={bgColor}
+                padding={padding}
+                borderColor={borderColor}
+                fontSizeInp={fontSizeInp}
+                bgFocusColor={bgFocusColor}
             />
             {!!errorMessage && <StErrorSpan>{errorMessage}</StErrorSpan>}
         </StInputContainer>
@@ -48,12 +60,17 @@ Input.propTypes = {
     value: PropTypes.string,
     margin: PropTypes.string,
     height: PropTypes.string,
+    bgColor: PropTypes.string,
+    padding: PropTypes.string,
+    fontSizeInp: PropTypes.string,
+    borderColor: PropTypes.string,
     inputHeight: PropTypes.string,
     maxLength: PropTypes.number,
     onChange: PropTypes.func.isRequired,
     borderRadius: PropTypes.string,
     placeholder: PropTypes.string.isRequired,
     errorMessage: PropTypes.string,
+    bgFocusColor: PropTypes.string,
 };
 
 export default Input;
