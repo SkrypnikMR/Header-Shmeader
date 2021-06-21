@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import { StErrorSpan, StInput, StInputContainer, StLabel } from './styled';
 
 const Input = ({
@@ -23,6 +24,7 @@ const Input = ({
     placeholder,
     errorMessage,
 }) => {
+    const { t } = useTranslation();
     const handleOnchange = e => onChange({ name: e.target.name, value: e.target.value });
     return (
         <StInputContainer width={width} height={height}>
@@ -37,7 +39,7 @@ const Input = ({
                 maxLength={maxLength}
                 borderRadius={borderRadius}
                 inputHeight={inputHeight}
-                placeholder={placeholder}
+                placeholder={t(placeholder)}
                 bgColor={bgColor}
                 padding={padding}
                 borderColor={borderColor}

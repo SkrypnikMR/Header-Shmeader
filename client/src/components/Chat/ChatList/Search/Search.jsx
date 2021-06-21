@@ -1,23 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
+import { INPUT_PLACEHOLDER_SEARCH } from '/src/constants/componentsСonsts.js';
 import Input from '../../../UI/Input';
 import { StSearch } from './styled';
 
 const Search = ({ changeSearchValue, searchValue }) => {
-  const { t } = useTranslation();
   return ( 
     <StSearch>  
+      { INPUT_PLACEHOLDER_SEARCH.map(el => (
       <Input
-        id="filter"
+        id={el.id}
         height="60px"
-        key="filter"
+        key={el.id}
         name="filter"
         inputHeight="60px"
         borderRadius="0px"
         value={searchValue}
         onChange={changeSearchValue}
-        placeholder={t('placeholder_shearch_input')}
+        placeholder={el.placeholder}
         margin="0 auto" 
         bgColor="transparent"
         fontSizeInp="20px"
@@ -25,6 +25,7 @@ const Search = ({ changeSearchValue, searchValue }) => {
         bgFocusColor="transparent"
         padding="17px"
       />
+      ))}
     </StSearch> 
   );
 };

@@ -4,7 +4,7 @@ import { textColorBlack } from '/src/components/UI/baseLayout';
 export const StChatContant = styled.div`
     display: flex;
     width: 80%;
-    height: 100vh;
+    height: 90vh;
     color: ${({ color = textColorBlack }) => color};
     font-size: 24px;
     margin-left: 0;

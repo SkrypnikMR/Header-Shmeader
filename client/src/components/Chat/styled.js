@@ -13,7 +13,7 @@ export const StChat = styled.div`
     position: relative;
     overflow:  hidden;
     touch-action: none;
-    height: 100%;
+    height: 90vh;
     overflow-x: hidden;
     overflow-y: no-scroll;
 `;

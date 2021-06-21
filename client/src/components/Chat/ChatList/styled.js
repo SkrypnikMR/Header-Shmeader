@@ -12,7 +12,7 @@ export const StChatList = styled.div`
     border-radius: 0px;
     border: 1px solid black;
     position: relative;
-    height: 100vh;
+    height: 89.8vh;
     overflow-y: hidden;
     :hover {
       overflow-y: auto;
