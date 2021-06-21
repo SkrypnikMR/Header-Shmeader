@@ -1,3 +1,3 @@
-import MainPage from './MainPage.jsx';
+import Chat from './Chat.jsx';
 
-export default MainPage;
+export default Chat;

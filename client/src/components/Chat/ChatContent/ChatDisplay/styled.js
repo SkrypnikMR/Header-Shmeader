@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { bgColorDefault } from '../../../UI/baseLayout';
+import { bgColorDefault } from '/src/components/UI/baseLayout';
 
-export const StChatDisplay = styled.form`
+export const StChatDisplay = styled.div`
     display: flex;
     height: -webkit-fill-available;
     width: 100%;

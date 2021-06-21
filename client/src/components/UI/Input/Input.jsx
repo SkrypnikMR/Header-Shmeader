@@ -20,7 +20,7 @@ const Input = ({
     bgFocusColor,
     fontSizeInp,
     borderColor,
-    placeholder, // ToDo add text from translation lib React i18 next
+    placeholder,
     errorMessage,
 }) => {
     const handleOnchange = e => onChange({ name: e.target.name, value: e.target.value });

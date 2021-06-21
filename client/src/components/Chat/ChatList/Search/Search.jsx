@@ -1,22 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import Input from '../../../UI/Input';
-import { StShearch } from './styled';
+import { StSearch } from './styled';
 
-const Shearch = ({ handleInputChange, fields }) => {
+const Search = ({ changeSearchValue, searchValue }) => {
+  const { t } = useTranslation();
   return ( 
-    <StShearch>  
+    <StSearch>  
       <Input
-        width="100%"
         id="filter"
         height="60px"
         key="filter"
         name="filter"
         inputHeight="60px"
         borderRadius="0px"
-        value={fields}
-        onChange={handleInputChange}
-        placeholder="🔍  Shearch..."
+        value={searchValue}
+        onChange={changeSearchValue}
+        placeholder={t('placeholder_shearch_input')}
         margin="0 auto" 
         bgColor="transparent"
         fontSizeInp="20px"
@@ -24,13 +25,13 @@ const Shearch = ({ handleInputChange, fields }) => {
         bgFocusColor="transparent"
         padding="17px"
       />
-    </StShearch> 
+    </StSearch> 
   );
 };
 
-Shearch.propTypes = {
-  handleInputChange: PropTypes.func.isRequired,
-  fields: PropTypes.object.isRequired,
+Search.propTypes = {
+  changeSearchValue: PropTypes.func,
+  searchValue: PropTypes.string,
 };
 
-export default Shearch;
+export default Search;

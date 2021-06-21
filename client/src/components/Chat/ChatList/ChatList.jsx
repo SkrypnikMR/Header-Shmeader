@@ -1,12 +1,12 @@
 import React from 'react';
-import Shearch from './Shearch';
+import Search from './Search';
 import ChatListItems from './ChatListItems';
 import { StChatList } from './styled';
 
 const ChatList = () => {
   return (
     <StChatList>
-      <Shearch />
+      <Search />
       <ChatListItems />
       <ChatListItems />
       <ChatListItems />

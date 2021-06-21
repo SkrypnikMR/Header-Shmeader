@@ -28,5 +28,8 @@
     "login_error": "فشل عملية الدخول",
     "wrong_user_or_password": "بريد أو كلمة مرورغير صحيحة",
     "server_error": "خطأ في الخادم",
-    "server_error_text": "...حاول لاحقا"
+    "server_error_text": "...حاول لاحقا",
+    "placeholder_control_input": "...لكتابة رسالة",
+    "user_list": "المشاركون",
+    "placeholder_shearch_input": "...يبحث   🔍"
 }

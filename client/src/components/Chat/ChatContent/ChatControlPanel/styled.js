@@ -1,16 +1,18 @@
 import styled from 'styled-components';
+import { bgColorDefaultFon, textColorBlack } from '/src/components/UI/baseLayout';
 
-export const StChatControlPanel = styled.section`
+
+export const StChatControlPanel = styled.div`
     display: flex;
     width: 100%;
     height: 100px;
     padding: 0;
     justify-content: space-between;
     align-items: center;
-    color: black;
+    color: ${({ color = textColorBlack }) => color};
     font-size: 24px;
     font-family: 'Play', sans-serif;
     border-bottom: 1px solid black;
     border-right: 1px solid black;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: ${({ color = bgColorDefaultFon }) => color};
 `;

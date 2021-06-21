@@ -1,23 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import { StChatControlPanel } from './styled';
-import Input from '../../../UI/Input';
-import Button from '../../../UI/Button';
+import Input from '/src/components/UI/Input';
+import Button from '/src/components/UI/Button';
 
-const ChatControlPanel = ({ sendMessage, handleInputChange, fields }) => {
+const ChatControlPanel = (
+  { sendMessage, onChangeInput, messageInputValue }) => {
+  const { t } = useTranslation();
   return (
     <StChatControlPanel>
       <Input
-        width="100%"
         id="filter"
         height="60px"
         key="filter"
         name="filter"
         inputHeight="60px"
         borderRadius="0px"
-        value={fields}
-        onChange={handleInputChange}
-        placeholder="Write a message..."
+        value={messageInputValue}
+        onChange={onChangeInput}
+        placeholder={t('placeholder_control_input')}
         margin="0 auto" 
         bgColor="transparent"
         fontSizeInp="20px"
@@ -42,9 +44,9 @@ const ChatControlPanel = ({ sendMessage, handleInputChange, fields }) => {
 };
 
 ChatControlPanel.propTypes = {
-  sendMessage: PropTypes.func.isRequired,
-  handleInputChange: PropTypes.func.isRequired,
-  fields: PropTypes.object.isRequired,
+  sendMessage: PropTypes.func,
+  onChangeInput: PropTypes.func,
+  messageInputValue: PropTypes.string,
 };
 
 export default ChatControlPanel;

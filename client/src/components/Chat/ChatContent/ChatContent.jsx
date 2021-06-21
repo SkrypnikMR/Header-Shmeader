@@ -4,14 +4,13 @@ import ChatDisplay from './ChatDisplay';
 import ChatControlPanel from './ChatControlPanel';
 import { StChatContant } from './styled';
 
-const ChatContant = () => {
-  return (
+const ChatContant = () => (
     <StChatContant>
       <ChatTitle />
       <ChatDisplay />
       <ChatControlPanel />
     </StChatContant>
   );
-};
+
 
 export default ChatContant;

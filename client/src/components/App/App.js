@@ -6,7 +6,7 @@ import 'react-notifications/lib/notifications.css';
 import Registration from '../Registration';
 import Login from '../Login';
 import Chat from '../Chat';
-import { APP_ROUTES } from '/src/contsants/reactRoutes';
+import { APP_ROUTES } from '../../constants/reactRoutes';
 import { StAppDiv } from './styled';
 
 const App = ({ userTheme, userThemeMode }) => {

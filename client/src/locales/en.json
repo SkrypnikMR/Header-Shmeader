@@ -28,5 +28,8 @@
     "login_error": "Login failed",
     "wrong_user_or_password": "Incorrect email or password",
     "server_error": "server error",
-    "server_error_text": "Try later..."
+    "server_error_text": "Try later...",
+    "placeholder_control_input": "Write a message...",
+    "user_list": "users",
+    "placeholder_shearch_input": "🔍  Search..."
 }

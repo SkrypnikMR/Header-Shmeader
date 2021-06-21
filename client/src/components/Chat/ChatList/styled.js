@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { bgColorDefault } from '../../UI/baseLayout';
+import { bgColorDefault, bgColorDefaultFon } from '/src/components/UI/baseLayout';
 
-export const StChatList = styled.form`
-    background-color: rgba(0, 0, 0, 0.4);
+export const StChatList = styled.div`
+    background-color: ${({ color = bgColorDefaultFon }) => color};
     display: flex;
-    width: 30%;
+    width: 20%;
     margin-right: 0;
     font-size: 24px;
     flex-direction: column;
@@ -16,9 +16,11 @@ export const StChatList = styled.form`
     overflow-y: hidden;
     :hover {
       overflow-y: auto;
+      overflow-x: auto;
     }
         ::-webkit-scrollbar {
           width: 8px;
+          height: 8px;
         }
             ::-webkit-scrollbar-thumb {
               width: 8px;

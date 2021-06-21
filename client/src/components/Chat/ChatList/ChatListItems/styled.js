@@ -1,23 +1,23 @@
 import styled from 'styled-components';
+import { textColorBlack } from '/src/components/UI/baseLayout';
 
-export const StChatListItems = styled.section`
+export const StChatListItems = styled.div`
     display: flex;
     width: 100%;
     height: 60px;
-    justify-content: space-between;
     align-items: center;
-    color: ${({ color = 'black' }) => color};
+    color: ${({ color = textColorBlack }) => color};
 
     cursor: pointer;
         ul {
           padding-left: 1rem;
           list-style-type: none;
         }
-            ul li {
-              padding-left: 2.5rem;
-              background-image: url(../../../../public/assets/images/user.png);
-              background-position: 0 0;
-              background-size: 1.6rem 1.6rem;
-              background-repeat: no-repeat;
-            }
 `;
+export const StPhoto = styled.div`
+margin: 5px 10px;
+img{
+  width: 50px;
+  height: 50px;
+}
+`; 

@@ -1,12 +1,29 @@
-import React from 'react';
-import { StChatListItems } from './styled';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { StChatListItems, StPhoto } from './styled';
 
-const ChatListItems = () => {
+const ChatListItems = ({ img, content }) => {
+  const [state, setState] = useState({
+    error: false,
+    src: img,
+    defaultImg: '../../../../public/assets/images/defaultChats.png',
+  });
+  const onError = () => setState({ ...state, error: true, src: state.defaultImg });
   return (
     <StChatListItems color="black">
-          <ul><li>Chat1</li></ul>
+        <StPhoto> 
+          <img src={img ? state.src : state.defaultImg} onError={onError} />  
+        </StPhoto>
+            <div>
+            {content}
+            </div>
     </StChatListItems>
   );
+};
+
+ChatListItems.propTypes = {
+  content: PropTypes.string,
+  img: PropTypes.any,
 };
 
 export default ChatListItems;
