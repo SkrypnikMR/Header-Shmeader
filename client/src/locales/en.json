@@ -28,5 +28,9 @@
     "login_error": "Login failed",
     "wrong_user_or_password": "Incorrect email or password",
     "server_error": "server error",
-    "server_error_text": "Try later..."
+    "server_error_text": "Try later...",
+    "logo": "Header&Shmeader",
+    "english_translate_btn": "EN",
+    "russian_translate_btn": "RU",
+    "arabian_translate_btn": "AR"
 }

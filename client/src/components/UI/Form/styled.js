@@ -5,7 +5,7 @@ export const StFormDiv = styled.div`
     min-height: 80vh;
     display: flex;
     width: 40%;
-    margin: auto;
+    margin: 20px auto 0 auto;
     justify-content: space-between;
     align-items: center;
     flex-direction: column;

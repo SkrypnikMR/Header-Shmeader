@@ -28,5 +28,9 @@
     "login_error": "فشل عملية الدخول",
     "wrong_user_or_password": "بريد أو كلمة مرورغير صحيحة",
     "server_error": "خطأ في الخادم",
-    "server_error_text": "...حاول لاحقا"
+    "server_error_text": "...حاول لاحقا",
+    "logo": "Header&Shmeader",
+    "english_translate_btn": "EN",
+    "russian_translate_btn": "RU",
+    "arabian_translate_btn": "AR"
 }

@@ -28,5 +28,9 @@
     "login_error": "Ошибка входа",
     "wrong_user_or_password": "Неправильная почта или пароль",
     "server_error": "Ошибка сервера",
-    "server_error_text": "Попробуйте позже..."
+    "server_error_text": "Попробуйте позже...",
+    "logo": "Header&Shmeader",
+    "english_translate_btn": "EN",
+    "russian_translate_btn": "RU",
+    "arabian_translate_btn": "AR"
 }

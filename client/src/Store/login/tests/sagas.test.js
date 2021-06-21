@@ -1,10 +1,17 @@
 import { expectSaga, testSaga } from 'redux-saga-test-plan';
+import { routes } from 'src/constants/routes';
+import { postRequest } from 'src/helpers/requests';
 import * as sagas from '../sagas';
 import { logValues } from '../selectors';
-import { postRequest } from '../../../helpers/requests';
 import { setLoginValue, clearLoginInputs, reciveErrorRequest, reciveSuccessRequest } from '../actions';
 import { actionTypes } from '../actionTypes';
-import { routes } from '../../../constants/routes';
+
+
+jest.mock('../../../helpers/validation', () => ({
+    validation: {
+        loginValidation: jest.fn().mockReturnValue({ isValid: true, message: 'validation' }),
+    },
+}));
 
 describe('loginSaga', () => {
     describe('workerLogin', () => {
