@@ -15,7 +15,7 @@ const HeaderControlPanel = () => {
             {HEADER_CONTROL_BTNS.map(el => (
                 <Button
                     id={el.id}
-                    content={t(el.content)}
+                    content={el.content}
                     key={el.id}
                     color='white'
                     width='60px'

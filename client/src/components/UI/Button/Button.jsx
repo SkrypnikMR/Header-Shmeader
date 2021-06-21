@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import { StButton } from './styled';
 
 const Button = ({
@@ -24,32 +25,35 @@ const Button = ({
     content,
     transition,
     focusColor,
-}) => (
-    <StButton
-        id={id}
-        name={name}
-        onClick={onClick}
-        type={type}
-        value={value}
-        title={title}
-        bgColorDisabled={bgColorDisabled}
-        borderRadius={borderRadius}
-        isDisabled={isDisabled}
-        color={color}
-        fontSize={fontSize}
-        fontWeight={fontWeight}
-        bgColor={bgColor}
-        bgColorHover={bgColorHover}
-        height={height}
-        width={width}
-        padding={padding}
-        margin={margin}
-        transition={transition}
-        focusColor={focusColor}
-    >
-        {content}
-    </StButton>
-);
+}) => {
+    const { t } = useTranslation();
+    return (
+        <StButton
+            id={id}
+            name={name}
+            onClick={onClick}
+            type={type}
+            value={value}
+            title={title}
+            bgColorDisabled={bgColorDisabled}
+            borderRadius={borderRadius}
+            isDisabled={isDisabled}
+            color={color}
+            fontSize={fontSize}
+            fontWeight={fontWeight}
+            bgColor={bgColor}
+            bgColorHover={bgColorHover}
+            height={height}
+            width={width}
+            padding={padding}
+            margin={margin}
+            transition={transition}
+            focusColor={focusColor}
+        >
+            {t(content)}
+        </StButton>
+    );
+};
 
 Button.propTypes = {
     id: PropTypes.string.isRequired,
