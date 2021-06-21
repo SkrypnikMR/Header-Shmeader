@@ -45,3 +45,14 @@ export const HEADER_CONTROL_BTNS = [{
     id: 'ar',
     content: 'arabian_translate_btn',
 }];
+export const INPUT_PLACEHOLDER_MESSAGE = [{
+  id: 'message',
+  placeholder: 'placeholder_control_input',
+},
+];
+export const INPUT_PLACEHOLDER_SEARCH = [
+{
+  id: 'search',
+  placeholder: 'placeholder_shearch_input',
+},
+];

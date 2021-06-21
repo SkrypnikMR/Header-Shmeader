@@ -5,7 +5,7 @@ import { HEADER_CONTROL_BTNS } from '/src/constants/componentsСonsts.js';
 import Button from '../../UI/Button';
 
 const HeaderControlPanel = () => {
-    const { t, i18n } = useTranslation();
+    const { i18n } = useTranslation();
     const handleClick = (e) => {
         i18n.changeLanguage(e.target.value);
         localStorage.setItem('lang', e.target.value);
