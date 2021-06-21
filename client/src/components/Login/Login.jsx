@@ -11,6 +11,7 @@ import Button from '../UI/Button';
 
 const Login = ({ sendLoginRequest, setLoginValue, fields }) => {
   const { t } = useTranslation();
+
   if (fields.success) return <Redirect to={APP_ROUTES.chat} />;
   return (
     <StLoginDiv>
