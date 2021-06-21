@@ -5,7 +5,7 @@ import HeaderControlPanel from '../HeaderControlPanel';
 
 jest.mock('react-i18next', () => ({
     useTranslation: jest.fn()
-        .mockReturnValue({ i18n: { changeLanguage: jest.fn() } }),
+        .mockReturnValue({ i18n: { changeLanguage: jest.fn() }, t: jest.fn() }),
 }));
 
 describe('HeaderControlPanel', () => {

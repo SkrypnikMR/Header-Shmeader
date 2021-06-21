@@ -2,6 +2,7 @@ import React from 'react';
 import { shallowSmart, mountSmart } from '/src/helpers/testHelper';
 import Logo from '../Logo';
 import '/src/i18n';
+import 'react-i18next';
 
 describe('Logo', () => {
     it('Should match snapshot', () => {

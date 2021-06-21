@@ -6,6 +6,12 @@ import { setRegistrationValue, clearRegistrationInputs, reciveErrorRequest, reci
 import { actionTypes } from '../actionTypes';
 import { routes } from '/src/constants/routes';
 
+jest.mock('../../../helpers/validation', () => ({
+    validation: {
+        registrationValidation: jest.fn().mockReturnValue({ isValid: true, message: 'validation' }),
+    },
+}));
+
 describe('registrationSaga', () => {
     describe('workerRegistration', () => {
         let action;
@@ -14,7 +20,13 @@ describe('registrationSaga', () => {
                 type: actionTypes.SEND_REGISTRATION_REQUEST,
             };
         });
-        const authValue = { email: 'SkripnikMRW@gmail.com', password: '123456', firstName: 'Max', lastName: 'Skr' };
+        const authValue = {
+            email: 'SkripnikMRW@gmail.com',
+            password: '123456',
+            firstName: 'Max',
+            lastName: 'Skr',
+            confirm: undefined,
+        };
         const path = `${routes.account.registration}`;
         it('should call workerRegistration without error', () => {
             testSaga(sagas.workerRegistration, action)

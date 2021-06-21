@@ -5,7 +5,7 @@ import { HEADER_CONTROL_BTNS } from '/src/constants/componentsСonsts.js';
 import Button from '../../UI/Button';
 
 const HeaderControlPanel = () => {
-    const { i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
     const handleClick = (e) => {
         i18n.changeLanguage(e.target.value);
         localStorage.setItem('lang', e.target.value);
@@ -15,7 +15,7 @@ const HeaderControlPanel = () => {
             {HEADER_CONTROL_BTNS.map(el => (
                 <Button
                     id={el.id}
-                    content={i18n.t(el.content)}
+                    content={t(el.content)}
                     key={el.id}
                     color='white'
                     width='60px'
