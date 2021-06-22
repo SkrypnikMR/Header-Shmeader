@@ -7,6 +7,7 @@ import { actionTypes } from './actionTypes';
 import { logValues } from './selectors';
 import { validation } from '../../helpers/validation';
 import { setLoginValue, clearLoginInputs, reciveErrorRequest, reciveSuccessRequest } from './actions';
+import { support } from '../../helpers/support';
 
 export function* workerLogin() {
     try {
@@ -16,11 +17,14 @@ export function* workerLogin() {
         if (!isValid) {
             return NotificationManager.error(i18next.t(validateMessage), i18next.t('input_error'), 2000);
         }
-        const { token, message } = yield call(postRequest, routes.account.login, data);
+
+        const { token, message, userInfo } = yield call(postRequest, routes.account.login, data);
         if (token) {
             yield (put(clearLoginInputs()));
             yield put(setLoginValue({ name: 'success', value: true }));
             yield put(reciveSuccessRequest());
+            support.setSessionStorageItem('token', token, 8);
+            support.setSessionStorageItem('userInfo', userInfo, 8);
         } else {
             yield put(setLoginValue({ name: 'success', value: false }));
             yield put(reciveErrorRequest());
