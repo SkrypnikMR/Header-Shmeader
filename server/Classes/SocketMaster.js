@@ -1,26 +1,26 @@
 class SocketMaster {
     constructor(io) {
-        this.listenConnection(io);
+        this.io = io;
+        this.connection();
     }
     users = [];
-    listenConnection = (io) => {
-        io.on('connection', (socket) => {
+    connection = () => {
+        this.io.on('connection', (socket) => {
             console.log('user connected', socket.id);
-            this.listenOnlineUsers(socket);
-            this.listenDisconnection(socket);
+            socket.on('disconnect', () => {
+                this.users = this.users.filter(user => user.socketId !== socket.id)
+                this.io.emit('users_online', this.users);
+                if (this.users.length === 0) console.log('all offline');
+            })
+            socket.on('clientInfo', (user) => {
+                this.users.push({ ...user, socketId: socket.id })
+                this.io.emit('users_online', this.users);
+            })
+            socket.on('messages', (message) => {
+                console.log(message);
+                this.io.emit('messages', message);
+            })
         });
-    }
-    listenDisconnection = (socket) => {
-        socket.on('disconnect', () => {
-            this.users = this.users.filter(user => user.socketId !== socket.id)
-            socket.emit('users_online', this.users);
-        })
-    }
-    listenOnlineUsers = (socket) => {
-        socket.on('clientInfo', (user) => {
-            this.users.push({ ...user, socketId: socket.id })
-            socket.emit('users_online', this.users);
-        })
     }
 }
 

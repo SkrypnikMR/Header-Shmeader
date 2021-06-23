@@ -8,6 +8,9 @@ export const initialState = {
   token: support.getSessionStorageItem('token') || null,
   userInfo: support.getSessionStorageItem('userInfo') || null,
   onlineUsers: [],
+  messages: [],
+  socket: null,
+  newMessage: '',
 };
 
 export const reducer = (state = initialState, action) => {
@@ -16,6 +19,8 @@ export const reducer = (state = initialState, action) => {
       return { ...state, [action.payload.name]: action.payload.value };
     case actionTypes.PUT_ONLINE_USERS:
       return { ...state, onlineUsers: action.payload };
+    case actionTypes.PUT_MESSAGES:
+      return { ...state, messages: [...state.messages, action.payload] };
     default: return { ...state };
   }
 };

@@ -8,6 +8,7 @@ import { logValues } from './selectors';
 import { validation } from '../../helpers/validation';
 import { setLoginValue, clearLoginInputs, reciveErrorRequest, reciveSuccessRequest } from './actions';
 import { support } from '../../helpers/support';
+import { setValue } from '../user/actions';
 
 export function* workerLogin() {
     try {
@@ -21,10 +22,12 @@ export function* workerLogin() {
         const { token, message, userInfo } = yield call(postRequest, routes.account.login, data);
         if (token) {
             yield (put(clearLoginInputs()));
-            yield put(setLoginValue({ name: 'success', value: true }));
             yield put(reciveSuccessRequest());
-            support.setSessionStorageItem('token', token, 8);
-            support.setSessionStorageItem('userInfo', userInfo, 8);
+            yield call(support.setSessionStorageItem, 'token', token);
+            yield call(support.setSessionStorageItem, 'userInfo', userInfo);
+            yield put(setValue({ name: 'token', value: token }));
+            yield put(setValue({ name: 'userInfo', value: userInfo }));
+            yield put(setLoginValue({ name: 'success', value: true }));
         } else {
             yield put(setLoginValue({ name: 'success', value: false }));
             yield put(reciveErrorRequest());
