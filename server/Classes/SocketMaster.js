@@ -13,6 +13,7 @@ class SocketMaster {
     listenDisconnection = (socket) => {
         socket.on('disconnect', () => {
             this.users = this.users.filter(user => user.socketId !== socket.id)
+            socket.emit('users_online', this.users);
         })
     }
     listenOnlineUsers = (socket) => {
