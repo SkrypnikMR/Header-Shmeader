@@ -1,12 +1,10 @@
 import { connect } from 'react-redux';
 import ChatControlPanel from './ChatControlPanel.jsx';
-import { setValue, sendNewMessage } from '../../../../Store/user/actions';
-import { newMessage, takeSocket, userInfo } from '../../../../Store/user/selectors';
+import { setValue, sendNewMessage } from '/src/Store/chat/actions';
+import { newMessage } from '/src/Store/chat/selectors';
 
 const mapStateToProps = state => ({
     messageInputValue: newMessage(state),
-    socket: takeSocket(state),
-    author: userInfo(state).email,
 });
 
 const mapDispatchToProps = dispatch => ({

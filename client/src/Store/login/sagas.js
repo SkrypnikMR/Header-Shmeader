@@ -8,7 +8,7 @@ import { logValues } from './selectors';
 import { validation } from '../../helpers/validation';
 import { setLoginValue, clearLoginInputs, reciveErrorRequest, reciveSuccessRequest } from './actions';
 import { support } from '../../helpers/support';
-import { setValue } from '../user/actions';
+import { setAuthValues } from '../user/actions';
 
 export function* workerLogin() {
     try {
@@ -25,8 +25,7 @@ export function* workerLogin() {
             yield put(reciveSuccessRequest());
             yield call(support.setSessionStorageItem, 'token', token);
             yield call(support.setSessionStorageItem, 'userInfo', userInfo);
-            yield put(setValue({ name: 'token', value: token }));
-            yield put(setValue({ name: 'userInfo', value: userInfo }));
+            yield put(setAuthValues({ token, userInfo }));
             yield put(setLoginValue({ name: 'success', value: true }));
         } else {
             yield put(setLoginValue({ name: 'success', value: false }));

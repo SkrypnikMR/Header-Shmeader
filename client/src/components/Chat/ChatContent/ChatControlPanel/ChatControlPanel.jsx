@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { INPUT_PLACEHOLDER_MESSAGE } from '/src/constants/componentsСonsts.js';
 import { StChatControlPanel } from './styled';
@@ -6,19 +6,10 @@ import Input from '/src/components/UI/Input';
 import Button from '/src/components/UI/Button';
 
 const ChatControlPanel = (
-  { onChangeInput, messageInputValue, socket, author, sendNewMessage }) => {
-  useEffect(() => {
-    if (socket) sendNewMessage();
-  }, [socket]);
+  { onChangeInput, messageInputValue, sendNewMessage }) => {
   const handleOnclick = () => {
-    if (socket) {
-      socket.emit('messages', {
-        author,
-        messageText: messageInputValue,
-        messageTime: new Date().getTime(),
-      });
-      onChangeInput({ name: 'newMessage', value: '' });
-    }
+    sendNewMessage();
+    onChangeInput({ name: 'newMessage', value: '' });
   };
   return (
     <StChatControlPanel>
@@ -58,11 +49,9 @@ const ChatControlPanel = (
 };
 
 ChatControlPanel.propTypes = {
-  author: PropTypes.string,
   onChangeInput: PropTypes.func,
   sendNewMessage: PropTypes.func,
   messageInputValue: PropTypes.string,
-  socket: PropTypes.object,
 };
 
 export default ChatControlPanel;

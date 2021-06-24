@@ -1,7 +1,7 @@
 import { all, fork } from '@redux-saga/core/effects';
 import { watcherRegistration } from './registration/sagas';
 import { watcherLogin } from './login/sagas';
-import { watcherUserOperations } from './user/saga';
+import { watcherUserOperations } from './chat/saga';
 
 const sagas = [
     watcherRegistration,
