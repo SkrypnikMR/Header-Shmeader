@@ -5,6 +5,14 @@ export const userTheme = createSelector(
   userStore,
   ({ theme }) => theme,
 );
+export const userInfo = createSelector(
+  userStore,
+  ({ userInfo }) => userInfo,
+);
+export const newMessage = createSelector(
+  userStore,
+  ({ newMessage }) => newMessage,
+);
 export const userThemeMode = createSelector(
   userStore,
   ({ themeMode }) => themeMode,

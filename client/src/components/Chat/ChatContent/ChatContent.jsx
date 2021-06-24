@@ -5,12 +5,12 @@ import ChatControlPanel from './ChatControlPanel';
 import { StChatContant } from './styled';
 
 const ChatContent = () => (
-    <StChatContant>
-      <ChatTitle />
-      <ChatDisplay />
-      <ChatControlPanel />
-    </StChatContant>
-  );
+  <StChatContant>
+    <ChatTitle />
+    <ChatDisplay />
+    <ChatControlPanel />
+  </StChatContant>
+);
 
 
 export default ChatContent;
