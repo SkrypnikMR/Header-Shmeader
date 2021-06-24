@@ -30,7 +30,6 @@ export function* connectionSaga() {
     const socketChannel = yield call(createSocketChannel, socket);
     while (socketChannel) {
         const payload = yield take(socketChannel);
-        console.log(payload);
         yield put(payload);
     }
 }
