@@ -6,16 +6,16 @@ import { putOnlineUsers, putMessages } from './actions';
 import { userInfo } from '../user/selectors';
 import { newMessage } from './selectors';
 
-let globalSocket;
+let globalSocket = { emit: () => { }, on: () => { } };
 
-const createSocketChannel = socket => eventChannel((emit) => {
+export const createSocketChannel = socket => eventChannel((emit) => {
     socket.on('users_online', data => emit(putOnlineUsers(data)));
     socket.on('messages', data => emit(putMessages(data)));
     return () => {
         socket.off('users_online', data => emit(putOnlineUsers(data)));
     };
 });
-const connect = (user) => {
+export const connect = (user) => {
     globalSocket = io('localhost:2282');
     return new Promise((resolve) => {
         globalSocket.on('connect', () => {

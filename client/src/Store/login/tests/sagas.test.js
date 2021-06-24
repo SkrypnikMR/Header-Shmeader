@@ -4,6 +4,8 @@ import { postRequest } from 'src/helpers/requests';
 import * as sagas from '../sagas';
 import { logValues } from '../selectors';
 import { setLoginValue, clearLoginInputs, reciveErrorRequest, reciveSuccessRequest } from '../actions';
+import { setAuthValues } from '../../user/actions';
+import { support } from '/src/helpers/support';
 import { actionTypes } from '../actionTypes';
 
 
@@ -40,9 +42,28 @@ describe('loginSaga', () => {
                 })
                 .put(clearLoginInputs())
                 .next()
-                .put(setLoginValue({ name: 'success', value: true }))
-                .next()
                 .put(reciveSuccessRequest())
+                .next()
+                .call(support.setSessionStorageItem, 'token', 'someVeryLongToken')
+                .next()
+                .call(support.setSessionStorageItem, 'userInfo', {
+                    id: 1,
+                    firstName: 'Max',
+                    lastName: 'Skrypnik',
+                    email: 'SkripnikMRW@GMAIL.COM',
+                })
+                .next()
+                .put(setAuthValues({
+                    token: 'someVeryLongToken',
+                    userInfo: {
+                        id: 1,
+                        firstName: 'Max',
+                        lastName: 'Skrypnik',
+                        email: 'SkripnikMRW@GMAIL.COM',
+                    },
+                }))
+                .next()
+                .put(setLoginValue({ name: 'success', value: true }))
                 .next()
                 .isDone();
         });
