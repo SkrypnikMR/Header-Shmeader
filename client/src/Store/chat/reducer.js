@@ -3,7 +3,6 @@ import { actionTypes } from './actionTypes';
 export const initialState = {
   onlineUsers: [],
   messages: [],
-  socket: null,
   newMessage: '',
 };
 
