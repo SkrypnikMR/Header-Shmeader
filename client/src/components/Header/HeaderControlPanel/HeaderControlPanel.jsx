@@ -5,6 +5,7 @@ import { StControl } from './styled';
 import { HEADER_CONTROL_BTNS } from '/src/constants/componentsСonsts';
 import Button from '../../UI/Button';
 import { APP_ROUTES } from '/src/constants/reactRoutes';
+import { ROUTS_WITHOUT_MY_ACCOUNT } from '/src/constants/ui';
 
 const HeaderControlPanel = ({ history, location }) => {
     const { i18n } = useTranslation();
@@ -22,7 +23,6 @@ const HeaderControlPanel = ({ history, location }) => {
     return (
         <StControl >
             {HEADER_CONTROL_BTNS.map((el) => {
-                const ROUTS_WITHOUT_MY_ACCOUNT = ['/', '/registration'];
                 if ((el.rout === '/account' && ROUTS_WITHOUT_MY_ACCOUNT.includes(location.pathname))
                     || el.rout === location.pathname) return null;
                 return (
