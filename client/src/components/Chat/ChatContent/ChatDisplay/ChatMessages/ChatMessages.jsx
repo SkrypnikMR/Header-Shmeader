@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { StMessage, StText, StPhoto, StData, StTitle } from './styled';
 
-const ChatMessages = ({ img, author, messageText, messageTime }) => {
+const ChatMessages = ({ img, author, messageText, messageTime, alignSelf }) => {
   const [state, setState] = useState({
     error: false,
     src: img,
@@ -10,7 +10,7 @@ const ChatMessages = ({ img, author, messageText, messageTime }) => {
   });
   const onError = () => setState({ ...state, error: true, src: state.defaultImg });
   return (
-    <StMessage alignSelf="flex-start">
+    <StMessage alignSelf={alignSelf}>
       <StPhoto>
         <img src={img ? state.src : state.defaultImg} onError={onError} />
       </StPhoto>
@@ -32,6 +32,7 @@ ChatMessages.propTypes = {
   messageText: PropTypes.string,
   messageTime: PropTypes.string,
   img: PropTypes.any,
+  alignSelf: PropTypes.string,
 };
 
 export default ChatMessages;

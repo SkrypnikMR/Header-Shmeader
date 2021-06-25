@@ -5,7 +5,7 @@ import en from './locales/en.json';
 import ar from './locales/ar.json';
 import ru from './locales/ru.json';
 
-const language = localStorage.getItem('lang') || 'ru';
+const language = localStorage.getItem('lang') || 'en';
 
 i18n.use(initReactI18next).init({
     resources: {
@@ -15,8 +15,7 @@ i18n.use(initReactI18next).init({
     },
     fallbackLng: ['en', 'ar', 'ru'],
     lng: language,
-
-    debug: process.env.NODE_ENV !== 'production',
+    debug: false,
     ns: ['translations'],
     defaultNS: 'translations',
     keySeparator: false,

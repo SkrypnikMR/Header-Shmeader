@@ -4,5 +4,4 @@ export const actionTypes = {
   PUT_ONLINE_USERS: '@@user/PUT_ONLINE_USERS',
   PUT_MESSAGES: '@@user/PUT_MESSAGES',
   SEND_NEW_MESSAGE: '@@user/SEND_NEW_MESSAGE',
-  SET_AUTH_VALUES: '@@user/SET_AUTH_VALUES',
 };
