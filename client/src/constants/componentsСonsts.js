@@ -48,6 +48,11 @@ export const HEADER_CONTROL_BTNS = [{
 {
     id: 'ar',
     content: 'arabian_translate_btn',
+},
+{
+    id: 'account',
+    content: '👨‍💻',
+    rout: '/account',
 }];
 export const INPUT_PLACEHOLDER_MESSAGE = [{
   id: 'message',

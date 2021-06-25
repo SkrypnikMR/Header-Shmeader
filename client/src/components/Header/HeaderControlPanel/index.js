@@ -1,3 +1,4 @@
+import { withRouter } from 'react-router';
 import HeaderControlPanel from './HeaderControlPanel.jsx';
 import { connect } from 'react-redux';
 import { setValue } from '/src/Store/user/actions';

@@ -6,6 +6,7 @@ import 'react-notifications/lib/notifications.css';
 import Registration from '../Registration';
 import Login from '../Login';
 import Chat from '../Chat';
+import MyAccount from "../MyAccount";
 import Header from '../Header';
 import { APP_ROUTES } from '/src/constants/reactRoutes';
 
@@ -16,11 +17,12 @@ const App = ({ userTheme, userThemeMode }) => {
     <StAppDiv url={userThemeMode === 'dark' ? userTheme.dark : userTheme.light}>
       <BrowserRouter>
         <Header />
-        <Switch>
+          <Switch>
           <Route path={APP_ROUTES.login} exact component={Login} />
           <Route path={APP_ROUTES.registration} exact component={Registration} />
           <Route path={APP_ROUTES.chat} exact component={Chat} />
-        </Switch>
+          <Route path={APP_ROUTES.account} exact component={MyAccount} />
+          </Switch>
       </BrowserRouter>
       <NotificationContainer />
     </StAppDiv >
