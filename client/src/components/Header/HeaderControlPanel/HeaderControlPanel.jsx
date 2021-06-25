@@ -10,6 +10,9 @@ const HeaderControlPanel = () => {
         i18n.changeLanguage(e.target.value);
         localStorage.setItem('lang', e.target.value);
     };
+    const handleThemeClick = () => {
+     
+   };
     return (
         <StControl >
             {HEADER_CONTROL_BTNS.map(el => (
@@ -23,7 +26,7 @@ const HeaderControlPanel = () => {
                     borderRadius="0px"
                     value={el.id}
                     bgColor='rgba(0,0,0,0)'
-                    onClick={handleClick}
+                    onClick={el.id === el.theme_btn ? handleClick : handleThemeClick}
                 />
             ))}
         </StControl>

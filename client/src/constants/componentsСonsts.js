@@ -34,6 +34,10 @@ export const logInputs = [{
     placeholder: 'password_placeholder',
 }];
 export const HEADER_CONTROL_BTNS = [{
+  id: 'theme_btn',
+  content: '🌗',
+},
+{
     id: 'en',
     content: 'english_translate_btn',
 },
