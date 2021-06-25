@@ -9,18 +9,43 @@ jest.mock('react-i18next', () => ({
 }));
 
 describe('HeaderControlPanel', () => {
+  let props;
+  beforeEach(() => {
+    props = {
+      setValue: jest.fn(),
+      themeMode: '',
+    };
+  });
     const { i18n } = useTranslation();
     it('Should match snapshot', () => {
-        const component = shallowSmart(<HeaderControlPanel />);
+        const component = shallowSmart(<HeaderControlPanel {...props}/>);
         expect(component.html()).toMatchSnapshot();
     });
-    it('should render inputs', () => {
-        const component = mountSmart(<HeaderControlPanel />);
-        expect(component.find('button')).toHaveLength(3);
+    it('should render buttons', () => {
+        const component = mountSmart(<HeaderControlPanel {...props}/>);
+        expect(component.find('button')).toHaveLength(4);
     });
     it('should call i18n.changeLanguage ', () => {
-        const component = mountSmart(<HeaderControlPanel />);
-        component.find('Button').first().simulate('click');
+        const component = mountSmart(<HeaderControlPanel {...props}/>);
+        component.find('Button').at(1).getElement().props.onClick({ target: { value: 'dark' } });
         expect(i18n.changeLanguage).toHaveBeenCalled();
     });
+    it('should call button for change theme, themeMode===dark', () => {
+      props = {
+        setValue: jest.fn(),
+        themeMode: 'dark',
+      };
+      const component = mountSmart(<HeaderControlPanel {...props}/>);
+      component.find('Button').at(0).getElement().props.onClick();
+      expect(props.setValue).toHaveBeenCalledWith({ name: 'themeMode', value: 'light' });
+    });
+    it('should call button for change theme, themeMode===light', () => {
+      props = {
+        setValue: jest.fn(),
+        themeMode: 'light',
+      };
+      const component = mountSmart(<HeaderControlPanel {...props}/>);
+      component.find('Button').at(0).getElement().props.onClick();
+      expect(props.setValue).toHaveBeenCalledWith({ name: 'themeMode', value: 'dark' });
+  });
 });
