@@ -41,7 +41,7 @@ describe('HeaderControlPanel', () => {
             location: { pathname: '/account' },
         };
         const component = mountSmart(<HeaderControlPanel {...props} />);
-        expect(component.find('button')).toHaveLength(4);
+        expect(component.find('button')).toHaveLength(3);
     });
     it('should call history push', () => {
         const props = {

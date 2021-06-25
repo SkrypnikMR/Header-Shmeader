@@ -8,21 +8,23 @@ import { APP_ROUTES } from '/src/constants/reactRoutes';
 
 const HeaderControlPanel = ({ history, location }) => {
     const { i18n } = useTranslation();
-    const handleLanguageClick = (e) => {
+    const handleChangeLanguage = (e) => {
         i18n.changeLanguage(e.target.value);
         localStorage.setItem('lang', e.target.value);
     };
     const handleMyAccountClick = () => history.push(APP_ROUTES.account);
-    const spreader = (el) => {
+    const getFunctionForButtons = (el) => {
         switch (el.id) {
             case 'account': return handleMyAccountClick;
-            default: return handleLanguageClick;
+            default: return handleChangeLanguage;
         }
     };
     return (
         <StControl >
-            {HEADER_CONTROL_BTNS.map((el, index) => {
-               if (location.pathname !== '/chat' && location.pathname !== '/account' && index > 2) return null;
+            {HEADER_CONTROL_BTNS.map((el) => {
+                const ROUTS_WITHOUT_MY_ACCOUNT = ['/', '/registration'];
+                if ((el.rout === '/account' && ROUTS_WITHOUT_MY_ACCOUNT.includes(location.pathname))
+                    || el.rout === location.pathname) return null;
                 return (
                     <Button
                     id={el.id}
@@ -35,7 +37,7 @@ const HeaderControlPanel = ({ history, location }) => {
                     borderRadius="0px"
                     value={el.id}
                     bgColor='rgba(0,0,0,0)'
-                    onClick={spreader(el)}
+                    onClick={getFunctionForButtons(el)}
                     />
                 );
             })}

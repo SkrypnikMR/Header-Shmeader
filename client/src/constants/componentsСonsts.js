@@ -48,6 +48,7 @@ export const HEADER_CONTROL_BTNS = [{
 {
     id: 'account',
     content: '👨‍💻',
+    rout: '/account',
 }];
 export const INPUT_PLACEHOLDER_MESSAGE = [{
   id: 'message',
