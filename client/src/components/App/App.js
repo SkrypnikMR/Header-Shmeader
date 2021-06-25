@@ -20,6 +20,7 @@ const App = ({ userTheme, userThemeMode }) => {
           <Route path={APP_ROUTES.login} exact component={Login} />
           <Route path={APP_ROUTES.registration} exact component={Registration} />
           <Route path={APP_ROUTES.chat} exact component={Chat} />
+            <Route path={APP_ROUTES.myAccount} exact render={() => <div/>} />
         </Switch>
       </BrowserRouter>
       <NotificationContainer />
