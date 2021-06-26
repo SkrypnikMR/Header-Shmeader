@@ -9,4 +9,4 @@ const mapDispatchToProps = dispatch => ({
     setValue: payload => dispatch(setValue(payload)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderControlPanel);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(HeaderControlPanel));

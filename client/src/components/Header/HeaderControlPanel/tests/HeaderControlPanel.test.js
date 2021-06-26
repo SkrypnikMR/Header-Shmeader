@@ -14,42 +14,40 @@ describe('HeaderControlPanel', () => {
         props = {
             setValue: jest.fn(),
             themeMode: '',
+            history: [],
+            location: { pathname: '/' },
       };
     });
     const { i18n } = useTranslation();
-    const props = {
-        history: [],
-        location: { pathname: '/' },
-    };
     it('Should match snapshot', () => {         
         const component = shallowSmart(<HeaderControlPanel {...props}/>);
         expect(component.html()).toMatchSnapshot();
     });
-    it('should render buttons', () => {
-        const component = mountSmart(<HeaderControlPanel {...props}/>);
-        expect(component.find('button')).toHaveLength(5);
-    });
     it('should call i18n.changeLanguage ', () => {
         const component = mountSmart(<HeaderControlPanel {...props}/>);
-        component.find('Button').at(1).getElement().props.onClick({ target: { value: 'dark' } });
+        component.find('Button').at(2).getElement().props.onClick({ target: { value: 'light' } });
         expect(i18n.changeLanguage).toHaveBeenCalled();
     });
     it('should call button for change theme, themeMode===dark', () => {
         props = {
             setValue: jest.fn(),
             themeMode: 'dark',
+            history: [],
+            location: { pathname: '/' },
         };
-      const component = mountSmart(<HeaderControlPanel {...props}/>);
-      component.find('Button').at(0).getElement().props.onClick();
-      expect(props.setValue).toHaveBeenCalledWith({ name: 'themeMode', value: 'light' });
+        const component = mountSmart(<HeaderControlPanel {...props}/>);
+        component.find('Button').at(0).simulate('click', { target: { value: 'light' } });
+        expect(props.setValue).toHaveBeenCalledWith({ name: 'themeMode', value: 'light' });
     });
     it('should call button for change theme, themeMode===light', () => {
         props = {
             setValue: jest.fn(),
             themeMode: 'light',
+            history: [],
+            location: { pathname: '/' },
         };
         const component = mountSmart(<HeaderControlPanel {...props}/>);
-        component.find('Button').at(0).getElement().props.onClick();
+        component.find('Button').at(0).simulate('click', { target: { value: 'dark' } });
         expect(props.setValue).toHaveBeenCalledWith({ name: 'themeMode', value: 'dark' });
     });
     it('should render all buttons in /chat', () => {
@@ -76,9 +74,11 @@ describe('HeaderControlPanel', () => {
         const props = {
             history: { push: jest.fn() },
             location: { pathname: '/chat' },
+            setValue: jest.fn(),
+            themeMode: 'light',
         };
         const component = mountSmart(<HeaderControlPanel {...props} />);
-        component.find('Button').at(3).getElement().props.onClick();
+        component.find('Button').at(4).getElement().props.onClick();
         expect(props.history.push).toHaveBeenCalledWith('/account');
     });
 });

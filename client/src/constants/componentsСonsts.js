@@ -34,34 +34,44 @@ export const logInputs = [{
     placeholder: 'password_placeholder',
 }];
 export const HEADER_CONTROL_BTNS = [{
-  id: 'theme_btn',
-  content: '🌗',
+    id: 'theme_btn',
+    value: 'light',
+    content: '🌗',
+},
+{
+    id: 'theme_btn',
+    value: 'dark',
+    content: '🌗',
 },
 {
     id: 'en',
     content: 'english_translate_btn',
+    value: 'en',
 },
 {
     id: 'ru',
     content: 'russian_translate_btn',
+    value: 'ru',
 },
 {
     id: 'ar',
     content: 'arabian_translate_btn',
+    value: 'ar',
 },
 {
     id: 'account',
     content: '👨‍💻',
     rout: '/account',
+    value: 'account',
 }];
 export const INPUT_PLACEHOLDER_MESSAGE = [{
-  id: 'message',
-  placeholder: 'placeholder_control_input',
+    id: 'message',
+   placeholder: 'placeholder_control_input',
 },
 ];
 export const INPUT_PLACEHOLDER_SEARCH = [
 {
-  id: 'search',
-  placeholder: 'placeholder_shearch_input',
+    id: 'search',
+    placeholder: 'placeholder_shearch_input',
 },
 ];
