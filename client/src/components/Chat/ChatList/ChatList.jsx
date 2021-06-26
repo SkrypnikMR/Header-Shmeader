@@ -10,7 +10,7 @@ const ChatList = ({ rooms }) => {
       <Search />
       {rooms.map(room => (
         <ChatListItems
-          key={room.roomID}
+          key={room.room_id}
           content={room.room_name}
           id={room.room_id}
         />

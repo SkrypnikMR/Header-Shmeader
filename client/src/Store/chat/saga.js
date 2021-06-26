@@ -4,7 +4,7 @@ import { io } from 'socket.io-client';
 import { NotificationManager } from 'react-notifications';
 import i18next from 'i18next';
 import { actionTypes } from './actionTypes';
-import { putOnlineUsers, putMessages, setAllRooms } from './actions';
+import { putOnlineUsers, putMessages, setAllRooms, putNewMessages } from './actions';
 import { userInfo } from '../user/selectors';
 import { newMessage, currentRoom } from './selectors';
 import { getRequest } from '../../helpers/requests';
@@ -14,7 +14,7 @@ let globalSocket = { emit: () => { }, on: () => { } };
 
 export const createSocketChannel = socket => eventChannel((emit) => {
     socket.on('users_online', data => emit(putOnlineUsers(data)));
-    socket.on('messages', data => emit(putMessages(data)));
+    socket.on('messages', data => emit(putNewMessages(data)));
     return () => {
         socket.off('users_online', data => emit(putOnlineUsers(data)));
     };
@@ -46,7 +46,7 @@ export function* sendMessage() {
         const { email } = yield select(userInfo);
         const message = yield select(newMessage);
         const room = yield select(currentRoom);
-        if (!room) return NotificationManager.error(i18next.t('without_room'), i18next.t('input_error'), 2000);
+        if (!room.room_name) return NotificationManager.error(i18next.t('without_room'), i18next.t('input_error'), 2000);
         const requestMessage = {
             author: email,
             text: message,
@@ -68,8 +68,23 @@ export function* getAllRooms({ payload }) {
         return NotificationManager.error(i18next.t('server_error_text'), i18next.t('server_error'), 2000);
     }
 }
+export function* getAllMessages({ payload }) {
+    try {
+        const messages = yield call(getRequest, `${routes.chat.messages}?id=${payload}`);
+        const adjustmentMessages = messages.map((el) => {
+            el.room = { room_id: el.room_id, room_name: el.room_name };
+            delete el.room_name;
+            delete el.room_id;
+            return el;
+        });
+        yield put(putMessages(adjustmentMessages));
+    } catch (e) {
+        return NotificationManager.error(i18next.t('server_error_text'), i18next.t('server_error'), 2000);
+    }
+}
 export function* watcherUserOperations() {
     yield takeEvery(actionTypes.CONNECT, connectionSaga);
     yield takeEvery(actionTypes.SEND_NEW_MESSAGE, sendMessage);
     yield takeEvery(actionTypes.GET_ALL_ROOMS, getAllRooms);
+    yield takeEvery(actionTypes.GET_ALL_MESSAGES, getAllMessages);
 }

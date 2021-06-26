@@ -1,0 +1,56 @@
+For normaly work you must drop your old table (if you have it, and put new)
+
+        host: 'localhost',
+        user: 'root',
+        port: 3306,
+        password: 'root',
+
+You MUST HAVE DB WITH NAME `header&shmeader`
+
+YOU MUST PUT ALL THIS TABLES
+
+CREATE TABLE `users` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `firstName` VARCHAR(255) NOT NULL,
+    `lastName` VARCHAR(255) NOT NULL,
+	`email` VARCHAR(255) NOT NULL,
+    `password` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`id`)
+);
+   
+CREATE TABLE `rooms` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(255) NULL,
+    PRIMARY KEY (`id`)
+);
+CREATE TABLE `messages` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `author` VARCHAR(255) NOT NULL,
+    `text` VARCHAR(255) NOT NULL,
+	`time` VARCHAR(255) NOT NULL,
+    `room_name` VARCHAR(255) NOT NULL,
+    `room_id` INT(11) NOT NULL,
+    PRIMARY KEY (`id`)
+);
+   
+CREATE TABLE `users_rooms` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+    `user_id` INT(11) NOT NULL,
+    `room_id` INT(11) NOT NULL DEFAULT 1,
+    PRIMARY KEY (`id`),
+    INDEX `user_id` (`user_id`),
+    INDEX `room_id` (`room_id`),
+    CONSTRAINT `FK_users` FOREIGN KEY (`user_id`) 
+        REFERENCES `users` (`id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_rooms` FOREIGN KEY (`room_id`) 
+        REFERENCES `rooms` (`id`) ON DELETE CASCADE
+);
+CREATE TABLE `users_messages` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+    `user_id` INT(11) NOT NULL,
+    `message_id` INT(11) NOT NULL ,
+    PRIMARY KEY (`id`),
+    CONSTRAINT `FK_messages` FOREIGN KEY (`message_id`) 
+        REFERENCES `messages` (`id`) ON DELETE CASCADE
+);
+INSERT INTO rooms (id, name) VALUES(1, 'global');

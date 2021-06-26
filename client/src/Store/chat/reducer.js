@@ -5,7 +5,7 @@ export const initialState = {
   messages: [],
   newMessage: '',
   rooms: [],
-  currentRoom: '',
+  currentRoom: { room_id: null, room_name: '' },
 };
 
 export const reducer = (state = initialState, action) => {
@@ -14,8 +14,10 @@ export const reducer = (state = initialState, action) => {
       return { ...state, [action.payload.name]: action.payload.value };
     case actionTypes.PUT_ONLINE_USERS:
       return { ...state, onlineUsers: action.payload };
-    case actionTypes.PUT_MESSAGES:
+    case actionTypes.PUT_NEW_MESSAGES:
       return { ...state, messages: [...state.messages, action.payload] };
+    case actionTypes.PUT_MESSAGES:
+      return { ...state, messages: [...state.messages, ...action.payload] };
     case actionTypes.SET_ALL_ROOMS:
       return { ...state, rooms: action.payload };
     default: return { ...state };
