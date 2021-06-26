@@ -6,17 +6,17 @@ import ChatMessages from './ChatMessages';
 const ChatDisplay = ({ messages, currentUser }) => {
   return (
     <StChatDisplay>
-      {messages.map(message => (
+      {messages.length > 0 ? messages.map(message => (
         <ChatMessages
           author={message.author}
-          key={message.messageTime}
-          messageText={message.messageText}
-          messageTime={message.messageTime}
+          key={message.time}
+          messageText={message.text}
+          messageTime={`${new Date(message.time).toTimeString().substr(0, 8)}`}
           alignSelf={currentUser === message.author
             ? 'flex-end'
             : 'flex-start'}
         />
-      ))}
+      )) : null}
     </StChatDisplay>
   );
 };

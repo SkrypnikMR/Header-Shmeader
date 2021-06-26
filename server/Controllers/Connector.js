@@ -8,7 +8,7 @@ const makeDB = (databaseName) => {
         password: 'root',
         database: databaseName,
         insecureAuth: true,
-        options: { trustedConnection: true }
+        options: { trustedConnection: true },
     });
     return {
         query(sql, args) {

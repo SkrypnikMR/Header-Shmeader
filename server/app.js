@@ -10,11 +10,13 @@ const io = new Server(server, { cors: "*" });
 const SocketMaster = require('./Classes/SocketMaster');
 new SocketMaster(io);
 const account = require('./routes/account');
+const chat = require('./routes/chat');
 const PORT = process.env.PORT || 1000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use('/api/account', account);
+app.use('/api/chat', chat);
 
 server.listen(PORT, () => console.log(`app start on port:${PORT}`));

@@ -13,10 +13,11 @@ class AccountManager {
             const candidate = await this.connect.query(`SELECT * FROM users WHERE email = '${email}'`);
             if (candidate.length > 0) return res.status(400).json({ message: 'such_user_exists' });
             const hashedPassword = await bcrypt.hash(password, 12);
-            await this.connect.query(`INSERT INTO users (firstName, lastName, email, password)
-             VALUES ('${firstName}', '${lastName}', '${email}', '${hashedPassword}')`);
+            await this.connect.query(`INSERT INTO users (password, email, firstName, lastName)
+            VALUES('${hashedPassword}', '${email}', '${firstName}', '${lastName}');`);
+            await this.connect.query(`INSERT INTO users_rooms (user_id, room_id) VALUES(last_insert_id(), 1);`);
             res.status(201).json({ message: 'done' });
-        } catch (e) { console.log(e); res.status(500).json({ message: 'something_wrong' }); }
+        } catch (e) { res.status(500).json({ message: 'something_wrong' }); }
     }
     login = async (req, res) => {
         try {
@@ -37,6 +38,9 @@ class AccountManager {
             }
             res.status(200).json({ token, userInfo, message: 'done' });
         } catch (e) { res.status(500).json({ message: 'something_wrong' }); }
+    }
+    loginQuery = ({ email, password, firstName, lastName }) => {
+
     }
 }
 

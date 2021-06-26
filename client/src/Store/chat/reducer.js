@@ -4,6 +4,8 @@ export const initialState = {
   onlineUsers: [],
   messages: [],
   newMessage: '',
+  rooms: [],
+  currentRoom: '',
 };
 
 export const reducer = (state = initialState, action) => {
@@ -14,6 +16,8 @@ export const reducer = (state = initialState, action) => {
       return { ...state, onlineUsers: action.payload };
     case actionTypes.PUT_MESSAGES:
       return { ...state, messages: [...state.messages, action.payload] };
+    case actionTypes.SET_ALL_ROOMS:
+      return { ...state, rooms: action.payload };
     default: return { ...state };
   }
 };

@@ -35,5 +35,6 @@
     "logo": "Header&Shmeader",
     "english_translate_btn": "EN",
     "russian_translate_btn": "RU",
-    "arabian_translate_btn": "AR"
+    "arabian_translate_btn": "AR",
+    "without_room": "You have not chosen a chat"
 }
