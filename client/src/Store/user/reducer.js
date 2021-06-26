@@ -4,7 +4,7 @@ import { support } from '../../helpers/support';
 
 export const initialState = {
   theme: backgroundUrls,
-  themeMode: 'light',
+  themeMode: support.getSessionStorageItem('themeMode') || 'light',
   token: support.getSessionStorageItem('token') || null,
   userInfo: support.getSessionStorageItem('userInfo') || null,
 };

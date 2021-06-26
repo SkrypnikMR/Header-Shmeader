@@ -22,6 +22,9 @@ const store = mockStore({
     lastName: '',
     success: null,
   },
+  user: {
+    themeMode: 'light',
+  },
 });
 const props = {
   userTheme: {
