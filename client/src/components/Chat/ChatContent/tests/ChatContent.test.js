@@ -9,6 +9,7 @@ const store = mockStore({
     onlineUsers: [],
     messages: [],
     newMessage: '',
+    currentRoom: { room_id: 1, room_name: 'global' },
   },
   user: {
     theme: null,

@@ -15,6 +15,7 @@ describe('Registration', () => {
         firstName: '',
         lastName: '',
         success: null,
+        error: null,
     };
     beforeEach(() => {
         props = {
@@ -48,5 +49,20 @@ describe('Registration', () => {
         const component = mountSmart(<Registration {...props} />);
         component.find('input').at(0).simulate('change', { target: { name: 'email', value: 'emailValue' } });
         expect(setRegistrationValue).toHaveBeenCalledWith({ name: 'email', value: 'emailValue' });
+    });
+    it('should click change input with error', () => {
+        props.fields = {
+            error: true,
+        };
+        const component = mountSmart(<Registration {...props} />);
+        component.find('input').at(0).simulate('change', { target: { name: 'email', value: 'emailValue' } });
+        expect(setRegistrationValue).toHaveBeenCalledWith({ name: 'email', value: 'emailValue' });
+    });
+    it('should redirect', () => {
+        props.fields = {
+            success: true,
+        };
+        const component = mountSmart(<Registration {...props} />);
+        expect(component.find('Redirect')).toHaveLength(1);
     });
 });

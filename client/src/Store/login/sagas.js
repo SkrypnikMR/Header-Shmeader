@@ -5,37 +5,38 @@ import i18next from 'i18next';
 import { NotificationManager } from 'react-notifications';
 import { actionTypes } from './actionTypes';
 import { logValues } from './selectors';
-import { validation } from '../../helpers/validation';
+import { validation } from '/src/helpers/validation';
 import { setLoginValue, clearLoginInputs, reciveErrorRequest, reciveSuccessRequest } from './actions';
-import { support } from '../../helpers/support';
+import { support } from '/src/helpers/support';
 import { setAuthValues } from '../user/actions';
 
 export function* workerLogin() {
     try {
         const data = yield select(logValues);
-        const { loginValidation } = validation;
-        const { message: validateMessage, isValid } = loginValidation(data);
+        const { message: validateMessage, isValid } = yield call(validation.loginValidation, data);
         if (!isValid) {
-            return NotificationManager.error(i18next.t(validateMessage), i18next.t('input_error'), 2000);
+            return yield call([NotificationManager, NotificationManager.error],
+                i18next.t(validateMessage), i18next.t('input_error'), 2000);
         }
-
         const { token, message, userInfo } = yield call(postRequest, routes.account.login, data);
         if (token) {
             yield (put(clearLoginInputs()));
             yield put(reciveSuccessRequest());
-            yield call(support.setSessionStorageItem, 'token', token);
-            yield call(support.setSessionStorageItem, 'userInfo', userInfo);
+            yield call([support, support.setSessionStorageItem], 'token', token);
+            yield call([support, support.setSessionStorageItem], 'userInfo', userInfo);
             yield put(setAuthValues({ token, userInfo }));
             yield put(setLoginValue({ name: 'success', value: true }));
         } else {
             yield put(setLoginValue({ name: 'success', value: false }));
             yield put(reciveErrorRequest());
-            return NotificationManager.error(i18next.t(message), i18next.t('login_error'), 2000);
+            return yield call([NotificationManager, NotificationManager.error],
+                i18next.t(message), i18next.t('login_error'), 2000);
         }
     } catch (e) {
         yield put(setLoginValue({ name: 'success', value: false }));
         yield put(reciveErrorRequest());
-        return NotificationManager.error(i18next.t('server_error_text'), i18next.t('server_error'), 2000);
+        return yield call([NotificationManager, NotificationManager.error],
+            i18next.t('server_error_text'), i18next.t('server_error'), 2000);
     }
 }
 

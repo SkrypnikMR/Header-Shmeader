@@ -60,4 +60,37 @@ describe('registration actions', () => {
             expect(actions.sendNewMessage()).toEqual({ type: actionTypes.SEND_NEW_MESSAGE });
         });
     });
+    describe('actions.init', () => {
+        it('toBe defined', () => {
+            expect(actions.init).toBeDefined();
+        });
+        it('toBe function', () => {
+            expect(typeof actions.init).toBe('function');
+        });
+        it('should return value', () => {
+            expect(actions.init()).toEqual({ type: actionTypes.INIT_CHAT });
+        });
+    });
+    describe('actions.getAllRooms', () => {
+        it('toBe defined', () => {
+            expect(actions.getAllRooms).toBeDefined();
+        });
+        it('toBe function', () => {
+            expect(typeof actions.getAllRooms).toBe('function');
+        });
+        it('should return value', () => {
+            expect(actions.getAllRooms()).toEqual({ type: actionTypes.GET_ALL_ROOMS });
+        });
+    });
+    describe('actions.getAllMessages', () => {
+        it('toBe defined', () => {
+            expect(actions.getAllMessages).toBeDefined();
+        });
+        it('toBe function', () => {
+            expect(typeof actions.getAllMessages).toBe('function');
+        });
+        it('should return value', () => {
+            expect(actions.getAllMessages()).toEqual({ type: actionTypes.GET_ALL_MESSAGES });
+        });
+    });
 });

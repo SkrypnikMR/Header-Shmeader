@@ -18,7 +18,7 @@ export const reducer = (state = initialState, action) => {
         case actionTypes.SEND_REGISTRATION_REQUEST:
             return { ...state, isLoading: true };
         case actionTypes.REGISTRATION_REQUEST_SUCCESS:
-            return { ...state, isLoading: false };
+            return { ...state, isLoading: false, success: false };
         case actionTypes.REGISTRATION_REQUEST_ERROR:
             return { ...state, isLoading: false, error: action.payload };
         case actionTypes.CLEAR_INPUTS_VALUES:

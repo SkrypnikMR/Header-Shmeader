@@ -26,7 +26,7 @@ import { getRequest } from '../../helpers/requests';
 import { routes } from '../../constants/routes';
 import { support } from '/src/helpers/support';
 
-let globalSocket = { emit: () => { }, on: () => { } };
+export let globalSocket = { emit: () => { }, on: () => { } };
 
 export const createSocketChannel = socket => eventChannel((emit) => {
     socket.on('users_online', data => emit(putOnlineUsers(data)));
@@ -35,11 +35,6 @@ export const createSocketChannel = socket => eventChannel((emit) => {
         socket.off('users_online', data => emit(putOnlineUsers(data)));
     };
 });
-export function* initSaga() {
-    yield put(connection());
-    yield put(getAllRooms());
-    yield put(getAllMessages());
-}
 export const connect = (user) => {
     globalSocket = io('localhost:2282');
     return new Promise((resolve) => {
@@ -49,6 +44,11 @@ export const connect = (user) => {
         });
     });
 };
+export function* initSaga() {
+    yield put(connection());
+    yield put(getAllRooms());
+    yield put(getAllMessages());
+}
 export function* connectionSaga() {
     try {
         const user = yield select(userInfo);

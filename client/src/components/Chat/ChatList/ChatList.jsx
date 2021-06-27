@@ -8,7 +8,7 @@ const ChatList = ({ rooms }) => {
   return (
     <StChatList>
       <Search />
-      {rooms.map(room => (
+      {rooms?.map(room => (
         <ChatListItems
           key={room.room_id}
           content={room.room_name}

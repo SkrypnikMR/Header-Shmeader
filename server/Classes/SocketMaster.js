@@ -21,6 +21,7 @@ class SocketMaster extends ChatManager {
             })
             socket.on('messages', (message) => {
                 const { room_id } = message;
+                console.log(message);
                 this.setNewMessage(message);
                 this.io.to(room_id).emit('messages', message);
             })
