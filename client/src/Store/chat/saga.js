@@ -24,6 +24,7 @@ import { userInfo } from '../user/selectors';
 import { newMessage, currentRoom } from './selectors';
 import { getRequest } from '../../helpers/requests';
 import { routes } from '../../constants/routes';
+import { support } from '/src/helpers/support';
 
 let globalSocket = { emit: () => { }, on: () => { } };
 
@@ -66,8 +67,14 @@ export function* sendMessageSaga() {
         const { email } = yield select(userInfo);
         const message = yield select(newMessage);
         const { room_name, room_id } = yield select(currentRoom);
-        if (!message) return yield call([NotificationManager, NotificationManager.error], i18next.t('without_text'), i18next.t('input_error'), 2000);
-        if (!room_name) return yield call([NotificationManager, NotificationManager.error], i18next.t('without_room'), i18next.t('input_error'), 2000);
+        if (!message) {
+            return yield call([NotificationManager, NotificationManager.error],
+                i18next.t('without_text'), i18next.t('input_error'), 2000);
+        }
+        if (!room_name) {
+            return yield call([NotificationManager, NotificationManager.error],
+                i18next.t('without_room'), i18next.t('input_error'), 2000);
+        }
         const requestMessage = {
             author: email,
             text: message,
@@ -77,7 +84,8 @@ export function* sendMessageSaga() {
         };
         yield call([globalSocket, globalSocket.emit], 'messages', requestMessage);
     } catch (e) {
-        yield call([NotificationManager, NotificationManager.error], i18next.t('server_error_text'), i18next.t('server_error'), 2000);
+        yield call([NotificationManager, NotificationManager.error],
+            i18next.t('server_error_text'), i18next.t('server_error'), 2000);
     }
 }
 export function* getAllRoomsSaga() {
@@ -87,16 +95,13 @@ export function* getAllRoomsSaga() {
         const rooms = yield call(getRequest, `${routes.chat.rooms}?id=${id}`);
         yield put(reciveSuccessRoomsRequest());
         yield put(setAllRooms(rooms));
-        const messagesFolders = {};
-        rooms.forEach((room) => {
-            const { room_name } = room;
-            messagesFolders[room_name] = [];
-        });
+        const messagesFolders = yield call([support, support.getMessagesFolders], rooms);
         yield put(putMessagesFolders(messagesFolders));
         yield call([globalSocket, globalSocket.emit], 'join', rooms);
     } catch (e) {
         yield put(reciveErrorRoomsRequest());
-        yield call([NotificationManager, NotificationManager.error], i18next.t('server_error_text'), i18next.t('server_error'), 2000);
+        yield call([NotificationManager, NotificationManager.error],
+            i18next.t('server_error_text'), i18next.t('server_error'), 2000);
     }
 }
 export function* getAllMessagesSaga() {
@@ -108,7 +113,8 @@ export function* getAllMessagesSaga() {
         yield put(putMessages(messages));
     } catch (e) {
         yield put(reciveErrorMessagesRequest());
-        yield call([NotificationManager, NotificationManager.error], i18next.t('server_error_text'), i18next.t('server_error'), 2000);
+        yield call([NotificationManager, NotificationManager.error],
+            i18next.t('server_error_text'), i18next.t('server_error'), 2000);
     }
 }
 export function* watcherChatOperations() {
