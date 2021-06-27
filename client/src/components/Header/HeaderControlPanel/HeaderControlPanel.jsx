@@ -15,13 +15,13 @@ const HeaderControlPanel = ({ themeMode, setValue, history, location }) => {
         localStorage.setItem('lang', e.target.value);
     };
     const handleThemeClick = ({ target }) => {
-      support.setSessionStorageItem('themeMode', target.value);
-      setValue({ name: 'themeMode', value: target.value });
-      };
+        support.setSessionStorageItem('themeMode', target.value);
+        setValue({ name: 'themeMode', value: target.value });
+    };
     const handleMyAccountClick = () => history.push(APP_ROUTES.account);
     const getFunctionForButtons = (el) => {
         switch (el.id) {
-            case 'theme_btn': return handleThemeClick; 
+            case 'theme_btn': return handleThemeClick;
             case 'account': return handleMyAccountClick;
             default: return handleChangeLanguage;
         }
@@ -34,17 +34,17 @@ const HeaderControlPanel = ({ themeMode, setValue, history, location }) => {
                     || el.rout === location.pathname) return null;
                 return (
                     <Button
-                    id={el.id}
-                    content={el.content}
-                    key={el.id}
-                    color='white'
-                    fontSize='26px'
-                    width='60px'
-                    height="10vh"
-                    borderRadius="0px"
-                    value={el.value}
-                    bgColor='rgba(0,0,0,0)'
-                    onClick={getFunctionForButtons(el)}
+                        id={el.id}
+                        content={el.content}
+                        key={el.id}
+                        color='white'
+                        fontSize='26px'
+                        width='60px'
+                        height="10vh"
+                        borderRadius="0px"
+                        value={el.value}
+                        bgColor='rgba(0,0,0,0)'
+                        onClick={getFunctionForButtons(el)}
                     />
                 );
             })}
@@ -55,7 +55,7 @@ const HeaderControlPanel = ({ themeMode, setValue, history, location }) => {
 HeaderControlPanel.propTypes = {
     setValue: PropTypes.func,
     themeMode: PropTypes.string,
-    history: PropTypes.array,
+    history: PropTypes.object,
     location: PropTypes.object,
 };
 

@@ -27,7 +27,7 @@ const ChatDisplay = ({ messages, currentUser, currentRoomName }) => {
 ChatDisplay.propTypes = {
   messages: PropTypes.objectOf(PropTypes.array),
   currentUser: PropTypes.string,
-  currentRoomName: PropTypes.object,
+  currentRoomName: PropTypes.string,
 };
 
 export default ChatDisplay;
