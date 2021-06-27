@@ -6,7 +6,8 @@ import 'react-notifications/lib/notifications.css';
 import Registration from '../Registration';
 import Login from '../Login';
 import Chat from '../Chat';
-import MyAccount from "../MyAccount";
+import MyAccount from '../MyAccount';
+import ModalComponent from '../UI/Modal';
 import Header from '../Header';
 import { APP_ROUTES } from '/src/constants/reactRoutes';
 
@@ -24,6 +25,11 @@ const App = ({ userTheme, userThemeMode }) => {
           <Route path={APP_ROUTES.account} exact component={MyAccount} />
           </Switch>
       </BrowserRouter>
+      <ModalComponent 
+           isOpen
+           currentModalType="notificationSettings"
+           headerTextKey="notification_settings"
+      />
       <NotificationContainer />
     </StAppDiv >
   );
