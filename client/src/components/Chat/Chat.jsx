@@ -4,12 +4,8 @@ import ChatList from './ChatList';
 import ChatContent from './ChatContent';
 import { StChat } from './styled';
 
-const Chat = ({ connection, userID, getAllRooms, getAllMessages }) => {
-  useEffect(() => {
-    connection();
-    getAllRooms(userID);
-    getAllMessages(userID);
-  }, []);
+const Chat = ({ init }) => {
+  useEffect(() => init(), []);
   return (
     <StChat>
       <ChatList />
@@ -19,10 +15,7 @@ const Chat = ({ connection, userID, getAllRooms, getAllMessages }) => {
 };
 
 Chat.propTypes = {
-  connection: PropTypes.func.isRequired,
-  userID: PropTypes.number,
-  getAllRooms: PropTypes.func.isRequired,
-  getAllMessages: PropTypes.func.isRequired,
+  init: PropTypes.func.isRequired,
 };
 
 export default Chat;

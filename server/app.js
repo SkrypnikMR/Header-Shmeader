@@ -9,6 +9,7 @@ const { Server } = require("socket.io");
 const io = new Server(server, { cors: "*" });
 const SocketMaster = require('./Classes/SocketMaster');
 new SocketMaster(io);
+const { API } = require('./Const/urls');
 const account = require('./routes/account');
 const chat = require('./routes/chat');
 const PORT = process.env.PORT || 1000;
@@ -16,7 +17,7 @@ const PORT = process.env.PORT || 1000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-app.use('/api/account', account);
-app.use('/api/chat', chat);
+app.use(API.ACCOUNT, account);
+app.use(API.CHAT, chat);
 
 server.listen(PORT, () => console.log(`app start on port:${PORT}`));

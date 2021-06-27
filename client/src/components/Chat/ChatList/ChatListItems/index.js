@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ChatListItems from './ChatListItems.jsx';
-import { setValue } from '../../../../Store/chat/actions';
+import { setValue } from '/src/Store/chat/actions';
 
 const mapDispatchToProps = dispatch => ({
     setValue: payload => dispatch(setValue(payload)),

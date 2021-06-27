@@ -20,11 +20,11 @@ class SocketMaster extends ChatManager {
                 this.io.emit('users_online', this.users);
             })
             socket.on('messages', (message) => {
-                const { room } = message;
+                const { room_id } = message;
                 this.setNewMessage(message);
-                this.io.to(room.room_id).emit('messages', message);
+                this.io.to(room_id).emit('messages', message);
             })
-            socket.on('join', ({ room }) => socket.join(room.room_id));
+            socket.on('join', (rooms) => rooms.forEach(room => socket.join(room.room_id)));
         });
     }
 }

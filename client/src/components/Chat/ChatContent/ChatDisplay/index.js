@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import ChatDisplay from './ChatDisplay.jsx';
-import { userInfo } from '/src/Store/user/selectors';
-import { messages, currentRoom } from '/src/Store/chat/selectors';
+import { userEmail } from '/src/Store/user/selectors';
+import { messages, currentRoomName } from '/src/Store/chat/selectors';
 
 const mapStateToProps = state => ({
     messages: messages(state),
-    currentRoom: currentRoom(state),
-    currentUser: userInfo(state).email,
+    currentRoomName: currentRoomName(state),
+    currentUser: userEmail(state),
 });
 
 export default connect(mapStateToProps)(ChatDisplay);

@@ -1,14 +1,9 @@
 import Chat from './Chat.jsx';
 import { connect } from 'react-redux';
-import { connection, getAllRooms, getAllMessages } from '/src/Store/chat/actions';
-import { userInfo } from '/src/Store/user/selectors';
-
-const mapStateToProps = state => ({ userID: userInfo(state).id });
+import { init } from '/src/Store/chat/actions';
 
 const mapDispatchToProps = dispatch => ({
-    connection: () => dispatch(connection()),
-    getAllRooms: payload => dispatch(getAllRooms(payload)),
-    getAllMessages: payload => dispatch(getAllMessages(payload)),
+    init: () => dispatch(init()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Chat);
+export default connect(null, mapDispatchToProps)(Chat);

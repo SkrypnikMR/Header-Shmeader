@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { StChatTitle } from './styled';
 
-const ChatTitle = ({ currentRoom }) => {
+const ChatTitle = ({ currentRoomName }) => {
   const { t } = useTranslation();
   return (
     <StChatTitle>
       <span>
-        {currentRoom}
+        {currentRoomName}
       </span>
       <p>{t('user_list')}</p>
     </StChatTitle>
@@ -16,7 +16,7 @@ const ChatTitle = ({ currentRoom }) => {
 };
 
 ChatTitle.propTypes = {
-  currentRoom: PropTypes.string,
+  currentRoomName: PropTypes.string,
 };
 
 export default ChatTitle;

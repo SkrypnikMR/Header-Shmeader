@@ -4,8 +4,9 @@ const connection = require('../Controllers/Connector');
 const ChatManager = require('../Classes/ChatManager');
 const chatManager = new ChatManager(connection);
 const { getAllRooms, getAllMessages } = chatManager;
+const { CHAT } = require('../Const/urls');
 
-router.get('/rooms', getAllRooms);
-router.get('/messages', getAllMessages);
+router.get(CHAT.ROOMS, getAllRooms);
+router.get(CHAT.MESSAGES, getAllMessages);
 
 module.exports = router;

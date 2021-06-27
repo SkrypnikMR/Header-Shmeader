@@ -39,9 +39,6 @@ class AccountManager {
             res.status(200).json({ token, userInfo, message: 'done' });
         } catch (e) { res.status(500).json({ message: 'something_wrong' }); }
     }
-    loginQuery = ({ email, password, firstName, lastName }) => {
-
-    }
 }
 
 module.exports = AccountManager;

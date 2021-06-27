@@ -36,18 +36,18 @@ class ChatManager {
     }
     setNewMessage = async (message) => {
         try {
-            const { author, text, time, room } = message;
+            const { author, text, time, room_id, room_name } = message;
             const invalved = await this.connect.query(`SELECT users.id as id
             FROM
             rooms,
             users_rooms,
             users
-            where rooms.id = ${room.room_id}
+            where rooms.id = ${room_id}
             AND users.id = users_rooms.user_id
-            AND users_rooms.room_id = ${room.room_id}`
+            AND users_rooms.room_id = ${room_id}`
             );
             await this.connect.query(`INSERT INTO messages( author, text, time, room_name, room_id)
-            VALUES('${author}', '${text}', '${time}', '${room.room_name}', ${room.room_id});`);
+            VALUES('${author}', '${text}', '${time}', '${room_name}', ${room_id});`);
             const [{ id }] = await this.connect.query(`SELECT LAST_INSERT_ID() as id`);
             await invalved.forEach(async invalvedUser => {
                 const query = `INSERT INTO users_messages(user_id, message_id) VALUES(${invalvedUser.id}, ${await id});`
