@@ -13,7 +13,7 @@ describe('ModalComponent', () => {
         isOpen: true, 
         onChangeIsOpen: jest.fn(), 
         currentModalType: 'notificationSettings',
-        Component: <Component currentModalType='notificationSettings'/>,
+        Component,
     };
   });
   it('without component', () => {
