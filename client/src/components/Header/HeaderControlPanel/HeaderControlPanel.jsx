@@ -7,6 +7,7 @@ import Button from '../../UI/Button';
 import { APP_ROUTES } from '/src/constants/reactRoutes';
 import { ROUTS_WITHOUT_MY_ACCOUNT } from '../../../constants/ui';
 import { support } from '../../../helpers/support';
+import { TRANSPARENT_BACKGROUND, colorDefault } from '../../UI/baseLayout';
 
 const HeaderControlPanel = ({ themeMode, setValue, history, location }) => {
     const { i18n } = useTranslation();
@@ -37,13 +38,13 @@ const HeaderControlPanel = ({ themeMode, setValue, history, location }) => {
                         id={el.id}
                         content={el.content}
                         key={el.id}
-                        color='white'
+                        color={colorDefault}
                         fontSize='26px'
                         width='60px'
                         height="10vh"
                         borderRadius="0px"
                         value={el.value}
-                        bgColor='rgba(0,0,0,0)'
+                        bgColor={TRANSPARENT_BACKGROUND}
                         onClick={getFunctionForButtons(el)}
                     />
                 );

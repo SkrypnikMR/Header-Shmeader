@@ -10,7 +10,6 @@ import { getRequest } from '/src/helpers/requests';
 import { routes } from '/src/constants/routes';
 import { support } from '/src/helpers/support';
 
-
 describe('chatSaga', () => {
     describe('', () => {
         let action;

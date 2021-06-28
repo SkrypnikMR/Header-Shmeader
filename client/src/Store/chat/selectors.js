@@ -18,6 +18,6 @@ export const currentRoom = createSelector(
   ({ currentRoom }) => currentRoom,
 );
 export const currentRoomName = createSelector(
-  chatStore,
-  ({ currentRoom }) => currentRoom.room_name,
+  currentRoom,
+  ({ room_name }) => room_name,
 );
