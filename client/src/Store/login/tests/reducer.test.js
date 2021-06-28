@@ -1,5 +1,11 @@
 import { reducer, initialState } from '../reducer';
-import { setLoginValue, clearLoginInputs } from '../actions';
+import {
+    setLoginValue,
+    clearLoginInputs,
+    sendLoginRequest,
+    reciveSuccessRequest,
+    reciveErrorRequest,
+} from '../actions';
 
 describe('loginReducer', () => {
     it('SET_VALUE', () => {
@@ -16,5 +22,26 @@ describe('loginReducer', () => {
                 password: '',
             });
     });
-    it('default', () => expect(reducer(initialState, {})).toEqual(initialState));
+    it('SEND_LOGIN_REQUEST', () => {
+        expect(reducer(initialState, sendLoginRequest()))
+            .toEqual({
+                ...initialState,
+                isLoading: true,
+            });
+    });
+    it('LOGIN_REQUEST_SUCCESS', () => {
+        expect(reducer(initialState, reciveSuccessRequest()))
+            .toEqual({
+                ...initialState,
+                isLoading: false,
+            });
+    });
+    it('LOGIN_REQUEST_ERROR', () => {
+        expect(reducer(initialState, reciveErrorRequest()))
+            .toEqual({
+                ...initialState,
+                isLoading: false,
+            });
+    });
+    it('default', () => expect(reducer(undefined, { type: '' })).toEqual(initialState));
 });

@@ -1,5 +1,8 @@
-class SocketMaster {
+const connection = require('../Controllers/Connector');
+const ChatManager = require('./ChatManager');
+class SocketMaster extends ChatManager {
     constructor(io) {
+        super(connection);
         this.io = io;
         this.connection();
     }
@@ -17,9 +20,12 @@ class SocketMaster {
                 this.io.emit('users_online', this.users);
             })
             socket.on('messages', (message) => {
+                const { room_id } = message;
                 console.log(message);
-                this.io.emit('messages', message);
+                this.setNewMessage(message);
+                this.io.to(room_id).emit('messages', message);
             })
+            socket.on('join', (rooms) => rooms.forEach(room => socket.join(room.room_id)));
         });
     }
 }

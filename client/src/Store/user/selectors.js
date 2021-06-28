@@ -9,6 +9,10 @@ export const userInfo = createSelector(
   userStore,
   ({ userInfo }) => userInfo,
 );
+export const userEmail = createSelector(
+  userInfo,
+  ({ email }) => email,
+);
 export const newMessage = createSelector(
   userStore,
   ({ newMessage }) => newMessage,

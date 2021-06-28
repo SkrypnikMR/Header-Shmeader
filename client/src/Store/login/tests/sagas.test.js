@@ -1,19 +1,16 @@
 import { expectSaga, testSaga } from 'redux-saga-test-plan';
 import { routes } from 'src/constants/routes';
-import { postRequest } from 'src/helpers/requests';
+import { NotificationManager } from 'react-notifications';
+import i18next from 'i18next';
 import * as sagas from '../sagas';
 import { logValues } from '../selectors';
-import { setLoginValue, clearLoginInputs, reciveErrorRequest, reciveSuccessRequest } from '../actions';
+import { postRequest } from 'src/helpers/requests';
+import * as actions from '../actions';
 import { setAuthValues } from '../../user/actions';
 import { support } from '/src/helpers/support';
 import { actionTypes } from '../actionTypes';
+import { validation } from '/src/helpers/validation';
 
-
-jest.mock('../../../helpers/validation', () => ({
-    validation: {
-        loginValidation: jest.fn().mockReturnValue({ isValid: true, message: 'validation' }),
-    },
-}));
 
 describe('loginSaga', () => {
     describe('workerLogin', () => {
@@ -23,62 +20,87 @@ describe('loginSaga', () => {
                 type: actionTypes.SEND_LOGIN_REQUEST,
             };
         });
-        const logValue = { login: 'login', password: '123456' };
-        const path = `${routes.account.login}`;
-        it('should call workerLogin without error', () => {
+        it('should call workerLogin with noValid data', () => {
+            const mocklogValues = { login: 'login', password: '123456' };
+            const mockFalseValidation = { message: 'invalid', isValid: false };
+            const validateMessage = mockFalseValidation.message;
             testSaga(sagas.workerLogin, action)
                 .next()
                 .select(logValues)
-                .next(logValue)
-                .call(postRequest, path, logValue)
-                .next({
-                    token: 'someVeryLongToken',
-                    userInfo: {
-                        id: 1,
-                        firstName: 'Max',
-                        lastName: 'Skrypnik',
-                        email: 'SkripnikMRW@GMAIL.COM',
-                    },
-                })
-                .put(clearLoginInputs())
-                .next()
-                .put(reciveSuccessRequest())
-                .next()
-                .call(support.setSessionStorageItem, 'token', 'someVeryLongToken')
-                .next()
-                .call(support.setSessionStorageItem, 'userInfo', {
-                    id: 1,
-                    firstName: 'Max',
-                    lastName: 'Skrypnik',
-                    email: 'SkripnikMRW@GMAIL.COM',
-                })
-                .next()
-                .put(setAuthValues({
-                    token: 'someVeryLongToken',
-                    userInfo: {
-                        id: 1,
-                        firstName: 'Max',
-                        lastName: 'Skrypnik',
-                        email: 'SkripnikMRW@GMAIL.COM',
-                    },
-                }))
-                .next()
-                .put(setLoginValue({ name: 'success', value: true }))
+                .next(mocklogValues)
+                .call(validation.loginValidation, mocklogValues)
+                .next(mockFalseValidation)
+                .call([NotificationManager, NotificationManager.error],
+                    i18next.t(validateMessage), i18next.t('input_error'), 2000)
                 .next()
                 .isDone();
         });
-        it('should call workerLogin , serverAnswer !== done ', () => {
+        it('should call workerLogin with Valid data but not valid on server', () => {
+            const mocklogValues = { login: 'login', password: '123456' };
+            const mockValidation = { message: '', isValid: true };
+            const invalidAcc = { message: 'not valid acc' };
+            const { message } = invalidAcc;
             testSaga(sagas.workerLogin, action)
                 .next()
                 .select(logValues)
-                .next(logValue)
-                .call(postRequest, path, logValue)
-                .next({ message: 'such exists user' })
-                .put(setLoginValue({ name: 'success', value: false }))
+                .next(mocklogValues)
+                .call(validation.loginValidation, mocklogValues)
+                .next(mockValidation)
+                .call(postRequest, routes.account.login, mocklogValues)
+                .next(invalidAcc)
+                .put(actions.setLoginValue({ name: 'success', value: false }))
                 .next()
-                .put(reciveErrorRequest())
+                .put(actions.reciveErrorRequest())
+                .next()
+                .call([NotificationManager, NotificationManager.error], i18next.t(message), i18next.t('login_error'), 2000)
                 .next()
                 .isDone();
+        });
+        it('should call workerLogin with Valid data and success request', () => {
+            const mocklogValues = { login: 'login', password: '123456' };
+            const mockValidation = { message: '', isValid: true };
+            const mockServerAnswer = {
+                token: 'someToken',
+                message: 'yep',
+                userInfo: {
+                    email: 'Smartick@qip.ru',
+                    firstName: 'Egor',
+                    lastName: 'Letov',
+                },
+            };
+            const { token, userInfo } = mockServerAnswer;
+            testSaga(sagas.workerLogin, action)
+                .next()
+                .select(logValues)
+                .next(mocklogValues)
+                .call(validation.loginValidation, mocklogValues)
+                .next(mockValidation)
+                .call(postRequest, routes.account.login, mocklogValues)
+                .next(mockServerAnswer)
+                .put(actions.clearLoginInputs())
+                .next()
+                .put(actions.reciveSuccessRequest())
+                .next()
+                .call([support, support.setSessionStorageItem], 'token', token)
+                .next()
+                .call([support, support.setSessionStorageItem], 'userInfo', userInfo)
+                .next()
+                .put(setAuthValues({ token, userInfo }))
+                .next()
+                .put(actions.setLoginValue({ name: 'success', value: true }))
+                .next()
+                .isDone();
+        });
+        it('should call workerLogin and error ', () => {
+            testSaga(sagas.workerLogin, action)
+                .next()
+                .throw()
+                .put(actions.setLoginValue({ name: 'success', value: false }))
+                .next()
+                .put(actions.reciveErrorRequest())
+                .next()
+                .call([NotificationManager, NotificationManager.error],
+                    i18next.t('server_error_text'), i18next.t('server_error'), 2000);
         });
     });
     describe('watchers', () => {

@@ -45,4 +45,11 @@ describe('Login', () => {
         component.find('input').first().simulate('change', { target: { name: 'email', value: 'emailValue' } });
         expect(setLoginValue).toHaveBeenCalledWith({ name: 'email', value: 'emailValue' });
     });
+    it('should redirect', () => {
+        props.fields = {
+            success: true,
+        };
+        const component = mountSmart(<Login {...props} />);
+        expect(component.find('Redirect')).toHaveLength(1);
+    });
 });

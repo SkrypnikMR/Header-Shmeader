@@ -4,4 +4,8 @@ export const routes = {
         registration: 'account/registration',
         login: 'account/login',
     },
+    chat: {
+        rooms: 'chat/rooms',
+        messages: 'chat/messages',
+    },
 };

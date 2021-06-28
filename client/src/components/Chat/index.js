@@ -1,9 +1,9 @@
 import Chat from './Chat.jsx';
 import { connect } from 'react-redux';
-import { connection } from '/src/Store/chat/actions';
+import { init } from '/src/Store/chat/actions';
 
 const mapDispatchToProps = dispatch => ({
-    connection: () => dispatch(connection()),
+    init: () => dispatch(init()),
 });
 
 export default connect(null, mapDispatchToProps)(Chat);

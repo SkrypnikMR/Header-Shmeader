@@ -4,8 +4,8 @@ import ChatList from './ChatList';
 import ChatContent from './ChatContent';
 import { StChat } from './styled';
 
-const Chat = ({ connection }) => {
-  useEffect(() => connection(), []);
+const Chat = ({ init }) => {
+  useEffect(() => init(), []);
   return (
     <StChat>
       <ChatList />
@@ -14,6 +14,8 @@ const Chat = ({ connection }) => {
   );
 };
 
-Chat.propTypes = { connection: PropTypes.func.isRequired };
+Chat.propTypes = {
+  init: PropTypes.func.isRequired,
+};
 
 export default Chat;

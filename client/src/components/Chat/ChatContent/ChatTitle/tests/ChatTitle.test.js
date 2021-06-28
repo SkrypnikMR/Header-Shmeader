@@ -5,15 +5,15 @@ import ChatTitle from '../ChatTitle';
 
 describe('ChatTitle', () => {
   let props;
-  const content = '';
+  const currentRoomName = 'global';
   beforeEach(() => {
     props = {
-      content,
+      currentRoomName,
     };
-});
-    it('Should match snapshot', () => {
-      const component = shallow(<ChatTitle {...props} />);
-      expect(component.html).toMatchSnapshot();
+  });
+  it('Should match snapshot', () => {
+    const component = shallow(<ChatTitle {...props} />);
+    expect(component.html).toMatchSnapshot();
   });
   it('Should render StChatTitle', () => {
     const component = shallow(<ChatTitle />);
@@ -26,9 +26,5 @@ describe('ChatTitle', () => {
   it('Should render span', () => {
     const component = shallow(<ChatTitle />);
     expect(component.find('span')).toHaveLength(1);
-  });
-  it('Should render div', () => {
-    const component = shallow(<ChatTitle />);
-    expect(component.find('div')).toHaveLength(1);
   });
 });

@@ -15,7 +15,7 @@ export const StChatTitle = styled.div`
     border-right: 1px solid black;
     padding: 5px 0;
     background-color: ${({ color = bgColorDefaultFon }) => color};
-        div{
+        span{
           color: ${({ color = bgColorDefault }) => color};
           margin-left: 20px;
         }
