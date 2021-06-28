@@ -23,33 +23,42 @@ export const StTextHeader = styled.div`
     color: ${({ color = colorDefault }) => color};
     font-size: 36px;
 `;
-export const StBackground = styled.title`
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    overflow: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.6);
-`;
+export const Component = {
+    margin: 'auto',
+    overflow: 'visible',
+    transition: 'transform 0.2s ease 0s, opacity 0.2s ease 0s',
+    transform: 'scale(0.9)',
+    opacity: '1',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    minHeight: '40vh',
+    maxHeight: '80vh',
+    width: '40%',
+    justifyContent: 'center',
+    fontFamily: 'Play, sans-serif',
+    display: 'flex',
+    overflowY: 'hidden',
+};
 export const customStyles = {
+   overlay: {
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+    },
     content: {
+        overflow: 'auto',
+        WebkitOverflowScrolling: 'touch',
         margin: 'auto',
-        overflow: 'visible',
         transition: 'transform 0.2s ease 0s, opacity 0.2s ease 0s',
         transform: 'scale(0.9)',
         opacity: '1',
+        flexFlow: 'column',
         backgroundColor: 'rgba(0, 0, 0, 0.4)',
         minHeight: '40vh',
         maxHeight: '80vh',
         width: '40%',
-        justifyContent: 'center',
         fontFamily: 'Play, sans-serif',
         display: 'flex',
         overflowY: 'hidden',

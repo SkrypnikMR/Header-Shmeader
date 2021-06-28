@@ -1,37 +1,31 @@
 import React from 'react';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import Button from '../Button';
-import { StModalHeader, customStyles, StBackground, StTextHeader } from './styled';
+import { StModalHeader, customStyles, StTextHeader } from './styled';
 
-const ModalComponent = (props) => {
-    const {
-        isOpen, 
-        onChangeIsOpen, 
-        headerTextKey, 
-        currentModalType,
-        content,
-        fontSize,
-        Component,
-    } = props;
-
-    const handleCloseModal = () => onChangeIsOpen({ currentModalType, data: {} });
-
+const ModalComponent = ({
+    isOpen, 
+    onChangeIsOpen, 
+    headerTextKey, 
+    currentModalType,
+    fontSize,
+    Component, 
+}) => {
+    const { t } = useTranslation();
+    const handleCloseModal = () => onChangeIsOpen({ currentModalType, data: {}, isOpen: false });
+if (Component === currentModalType) return null;
     return (
-        <StBackground> 
             <Modal  
             isOpen={isOpen}
-            onClick={handleCloseModal}
+            onRequestClose={handleCloseModal}
             style={customStyles}
             >
                 <StModalHeader 
-                headerTextKey={headerTextKey} 
-                content={content} 
                 fontSize={fontSize}
                 >
-                    <StTextHeader>
-                    {headerTextKey}
-                    </StTextHeader>
+                    <StTextHeader>{t(headerTextKey)}</StTextHeader>
                     <Button 
                     height="50px"
                     width="50px"
@@ -45,9 +39,8 @@ const ModalComponent = (props) => {
                     bgColor="transparent"
                     />
                 </StModalHeader>
-                {Component}
+                <Component currentModalType={currentModalType}/>
             </Modal>
-        </StBackground> 
     );
 };
 
@@ -57,7 +50,6 @@ ModalComponent.propTypes = {
     headerTextKey: PropTypes.string,
     currentModalType: PropTypes.string, 
     Component: PropTypes.element, 
-    content: PropTypes.string,
     fontSize: PropTypes.string,
 };
  
