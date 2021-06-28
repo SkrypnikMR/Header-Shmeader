@@ -26,7 +26,6 @@ const App = ({ userTheme, userThemeMode }) => {
           </Switch>
       </BrowserRouter>
       <ModalComponent
-           isOpen='true'
            Component={Component}
            headerTextKey="notification_settings"
       />

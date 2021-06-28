@@ -12,9 +12,7 @@ describe('ModalComponent', () => {
     props = {
         isOpen: true, 
         onChangeIsOpen: jest.fn(), 
-        headerTextKey: ' ', 
         currentModalType: 'notificationSettings',
-        fontSize: ' ',
         Component: <Component currentModalType='notificationSettings'/>,
     };
   });
@@ -27,39 +25,15 @@ describe('ModalComponent', () => {
     expect(component.html).toMatchSnapshot();
   });
   it('check prop value', () => {
-    props = {
-        isOpen: true, 
-        onChangeIsOpen: jest.fn(), 
-        headerTextKey: ' ', 
-        currentModalType: 'notificationSettings',
-        fontSize: ' ',
-        Component: <Component currentModalType='notificationSettings'/>,
-    };
     const component = shallow(<ModalComponent {...props} />).find('Modal');
     expect(component.props().isOpen).toEqual(true);
   });
   it('should render button', () => {
-    props = {
-        isOpen: true, 
-        onChangeIsOpen: jest.fn(), 
-        headerTextKey: ' ', 
-        currentModalType: 'notificationSettings',
-        fontSize: ' ',
-        Component: <Component currentModalType='LogOut'/>,
-    };
-    const component = shallow(<ModalComponent {...props} />).find('Modal');
+    const component = shallow(<ModalComponent {...props} />);
     expect(component.find('Button')).toHaveLength(1);
   });
   it('should click on the button', () => {
-    props = {
-        isOpen: true, 
-        onChangeIsOpen: jest.fn(), 
-        headerTextKey: ' ', 
-        currentModalType: 'notificationSettings',
-        fontSize: ' ',
-        Component: <Component currentModalType='LogOut'/>,
-    };
-    const component = shallow(<ModalComponent {...props} />).find('Modal');
+    const component = shallow(<ModalComponent {...props} />);
     component.find('Button').simulate('click');
     expect(props.onChangeIsOpen).toHaveBeenCalledWith({ currentModalType: 'notificationSettings', data: {}, isOpen: false });
   });

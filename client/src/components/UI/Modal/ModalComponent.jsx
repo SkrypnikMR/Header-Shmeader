@@ -15,7 +15,7 @@ const ModalComponent = ({
 }) => {
     const { t } = useTranslation();
     const handleCloseModal = () => onChangeIsOpen({ currentModalType, data: {}, isOpen: false });
-if (Component === currentModalType) return null;
+    if (!Component) return null;
     return (
             <Modal  
             isOpen={isOpen}
