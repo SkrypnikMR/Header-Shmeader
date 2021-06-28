@@ -6,10 +6,11 @@ import 'react-notifications/lib/notifications.css';
 import Registration from '../Registration';
 import Login from '../Login';
 import Chat from '../Chat';
-import MyAccount from "../MyAccount";
+import MyAccount from '../MyAccount';
+import ModalComponent from '../UI/Modal';
+import Component from '../UI/Modal/ModalTestComponent.jsx';
 import Header from '../Header';
 import { APP_ROUTES } from '/src/constants/reactRoutes';
-
 import { StAppDiv } from './styled';
 
 const App = ({ userTheme, userThemeMode }) => {
@@ -24,6 +25,10 @@ const App = ({ userTheme, userThemeMode }) => {
           <Route path={APP_ROUTES.account} exact component={MyAccount} />
           </Switch>
       </BrowserRouter>
+      <ModalComponent
+           Component={Component}
+           headerTextKey="notification_settings"
+      />
       <NotificationContainer />
     </StAppDiv >
   );

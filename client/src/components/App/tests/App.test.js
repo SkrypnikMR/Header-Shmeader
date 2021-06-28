@@ -4,6 +4,8 @@ import { shallowSmart } from '/src/helpers/testHelper';
 import App from '../App';
 import '/src/i18n';
 
+jest.mock('react-modal');
+
 const mockStore = configureStore();
 const store = mockStore({
   registration: {
@@ -25,8 +27,35 @@ const store = mockStore({
   user: {
     themeMode: 'light',
   },
+  modals: {
+    notificationSettings: {
+        type: 'notificationSettings',
+        data: {},
+        isOpen: true,
+    },
+    logOut: {
+        type: 'logOut',
+        data: {},
+        isOpen: false,
+    },
+    allNotification: {
+        type: 'allNotification',
+        data: {},
+        isOpen: false,
+    },
+    usersInChat: {
+        type: 'usersInChat',
+        data: {},
+        isOpen: false,
+    },
+    createChat: {
+        type: 'usersInChat',
+        data: {},
+        isOpen: false,
+    },
+  },
 });
-const props = {
+const props = { 
   userTheme: {
     light: 'lightBackground',
     dark: 'darkBackground',
