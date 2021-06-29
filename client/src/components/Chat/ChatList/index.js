@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import ChatList from './ChatList.jsx';
-import { rooms } from '/src/Store/chat/selectors';
+import { rooms, filterValue } from '/src/Store/chat/selectors';
 
-const mapStateToProps = state => ({ rooms: rooms(state) });
+const mapStateToProps = state => ({ rooms: rooms(state), filterValue: filterValue(state) });
 
 export default connect(mapStateToProps)(ChatList);

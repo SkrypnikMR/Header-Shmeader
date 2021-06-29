@@ -37,5 +37,7 @@
     "russian_translate_btn": "RU",
     "arabian_translate_btn": "AR",
     "without_room": "Вы не выбрали чат ",
-    "without_text": "Вы не можете отправить пустое сообщение"
+    "without_text": "Вы не можете отправить пустое сообщение",
+    "no_result": "Безрезультатно",
+    "try_new": "Попробуйте новый поиск."
 }

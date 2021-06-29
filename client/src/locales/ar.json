@@ -37,5 +37,7 @@
     "russian_translate_btn": "RU",
     "arabian_translate_btn": "AR",
     "without_room": "لم تقم باختيار دردشة",
-    "without_text": "لا يمكنك إرسال رسالة فارغة"
+    "without_text": "لا يمكنك إرسال رسالة فارغة",
+    "no_result": "لا نتيجة",
+    "try_new": "جرب بحث جديد."
 }

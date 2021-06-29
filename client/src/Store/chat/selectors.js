@@ -21,3 +21,7 @@ export const currentRoomName = createSelector(
   currentRoom,
   ({ room_name }) => room_name,
 );
+export const filterValue = createSelector(
+    chatStore,
+    ({ filterValue }) => filterValue,
+);
