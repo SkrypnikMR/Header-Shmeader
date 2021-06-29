@@ -7,12 +7,13 @@ export const initialState = {
   themeMode: support.getSessionStorageItem('themeMode') || 'light',
   token: support.getSessionStorageItem('token') || null,
   userInfo: support.getSessionStorageItem('userInfo') || null,
+  changeUser: { firstName: '', lastName: '', age: '', hobby: '', city: '', company: '' },
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_VALUE:
-      return { ...state, [action.payload.name]: action.payload.value };
+      return { ...state, changeUser: { ...state.changeUser, [action.payload.name]: action.payload.value } };
     case actionTypes.SET_AUTH_VALUES:
       return { ...state, token: action.payload.token, userInfo: action.payload.userInfo };
     default: return { ...state };

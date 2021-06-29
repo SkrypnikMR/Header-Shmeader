@@ -37,5 +37,11 @@
     "russian_translate_btn": "RU",
     "arabian_translate_btn": "AR",
     "without_room": "Вы не выбрали чат ",
-    "without_text": "Вы не можете отправить пустое сообщение"
+    "without_text": "Вы не можете отправить пустое сообщение",
+    "my_account": "Мой Аккаунт",
+    "hobby": "Хобби",
+    "age": "Возраст",
+    "city": "Город",
+    "company": "Компания",
+    "apply": "Подтвердить"
 }

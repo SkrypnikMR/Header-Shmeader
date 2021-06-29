@@ -1,3 +1,4 @@
+import { withRouter } from 'react-router';
 import Logo from './Logo.jsx';
 
-export default Logo;
+export default withRouter(Logo);

@@ -21,3 +21,7 @@ export const userThemeMode = createSelector(
   userStore,
   ({ themeMode }) => themeMode,
 );
+export const changeUser = createSelector(
+    userStore,
+    ({ changeUser }) => changeUser,
+);
