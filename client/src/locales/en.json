@@ -39,5 +39,6 @@
     "without_room": "You have not chosen a chat",
     "without_text": "You cannot send an empty message",
     "no_result": "No result",
-    "try_new": "Try a new search."
+    "try_new": "Try a new search.",
+    "invite_users": "Invite Users"
 }

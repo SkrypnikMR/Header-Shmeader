@@ -1,7 +1,14 @@
 import { connect } from 'react-redux';
 import ChatTitle from './ChatTitle.jsx';
 import { currentRoomName } from '/src/Store/chat/selectors';
+import { changeModalVisibility } from '/src/Store/modals/actions';
 
-const mapStateToProps = state => ({ currentRoomName: currentRoomName(state) });
+const mapStateToProps = state => ({ 
+    currentRoomName: currentRoomName(state),
+});
 
-export default connect(mapStateToProps)(ChatTitle);
+const mapDispatchToProps = dispatch => ({
+    changeModalVisibility: payload => dispatch(changeModalVisibility(payload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChatTitle);

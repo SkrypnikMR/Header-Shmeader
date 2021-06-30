@@ -6,16 +6,15 @@ import Button from '../Button';
 import { StModalHeader, customStyles, StTextHeader } from './styled';
 
 const ModalComponent = ({
-    isOpen, 
-    onChangeIsOpen, 
-    headerTextKey, 
-    currentModalType,
+    isOpen,
+    changeModalVisibility,
+    headerTextKey,
+    modalType,
     fontSize,
-    Component, 
+    children,
 }) => {
     const { t } = useTranslation();
-    const handleCloseModal = () => onChangeIsOpen({ currentModalType, data: {}, isOpen: false });
-    if (!Component) return null;
+    const handleCloseModal = () => changeModalVisibility({ modalType, data: {}, isOpen: false });
     return (
             <Modal  
             isOpen={isOpen}
@@ -39,17 +38,17 @@ const ModalComponent = ({
                     bgColor="transparent"
                     />
                 </StModalHeader>
-                <Component currentModalType={currentModalType}/>
+                {children}
             </Modal>
     );
 };
 
 ModalComponent.propTypes = {
     isOpen: PropTypes.bool,
-    onChangeIsOpen: PropTypes.func.isRequired,
+    changeModalVisibility: PropTypes.func.isRequired,
     headerTextKey: PropTypes.string,
-    currentModalType: PropTypes.string, 
-    Component: PropTypes.element, 
+    modalType: PropTypes.string,
+    children: PropTypes.element,
     fontSize: PropTypes.string,
 };
  

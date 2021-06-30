@@ -67,5 +67,4 @@ export const HEADER_CONTROL_BTNS = [{
 export const INPUT__MESSAGE = {
     id: 'message',
     placeholder: 'placeholder_control_input',
-},
-];
+};
