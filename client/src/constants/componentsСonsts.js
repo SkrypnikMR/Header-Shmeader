@@ -69,9 +69,3 @@ export const INPUT_PLACEHOLDER_MESSAGE = [{
    placeholder: 'placeholder_control_input',
 },
 ];
-export const INPUT_PLACEHOLDER_SEARCH = [
-{
-    id: 'nameOfYourId',
-    placeholder: 'placeholder_search_input',
-},
-];
