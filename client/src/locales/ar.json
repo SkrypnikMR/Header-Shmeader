@@ -37,5 +37,11 @@
     "russian_translate_btn": "RU",
     "arabian_translate_btn": "AR",
     "without_room": "لم تقم باختيار دردشة",
-    "without_text": "لا يمكنك إرسال رسالة فارغة"
+    "without_text": "لا يمكنك إرسال رسالة فارغة",
+    "without_text_new_room": "لا يمكنك إنشاء غرفة بدون اسم",
+    "create": "إنشاء",
+    "create_chat": "قم بإنشاء غرفة جديدة",
+    "create_new_room_input_placeholder": "...أدخل اسم الغرفة الجديدة",
+    "create_room": "قم بإنشاء غرفة جديدة",
+    "exists_error": "هذه الغرفة موجودة بالفعل"
 }

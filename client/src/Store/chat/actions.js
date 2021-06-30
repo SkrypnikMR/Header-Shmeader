@@ -20,3 +20,6 @@ export const putMessages = payload => ({ type: actionTypes.PUT_MESSAGES, payload
 
 export const sendNewMessage = () => ({ type: actionTypes.SEND_NEW_MESSAGE });
 export const putNewMessages = payload => ({ type: actionTypes.PUT_NEW_MESSAGES, payload });
+
+export const createNewRoom = payload => ({ type: actionTypes.CREATE_NEW_ROOM, payload });
+export const putNewRoom = payload => ({ type: actionTypes.PUT_NEW_ROOM, payload });

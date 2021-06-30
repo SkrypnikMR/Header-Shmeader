@@ -19,6 +19,7 @@ import {
     getAllMessages,
     getAllRooms,
     putMessagesFolders,
+    putNewRoom,
 } from './actions';
 import { userInfo } from '../user/selectors';
 import { newMessage, currentRoom } from './selectors';
@@ -31,6 +32,10 @@ export let globalSocket = { emit: () => { }, on: () => { } };
 export const createSocketChannel = socket => eventChannel((emit) => {
     socket.on('users_online', data => emit(putOnlineUsers(data)));
     socket.on('messages', data => emit(putNewMessages(data)));
+    socket.on('join_new_room', data => emit(putNewRoom(data)));
+    socket.on('error', ({ error }) => {
+        NotificationManager.error(i18next.t(error), i18next.t('input_error'), 2000);
+    });
     return () => {
         socket.off('users_online', data => emit(putOnlineUsers(data)));
     };
@@ -117,10 +122,20 @@ export function* getAllMessagesSaga() {
             i18next.t('server_error_text'), i18next.t('server_error'), 2000);
     }
 }
+export function* createNewRoomSaga({ payload }) {
+    try {
+        const { id } = yield select(userInfo);
+        yield call([globalSocket, globalSocket.emit], 'new_room', { id, room_name: payload });
+    } catch (e) {
+        yield call([NotificationManager, NotificationManager.error],
+            i18next.t('server_error_text'), i18next.t('server_error'), 2000);
+    }
+}
 export function* watcherChatOperations() {
     yield takeEvery(actionTypes.INIT_CHAT, initSaga);
     yield takeEvery(actionTypes.CONNECT, connectionSaga);
     yield takeEvery(actionTypes.SEND_NEW_MESSAGE, sendMessageSaga);
     yield takeEvery(actionTypes.GET_ALL_ROOMS, getAllRoomsSaga);
     yield takeEvery(actionTypes.GET_ALL_MESSAGES, getAllMessagesSaga);
+    yield takeEvery(actionTypes.CREATE_NEW_ROOM, createNewRoomSaga);
 }

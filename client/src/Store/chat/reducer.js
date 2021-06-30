@@ -52,6 +52,9 @@ export const reducer = (state = initialState, action) => {
       return { ...state, isLoading: false, error: true };
     case actionTypes.PUT_MESSAGES_FOLDERS:
       return { ...state, messages: action.payload };
+    case actionTypes.PUT_NEW_ROOM: {
+      return { ...state, rooms: [...state.rooms, action.payload] };
+    }
     default: return { ...state };
   }
 };

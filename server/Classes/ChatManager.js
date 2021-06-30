@@ -55,6 +55,23 @@ class ChatManager {
             })
         } catch (e) { console.log(e) };
     }
+    setNewRoom = async (newRoomInfo) => {
+        try {
+            const { id, room_name } = newRoomInfo;
+            const checkRoom = await this.connect.query(`SELECT * FROM rooms where rooms.name = '${room_name}' `)
+            if (checkRoom.length > 0) return { error: 'room_already_exists' };
+            await this.connect.query(`INSERT INTO rooms (name) VALUES ('${room_name}')`)
+            const newSettedRoom = await this.connect.query(`SELECT * FROM rooms where rooms.name = '${room_name}' `)
+            const { id: room_id } = newSettedRoom[0];
+            await this.connect.query(`INSERT INTO rooms (name) VALUES ('${room_name}')`)
+            await this.connect.query(`INSERT INTO users_rooms (user_id, room_id) VALUES ('${id}', '${room_id}');`)
+            return { room_id: newSettedRoom[0].id, room_name: newSettedRoom[0].name };
+        }
+        catch (e) {
+            console.log('chatManager error', e);
+            return { error: 'db_error' };
+        }
+    }
 }
 
 module.exports = ChatManager;

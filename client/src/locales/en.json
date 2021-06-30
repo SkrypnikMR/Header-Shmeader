@@ -38,5 +38,11 @@
     "arabian_translate_btn": "AR",
     "without_room": "You have not chosen a chat",
     "without_text": "You cannot send an empty message",
-    "invite_users": "Invite Users"
+    "without_text_new_room": "You cannot create a room without a name",
+    "invite_users": "Invite Users",
+    "create": "Create",
+    "create_chat": "Create new room",
+    "create_new_room_input_placeholder": "Enter the name of the new room...",
+    "create_room": "Create new room",
+    "exists_error": "This room already exists"
 }
