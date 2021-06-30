@@ -13,6 +13,7 @@ const Input = ({
     height,
     margin,
     onChange,
+    onKeyUpEnter,
     maxLength,
     inputHeight,
     borderRadius,
@@ -26,6 +27,9 @@ const Input = ({
 }) => {
     const { t } = useTranslation();
     const handleOnchange = e => onChange({ name: e.target.name, value: e.target.value });
+    const handleOnKeyUpEnter = (e) => {
+        if (e.key === 'Enter') onKeyUpEnter();
+    };
     return (
         <StInputContainer width={width} height={height}>
             {!!label && <StLabel htmlFor={id}>{label}</StLabel>}
@@ -42,6 +46,7 @@ const Input = ({
                 placeholder={t(placeholder)}
                 bgColor={bgColor}
                 padding={padding}
+                onKeyUp={handleOnKeyUpEnter}
                 borderColor={borderColor}
                 fontSizeInp={fontSizeInp}
                 bgFocusColor={bgFocusColor}
@@ -71,6 +76,7 @@ Input.propTypes = {
     placeholder: PropTypes.string.isRequired,
     errorMessage: PropTypes.string,
     bgFocusColor: PropTypes.string,
+    onKeyUpEnter: PropTypes.func,
 };
 
 export default Input;
