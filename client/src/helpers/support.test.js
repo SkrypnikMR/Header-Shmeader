@@ -78,4 +78,31 @@ describe('support', () => {
             expect(support.getMessagesFolders(rooms)).toEqual(expectedObj);
         });
     });
+    describe('filteredRooms', () => {
+        it('should be defined', () => {
+            expect(support.filteredRooms).toBeDefined();
+        });
+        it('should be function', () => {
+            expect(typeof support.filteredRooms).toBe('function');
+        });
+        it('should return result === null', () => {
+            const rooms = [{ room_id: 1, room_name: 'global' }];
+            const filterValue = 'sadadsa';
+            expect(support.filteredRooms(filterValue, rooms)).toBe(null);
+        });
+        it('should return result === []', () => {
+            const rooms = [{ room_id: 1, room_name: 'global' }];
+            const filterValue = 'global';
+            expect(support.filteredRooms(filterValue, rooms)).toEqual(rooms);
+        });
+        it('should return filtered result', () => {
+            const rooms = [
+                { room_id: 1, room_name: 'global' },
+                { room_id: 2, room_name: 'privat24' },
+            ];
+            const filterValue = 'global';
+            const expectedArray = [{ room_id: 1, room_name: 'global' }];
+            expect(support.filteredRooms(filterValue, rooms)).toEqual(expectedArray);
+        });
+    });
 });

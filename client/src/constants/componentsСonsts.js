@@ -64,14 +64,7 @@ export const HEADER_CONTROL_BTNS = [{
     rout: '/account',
     value: 'account',
 }];
-export const INPUT_PLACEHOLDER_MESSAGE = [{
+export const INPUT__MESSAGE = {
     id: 'message',
-   placeholder: 'placeholder_control_input',
-},
-];
-export const INPUT_PLACEHOLDER_SEARCH = [
-{
-    id: 'search',
-    placeholder: 'placeholder_shearch_input',
-},
-];
+    placeholder: 'placeholder_control_input',
+};

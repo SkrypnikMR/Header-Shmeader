@@ -9,6 +9,7 @@ export const initialState = {
   error: false,
   isLoading: false,
   users: [],
+  filterByRoomName: '',
 };
 
 export const reducer = (state = initialState, action) => {
