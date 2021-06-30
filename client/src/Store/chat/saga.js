@@ -23,8 +23,6 @@ import {
     sendUsersRequest,
     reciveSuccessUsersRequest,
     reciveErrorUsersRequest,
-    setAllUsers,
-    
 } from './actions';
 import { userInfo } from '../user/selectors';
 import { newMessage, currentRoom } from './selectors';
@@ -127,9 +125,8 @@ export function* getAllMessagesSaga() {
 export function* getAllUsersSaga() {
     try {
     yield put(sendUsersRequest());
-    const users = yield call(getRequest, `${routes.chat.users}`);
-    yield put(reciveSuccessUsersRequest());
-    yield put(setAllUsers(users));
+    const users = yield call(getRequest, routes.chat.users);
+    yield put(reciveSuccessUsersRequest(users));
     } catch (e) {
         yield put(reciveErrorUsersRequest());
         yield call([NotificationManager, NotificationManager.error],

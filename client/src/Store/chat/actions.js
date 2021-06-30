@@ -23,6 +23,5 @@ export const putNewMessages = payload => ({ type: actionTypes.PUT_NEW_MESSAGES, 
 
 export const getAllUsers = () => ({ type: actionTypes.GET_ALL_USERS });
 export const sendUsersRequest = () => ({ type: actionTypes.SEND_USERS_REQUEST });
-export const reciveSuccessUsersRequest = () => ({ type: actionTypes.USERS_REQUEST_SUCCESS });
+export const reciveSuccessUsersRequest = payload => ({ type: actionTypes.USERS_REQUEST_SUCCESS, payload });
 export const reciveErrorUsersRequest = () => ({ type: actionTypes.USERS_REQUEST_ERROR });
-export const setAllUsers = payload => ({ type: actionTypes.SET_ALL_USERS, payload });

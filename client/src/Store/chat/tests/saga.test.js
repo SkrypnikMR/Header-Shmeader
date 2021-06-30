@@ -210,6 +210,37 @@ describe('chatSaga', () => {
                 .next()
                 .isDone();
         });
+        it('should call getAllUsersSaga', () => {
+            const messageFromServer = {
+                id: 1,
+                email: 'nn19092001@gmail.com', 
+                firstName: 'NN', 
+                lastName: 'NN',
+            };
+            action = { type: actionTypes.GET_ALL_USERS };
+            testSaga(sagas.getAllUsersSaga, action)
+                .next()
+                .put(actions.sendUsersRequest())
+                .next()
+                .call(getRequest, routes.chat.users)
+                .next([messageFromServer])
+                .put(actions.reciveSuccessUsersRequest([messageFromServer]))
+                .next()
+                .isDone();
+        });
+        it('should error in getAllUsersSaga ', () => {
+            action = { type: actionTypes.GET_ALL_USERS };
+            const error = 'error';
+            testSaga(sagas.getAllUsersSaga, action)
+                .next()
+                .throw(error)
+                .put(actions.reciveErrorUsersRequest())
+                .next()
+                .call([NotificationManager, NotificationManager.error],
+                    i18next.t('server_error_text'), i18next.t('server_error'), 2000)
+                .next()
+                .isDone();
+        });
         describe('fork', () => {
             it('should fork watchers', () => {
                 expectSaga(sagas.watcherChatOperations)
