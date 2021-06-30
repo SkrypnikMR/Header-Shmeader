@@ -4,14 +4,12 @@ import Search from './Search';
 import ChatListItems from './ChatListItems';
 import { StChatList } from './styled';
 import SearchNoRes from './Search/SearchNoRes';
-import { support } from '/src/helpers/support';
 
-const ChatList = ({ rooms, filterValue }) => {
-    rooms = filterValue ? support.filteredRooms(filterValue, rooms) : rooms;
+const ChatList = ({ rooms }) => {
     return (
     <StChatList>
       <Search />
-      {rooms ? rooms.map(room => (
+      {rooms?.length > 0 ? rooms.map(room => (
         <ChatListItems
           key={room.room_id}
           content={room.room_name}
@@ -23,6 +21,6 @@ const ChatList = ({ rooms, filterValue }) => {
   );
 };
 
-ChatList.propTypes = { rooms: PropTypes.array, filterValue: PropTypes.string };
+ChatList.propTypes = { rooms: PropTypes.array };
 
 export default ChatList;

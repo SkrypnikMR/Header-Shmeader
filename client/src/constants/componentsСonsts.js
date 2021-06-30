@@ -71,7 +71,7 @@ export const INPUT_PLACEHOLDER_MESSAGE = [{
 ];
 export const INPUT_PLACEHOLDER_SEARCH = [
 {
-    id: 'search',
-    placeholder: 'placeholder_shearch_input',
+    id: 'nameOfYourId',
+    placeholder: 'placeholder_search_input',
 },
 ];

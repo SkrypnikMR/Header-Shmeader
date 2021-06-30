@@ -1,23 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { INPUT_PLACEHOLDER_SEARCH } from '/src/constants/componentsСonsts.js';
 import Input from '/src/components/UI/Input';
 import { StSearch } from './styled';
 
-const Search = ({ setValue, filterValue }) => {
+const Search = ({ setValue, filterByRoomName }) => {
   return ( 
-    <StSearch>  
-      { INPUT_PLACEHOLDER_SEARCH.map(el => (
+    <StSearch>
       <Input
-        id={el.id}
+        id='nameOfYourId'
         height="60px"
-        key={el.id}
-        name="filterValue"
+        key='nameOfYourId'
+        name="filterByRoomName"
         inputHeight="60px"
         borderRadius="0px"
-        value={filterValue}
+        value={filterByRoomName}
         onChange={setValue}
-        placeholder={el.placeholder}
+        placeholder='placeholder_search_input'
         margin="0 auto" 
         bgColor="transparent"
         fontSizeInp="20px"
@@ -25,14 +23,13 @@ const Search = ({ setValue, filterValue }) => {
         bgFocusColor="transparent"
         padding="17px"
       />
-      ))}
     </StSearch> 
   );
 };
 
 Search.propTypes = {
   setValue: PropTypes.func,
-  filterValue: PropTypes.string,
+  filterByRoomName: PropTypes.string,
 };
 
 export default Search;

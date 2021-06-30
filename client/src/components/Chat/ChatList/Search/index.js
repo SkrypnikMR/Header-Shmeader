@@ -1,10 +1,10 @@
 import Search from './Search.jsx';
 import { connect } from 'react-redux';
-import { filterValue } from '/src/Store/chat/selectors';
+import { filterByRoomName } from '/src/Store/chat/selectors';
 import { setValue } from '/src/Store/chat/actions';
 
 const mapStateToProps = state => ({
-    filterValue: filterValue(state),
+    filterByRoomName: filterByRoomName(state),
 });
 const mapDispatchToProps = dispatch => ({
     setValue: payload => dispatch(setValue(payload)),

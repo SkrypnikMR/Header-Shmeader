@@ -19,8 +19,4 @@ export const support = {
         });
         return messagesFolders;
     },
-    filteredRooms: (filterValue, rooms) => {
-        const result = rooms.filter(room => room.room_name.includes(filterValue));
-        return result.length === 0 ? null : result;
-    },
 };

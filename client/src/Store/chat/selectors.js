@@ -10,8 +10,11 @@ export const messages = createSelector(
   ({ messages }) => messages,
 );
 export const rooms = createSelector(
-  chatStore,
-  ({ rooms }) => rooms,
+    chatStore,
+    ({ rooms, filterByRoomName }) => {
+        const result = rooms.filter(room => room.room_name.toLowerCase().includes(filterByRoomName.toLowerCase()));
+        return result.length === 0 ? null : result;
+    },
 );
 export const currentRoom = createSelector(
   chatStore,
@@ -21,7 +24,7 @@ export const currentRoomName = createSelector(
   currentRoom,
   ({ room_name }) => room_name,
 );
-export const filterValue = createSelector(
+export const filterByRoomName = createSelector(
     chatStore,
-    ({ filterValue }) => filterValue,
+    ({ filterByRoomName }) => filterByRoomName,
 );

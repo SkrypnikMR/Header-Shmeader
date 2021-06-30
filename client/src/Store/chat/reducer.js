@@ -8,7 +8,7 @@ export const initialState = {
   currentRoom: { room_id: null, room_name: '' },
   error: false,
   isLoading: false,
-  filterValue: '',
+  filterByRoomName: '',
 };
 
 export const reducer = (state = initialState, action) => {
