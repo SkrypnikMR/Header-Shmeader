@@ -28,7 +28,7 @@ const Input = ({
     const { t } = useTranslation();
     const handleOnchange = e => onChange({ name: e.target.name, value: e.target.value });
     const handleOnKeyUpEnter = (e) => {
-        if (e.key === 'Enter') onKeyUpEnter();
+        if (e.key === 'Enter') if (onKeyUpEnter) onKeyUpEnter();
     };
     return (
         <StInputContainer width={width} height={height}>
