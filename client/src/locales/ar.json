@@ -31,11 +31,13 @@
     "server_error_text": "...حاول لاحقا",
     "placeholder_control_input": "...لكتابة رسالة",
     "user_list": "المشاركون",
-    "placeholder_shearch_input": "...يبحث   🔍",
+    "placeholder_search_input": "...يبحث   🔍",
     "logo": "Header&Shmeader",
     "english_translate_btn": "EN",
     "russian_translate_btn": "RU",
     "arabian_translate_btn": "AR",
     "without_room": "لم تقم باختيار دردشة",
-    "without_text": "لا يمكنك إرسال رسالة فارغة"
+    "without_text": "لا يمكنك إرسال رسالة فارغة",
+    "no_result": "لا نتيجة",
+    "try_new": "جرب بحث جديد."
 }
