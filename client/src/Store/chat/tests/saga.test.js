@@ -30,6 +30,8 @@ describe('chatSaga', () => {
                 .next()
                 .put(actions.getAllMessages())
                 .next()
+                .put(actions.getAllUsers())
+                .next()
                 .isDone();
         });
         it('should call sendMessage with valid info', () => {
