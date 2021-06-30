@@ -14,5 +14,4 @@ const ModalInviteUsers = () => {
         );
 };
 
-
 export default ModalInviteUsers;

@@ -5,7 +5,7 @@ import ChatContent from './ChatContent';
 import { StChat } from './styled';
 
 const Chat = ({ init }) => {
-  // useEffect(() => init(), []);
+  useEffect(() => init(), []);
   return (
     <StChat>
       <ChatList />
