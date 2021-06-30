@@ -18,7 +18,11 @@ import {
     connection,
     getAllMessages,
     getAllRooms,
+    getAllUsers, 
     putMessagesFolders,
+    sendUsersRequest,
+    reciveSuccessUsersRequest,
+    reciveErrorUsersRequest,
 } from './actions';
 import { userInfo } from '../user/selectors';
 import { newMessage, currentRoom } from './selectors';
@@ -48,6 +52,7 @@ export function* initSaga() {
     yield put(connection());
     yield put(getAllRooms());
     yield put(getAllMessages());
+    yield put(getAllUsers());
 }
 export function* connectionSaga() {
     try {
@@ -117,10 +122,22 @@ export function* getAllMessagesSaga() {
             i18next.t('server_error_text'), i18next.t('server_error'), 2000);
     }
 }
+export function* getAllUsersSaga() {
+    try {
+    yield put(sendUsersRequest());
+    const users = yield call(getRequest, routes.chat.users);
+    yield put(reciveSuccessUsersRequest(users));
+    } catch (e) {
+        yield put(reciveErrorUsersRequest());
+        yield call([NotificationManager, NotificationManager.error],
+            i18next.t('server_error_text'), i18next.t('server_error'), 2000);
+    }
+}
 export function* watcherChatOperations() {
     yield takeEvery(actionTypes.INIT_CHAT, initSaga);
     yield takeEvery(actionTypes.CONNECT, connectionSaga);
     yield takeEvery(actionTypes.SEND_NEW_MESSAGE, sendMessageSaga);
     yield takeEvery(actionTypes.GET_ALL_ROOMS, getAllRoomsSaga);
     yield takeEvery(actionTypes.GET_ALL_MESSAGES, getAllMessagesSaga);
+    yield takeEvery(actionTypes.GET_ALL_USERS, getAllUsersSaga);
 }

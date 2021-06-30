@@ -12,6 +12,9 @@ import {
     reciveSuccessMessagesRequest,
     reciveErrorMessagesRequest,
     putMessagesFolders,
+    sendUsersRequest,
+    reciveSuccessUsersRequest,
+    reciveErrorUsersRequest,
 } from '../actions';
 
 describe('userReducer', () => {
@@ -160,6 +163,21 @@ describe('userReducer', () => {
         };
         expect(reducer(initialState, putMessagesFolders(payload)))
             .toEqual({ ...initialState, messages: payload });
+    });
+    it('SEND_USERS_REQUEST', () => {
+        expect(reducer(initialState, sendUsersRequest()))
+            .toEqual({ ...initialState, isLoading: true });
+    });
+    it('USERS_REQUEST_SUCCESS', () => {
+        const payload = {    
+                users: [{ id: 1, email: 'nn19092001@gmail.com', firstName: 'NN', lastName: 'NN' }],
+        }; 
+        expect(reducer(initialState, reciveSuccessUsersRequest(payload)))
+            .toEqual({ ...initialState, users: payload, isLoading: false, error: false });
+    });
+    it('USERS_REQUEST_ERROR', () => {
+        expect(reducer(initialState, reciveErrorUsersRequest()))
+            .toEqual({ ...initialState, isLoading: false, error: true });
     });
     it('default', () => expect(reducer(undefined, { type: '' })).toEqual(initialState));
 });

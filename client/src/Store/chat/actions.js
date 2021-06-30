@@ -20,3 +20,8 @@ export const putMessages = payload => ({ type: actionTypes.PUT_MESSAGES, payload
 
 export const sendNewMessage = () => ({ type: actionTypes.SEND_NEW_MESSAGE });
 export const putNewMessages = payload => ({ type: actionTypes.PUT_NEW_MESSAGES, payload });
+
+export const getAllUsers = () => ({ type: actionTypes.GET_ALL_USERS });
+export const sendUsersRequest = () => ({ type: actionTypes.SEND_USERS_REQUEST });
+export const reciveSuccessUsersRequest = payload => ({ type: actionTypes.USERS_REQUEST_SUCCESS, payload });
+export const reciveErrorUsersRequest = () => ({ type: actionTypes.USERS_REQUEST_ERROR });
