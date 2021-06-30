@@ -1,9 +1,11 @@
 import ModalComponent from './ModalComponent.jsx';
 import { connect } from 'react-redux';
 import { changeModalVisibility } from '/src/Store/modals/actions';
-import { getModalVisibilityByType } from '/src/Store/modals/selectors';
+import { getModalVisibilityIsOpen } from '/src/Store/modals/selectors';
 
-const mapStateToProps = (state, ownProps) => ({ modalType: getModalVisibilityByType(state, ownProps) });
+const mapStateToProps = (state, ownProps) => ({
+    isOpen: getModalVisibilityIsOpen(state, ownProps),
+});
 
 const mapDispatchToProps = dispatch => ({
     changeModalVisibility: payload => dispatch(changeModalVisibility(payload)),
