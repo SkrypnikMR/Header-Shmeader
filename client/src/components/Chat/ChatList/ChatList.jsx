@@ -22,7 +22,7 @@ const ChatList = ({ rooms = [], changeModalVisibility }) => {
           id={room.room_id}
           unreadCount={room.unreadCount}
         />
-      ))}
+      )) : < SearchNoRes />}
       <StCreateRoom>
         <Button
           id='create_room'
@@ -32,8 +32,7 @@ const ChatList = ({ rooms = [], changeModalVisibility }) => {
           width="200px"
         />
       </StCreateRoom>
-      )) : <SearchNoRes/>
-      }
+
     </StChatList>
   );
 };

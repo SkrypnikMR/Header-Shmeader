@@ -96,6 +96,7 @@ class ChatManager {
             console.log(e);
             res.status(500).json({ message: 'server_error' });
         }
+    }
     getAllUsers = async (req, res) => {
         try {
             const allUsers = await this.connect.query(`SELECT
@@ -107,6 +108,5 @@ class ChatManager {
             res.status(200).json(allUsers);
         } catch (e) { res.status(500).json({ message: 'something_wrong' }); }
     }
-}
-
+};
 module.exports = ChatManager;

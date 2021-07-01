@@ -20,10 +20,8 @@ import {
     getAllMessages,
     putMessagesFolders,
     putNewRoom,
-    getAllRooms,
-    getAllUsers, 
-    putMessagesFolders,
     sendUsersRequest,
+    getAllUsers,
     reciveSuccessUsersRequest,
     reciveErrorUsersRequest,
 } from './actions';
@@ -130,18 +128,22 @@ export function* getAllMessagesSaga() {
             i18next.t('server_error_text'), i18next.t('server_error'), 2000);
     }
 }
+export function* getAllUsersSaga() {
+    try {
+        yield put(sendUsersRequest());
+        const users = yield call(getRequest, routes.chat.users);
+        yield put(reciveSuccessUsersRequest(users));
+    } catch (e) {
+        yield put(reciveErrorUsersRequest());
+        yield call([NotificationManager, NotificationManager.error],
+            i18next.t('server_error_text'), i18next.t('server_error'), 2000);
+    }
+}
 export function* createNewRoomSaga({ payload }) {
     try {
         const { id } = yield select(userInfo);
         yield call([globalSocket, globalSocket.emit], 'new_room', { id, room_name: payload });
     } catch (e) {
-export function* getAllUsersSaga() {
-    try {
-    yield put(sendUsersRequest());
-    const users = yield call(getRequest, routes.chat.users);
-    yield put(reciveSuccessUsersRequest(users));
-    } catch (e) {
-        yield put(reciveErrorUsersRequest());
         yield call([NotificationManager, NotificationManager.error],
             i18next.t('server_error_text'), i18next.t('server_error'), 2000);
     }
