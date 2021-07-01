@@ -3,7 +3,6 @@ import { eventChannel } from 'redux-saga';
 import { io } from 'socket.io-client';
 import { NotificationManager } from 'react-notifications';
 import i18next from 'i18next';
-import moment from 'moment';
 import { actionTypes } from './actionTypes';
 import {
     putOnlineUsers,
@@ -90,7 +89,7 @@ export function* sendMessageSaga() {
             text: message,
             room_name,
             room_id,
-            time: moment().format('YYYY-MM-DD HH:mm:ss'),
+            time: support.getFormatedDate(),
         };
         yield call([globalSocket, globalSocket.emit], 'messages', requestMessage);
     } catch (e) {

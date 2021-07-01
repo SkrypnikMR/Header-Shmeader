@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import { StChatDisplay } from './styled';
 import ChatMessages from './ChatMessages';
+import { support } from '/src/helpers/support';
 
 const ChatDisplay = ({ messages, currentUser, currentRoomName }) => {
   useEffect(() => {
@@ -17,7 +17,7 @@ const ChatDisplay = ({ messages, currentUser, currentRoomName }) => {
             author={message.author}
             key={message.time}
             messageText={message.text}
-            messageTime={moment(message.time).format('YYYY-MM-DD HH:mm:ss')}
+            messageTime={support.getFormatedDate(message.time)}
             alignSelf={currentUser === message.author
               ? 'flex-end'
               : 'flex-start'}

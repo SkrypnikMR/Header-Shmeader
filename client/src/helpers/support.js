@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export const support = {
     setSessionStorageItem: (name, data) => {
         if (typeof data !== 'string') data = JSON.stringify(data);
@@ -18,4 +20,5 @@ export const support = {
         });
         return messagesFolders;
     },
+    getFormatedDate: date => moment(date).format('YYYY-MM-DD HH:mm:ss'),
 };

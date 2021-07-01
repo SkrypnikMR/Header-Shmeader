@@ -30,7 +30,7 @@ const ChatListItems = ({
       </StPhoto>
       <StRoom>
         <p>{content}</p>
-        {unreadCount === 0 ? null : <span>{unreadCount}</span>}
+        {unreadCount ? <span>{unreadCount}</span> : null}
       </StRoom>
     </StChatListItems>
   );

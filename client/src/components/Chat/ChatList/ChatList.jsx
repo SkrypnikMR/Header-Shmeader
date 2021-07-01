@@ -32,7 +32,6 @@ const ChatList = ({ rooms = [], changeModalVisibility }) => {
           width="200px"
         />
       </StCreateRoom>
-
     </StChatList>
   );
 };
