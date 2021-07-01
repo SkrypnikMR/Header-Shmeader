@@ -21,11 +21,20 @@ class SocketMaster extends ChatManager {
             })
             socket.on('messages', (message) => {
                 const { room_id } = message;
-                console.log(message);
                 this.setNewMessage(message);
                 this.io.to(room_id).emit('messages', message);
             })
             socket.on('join', (rooms) => rooms.forEach(room => socket.join(room.room_id)));
+            socket.on('new_room', async ({ id, ...newRoomInfo }) => {
+                try {
+                    const answer = await this.setNewRoom({ ...newRoomInfo, id });
+                    if (answer.error) return this.io.to(id).emit('error', { error: 'exists_error' })
+                    this.io.to(id).emit('join_new_room', { ...answer, unreadCount: 0 });
+                    const { id: room_id } = answer;
+                    socket.join(room_id);
+                }
+                catch (e) { this.io.to(id).emit('error', { error: 'server_error' }) }
+            })
         });
     }
 }

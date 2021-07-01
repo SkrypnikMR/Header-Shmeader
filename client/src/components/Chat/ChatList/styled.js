@@ -27,3 +27,13 @@ export const StChatList = styled.div`
               background-color: ${({ color = bgColorDefault }) => color};
             }
 `;
+export const StCreateRoom = styled.div`
+      display: flex;
+      justify-self: flex-end;
+      align-items: flex-end;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      position: absolute;
+      bottom: 60px;
+`;

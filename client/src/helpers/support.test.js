@@ -46,25 +46,6 @@ describe('support', () => {
             expect(support.getSessionStorageItem('kek')).toEqual({ kek: 1 });
         });
     });
-    describe('getPrettyTime', () => {
-        const realGD = global.Date;
-        beforeEach(() => {
-            global.Date = jest.fn().mockReturnValue({ toTimeString: jest.fn().mockReturnValue('00:58:34Z') });
-        });
-        afterEach(() => {
-            global.Date = realGD;
-        });
-        it('should be defined', () => {
-            expect(support.getPrettyTime).toBeDefined();
-        });
-        it('should be function', () => {
-            expect(typeof support.getPrettyTime).toBe('function');
-        });
-        it('should return pretty Time', () => {
-            const time = '123454678';
-            expect(support.getPrettyTime(time)).toBe('00:58:34');
-        });
-    });
     describe('getMessagesFolders', () => {
         it('should be defined', () => {
             expect(support.getMessagesFolders).toBeDefined();
@@ -76,33 +57,6 @@ describe('support', () => {
             const rooms = [{ room_id: 1, room_name: 'global' }];
             const expectedObj = { global: [] };
             expect(support.getMessagesFolders(rooms)).toEqual(expectedObj);
-        });
-    });
-    describe('filteredRooms', () => {
-        it('should be defined', () => {
-            expect(support.filteredRooms).toBeDefined();
-        });
-        it('should be function', () => {
-            expect(typeof support.filteredRooms).toBe('function');
-        });
-        it('should return result === null', () => {
-            const rooms = [{ room_id: 1, room_name: 'global' }];
-            const filterValue = 'sadadsa';
-            expect(support.filteredRooms(filterValue, rooms)).toBe(null);
-        });
-        it('should return result === []', () => {
-            const rooms = [{ room_id: 1, room_name: 'global' }];
-            const filterValue = 'global';
-            expect(support.filteredRooms(filterValue, rooms)).toEqual(rooms);
-        });
-        it('should return filtered result', () => {
-            const rooms = [
-                { room_id: 1, room_name: 'global' },
-                { room_id: 2, room_name: 'privat24' },
-            ];
-            const filterValue = 'global';
-            const expectedArray = [{ room_id: 1, room_name: 'global' }];
-            expect(support.filteredRooms(filterValue, rooms)).toEqual(expectedArray);
         });
     });
 });

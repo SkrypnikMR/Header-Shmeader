@@ -14,6 +14,7 @@ import Header from '../Header';
 import { APP_ROUTES } from '/src/constants/reactRoutes';
 import { StAppDiv } from './styled';
 import ModalInviteUsers from '../UI/Modals/ModalInviteUsers';
+import ModalCreateRoom from '../UI/Modals/ModalCreateRoom';
 
 const App = ({ userTheme, userThemeMode }) => {
   const { i18n } = useTranslation();
@@ -32,7 +33,8 @@ const App = ({ userTheme, userThemeMode }) => {
         Component={Component}
         headerTextKey="notification_settings"
       />
-      <ModalInviteUsers/>
+      <ModalCreateRoom />
+      <ModalInviteUsers />
       <NotificationContainer />
     </StAppDiv >
   );

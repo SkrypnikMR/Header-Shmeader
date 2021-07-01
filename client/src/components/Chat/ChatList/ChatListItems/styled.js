@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { textColorBlack } from '/src/components/UI/baseLayout';
+import { bgColorDefault, colorDefault } from '/src/components/UI/baseLayout';
 
 export const StChatListItems = styled.div`
     display: flex;
     width: 100%;
     height: 60px;
     align-items: center;
-    color: ${({ color = textColorBlack }) => color};
+    color: ${({ color = colorDefault }) => color};
 
     cursor: pointer;
         ul {
@@ -20,4 +20,23 @@ img{
   width: 50px;
   height: 50px;
 }
-`; 
+`;
+export const StRoom = styled.div`
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+    p{
+      width:80%;
+    }
+    span{
+      width: 30px;
+      height: 30px;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      border-radius: 50%;
+       background-color: ${({ bgColor = bgColorDefault }) => bgColor};
+    }
+`;

@@ -38,6 +38,12 @@
     "arabian_translate_btn": "AR",
     "without_room": "Вы не выбрали чат ",
     "without_text": "Вы не можете отправить пустое сообщение",
+    "without_text_new_room": "Вы не можете создать комнату без названия",
+    "create": "Создать",
+    "create_chat": "Создать новую комнату",
+    "create_new_room_input_placeholder": "Введите название новой комнаты...",
+    "create_room": "Создать новую комнату",
+    "exists_error": "Такая комната уже существует",
     "no_result": "Безрезультатно",
     "try_new": "Попробуйте новый поиск."
 }

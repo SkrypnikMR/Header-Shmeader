@@ -1,3 +1,4 @@
+const dateConvert = require('../helpers/dateConvert');
 class ChatManager {
     constructor(connect) { this.connect = connect }
     getAllRooms = async (req, res) => {
@@ -11,8 +12,17 @@ class ChatManager {
             where rooms.id = users_rooms.room_id
             AND users.id = users_rooms.user_id
             AND users.id = ${id};`);
-            res.status(200).json(userRooms);
-        } catch (e) { res.status(500).json({ message: 'something_wrong' }); }
+            const userRoomsWithCount = Promise.all(userRooms.map(async room => {
+                const lastReadDate = await this.connect.query(`SELECT last_read_date FROM unread_state WHERE user_id = ${id} 
+                AND room_id = ${room.room_id}
+                `);
+                if (lastReadDate.length === 0) return { ...room, unreadCount: 0 };
+                const count = await this.connect.query(`SELECT COUNT(messages.time) as count from messages WHERE room_id = ${room.room_id}
+                AND time > '${dateConvert(lastReadDate[0].last_read_date)}'`)
+                return { ...room, unreadCount: count[0]?.count };
+            }))
+            res.status(200).json(await userRoomsWithCount);
+        } catch (e) { console.log(e); res.status(500).json({ message: 'something_wrong' }); }
     }
     getAllMessages = async (req, res) => {
         try {
@@ -29,8 +39,9 @@ class ChatManager {
             users_messages,
             users
             where messages.id = users_messages.message_id
-            AND users.id = users_messages.user_id
-            AND users.id = ${id};`);
+            AND users_messages.user_id = ${id}
+            AND users.id = ${id}
+            ;`);
             res.status(200).json(userMessages);
         } catch (e) { console.log(e); res.status(500).json({ message: 'something_wrong' }); }
     }
@@ -55,6 +66,37 @@ class ChatManager {
             })
         } catch (e) { console.log(e) };
     }
+    setNewRoom = async (newRoomInfo) => {
+        try {
+            const { id, room_name } = newRoomInfo;
+            const checkRoom = await this.connect.query(`SELECT * FROM rooms where rooms.name = '${room_name}' `)
+            if (checkRoom.length > 0) return { error: 'room_already_exists' };
+            await this.connect.query(`INSERT INTO rooms (name) VALUES ('${room_name}')`)
+            const newSettedRoom = await this.connect.query(`SELECT * FROM rooms where rooms.name = '${room_name}' `)
+            const { id: room_id } = newSettedRoom[0];
+            await this.connect.query(`INSERT INTO users_rooms (user_id, room_id) VALUES ('${id}', '${room_id}');`)
+            return { room_id: newSettedRoom[0].id, room_name: newSettedRoom[0].name };
+        }
+        catch (e) {
+            console.log('chatManager error', e);
+            return { error: 'db_error' };
+        }
+    }
+    readAllMessages = async ({ body }, res) => {
+        try {
+            const { user_id, room_id, lastMessageTime } = body;
+            const check = await this.connect.query(`SELECT * FROM unread_state where room_id = ${room_id} AND user_id = ${user_id}`);
+            if (check.length > 0) {
+                await this.connect.query(`UPDATE unread_state SET last_read_date = '${dateConvert(lastMessageTime)}' where room_id = ${room_id} AND user_id = ${user_id}`)
+                return res.status(200).json({ message: 'done' });
+            }
+            await this.connect.query(`INSERT INTO unread_state (room_id, user_id, last_read_date) VALUES('${room_id}', '${user_id}', '${dateConvert(lastMessageTime)}');`)
+            res.status(200).json({ message: 'done' });
+        } catch (e) {
+            console.log(e);
+            res.status(500).json({ message: 'server_error' });
+        }
+    }
     getAllUsers = async (req, res) => {
         try {
             const allUsers = await this.connect.query(`SELECT
@@ -66,6 +108,5 @@ class ChatManager {
             res.status(200).json(allUsers);
         } catch (e) { res.status(500).json({ message: 'something_wrong' }); }
     }
-}
-
+};
 module.exports = ChatManager;
