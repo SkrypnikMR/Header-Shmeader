@@ -25,3 +25,4 @@ export const createNewRoom = payload => ({ type: actionTypes.CREATE_NEW_ROOM, pa
 export const putNewRoom = payload => ({ type: actionTypes.PUT_NEW_ROOM, payload });
 
 export const readAllMessagesInRoom = payload => ({ type: actionTypes.READ_ALL_MESSAGES_IN_ROOM, payload });
+export const resetUnreadCount = payload => ({ type: actionTypes.RESET_UNREAD_COUNT, payload });

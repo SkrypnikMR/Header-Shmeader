@@ -20,4 +20,5 @@ export const actionTypes = {
   CREATE_NEW_ROOM: '@@chat/CREATE_NEW_ROOM',
   PUT_NEW_ROOM: '@@chat/PUT_NEW_ROOM',
   READ_ALL_MESSAGES_IN_ROOM: '@@chat/READ_ALL_MESSAGES_IN_ROOM',
+  RESET_UNREAD_COUNT: '@@chat/RESET_UNREAD_COUNT',
 };

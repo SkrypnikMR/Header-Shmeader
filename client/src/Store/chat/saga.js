@@ -3,6 +3,7 @@ import { eventChannel } from 'redux-saga';
 import { io } from 'socket.io-client';
 import { NotificationManager } from 'react-notifications';
 import i18next from 'i18next';
+import moment from 'moment';
 import { actionTypes } from './actionTypes';
 import {
     putOnlineUsers,
@@ -84,10 +85,7 @@ export function* sendMessageSaga() {
             text: message,
             room_name,
             room_id,
-            time: new Date().toISOString()
-                .replace(/T/, ' ')
-                .replace(/\..+/, '')
-            ,
+            time: moment().format('YYYY-MM-DD HH:mm:ss'),
         };
         yield call([globalSocket, globalSocket.emit], 'messages', requestMessage);
     } catch (e) {
@@ -139,15 +137,13 @@ export function* setLastReadedSaga({ payload }) {
         const { id: user_id } = yield select(userInfo);
         const allMessages = yield select(messages);
         const neededRoomMessages = allMessages[payload.room_name];
+        if (neededRoomMessages.length === 0) return;
         const lastNeededRoomMessage = neededRoomMessages[neededRoomMessages.length - 1];
-        if (!lastNeededRoomMessage) return;
         const { time: lastMessageTime } = lastNeededRoomMessage;
         const body = {
             ...payload,
             user_id,
-            lastMessageTime: lastMessageTime
-                .replace(/T/, ' ')
-                .replace(/\..+/, ''),
+            lastMessageTime,
         };
         yield call(postRequest, `${routes.chat.reed_all_messages}`, body);
     } catch (e) {

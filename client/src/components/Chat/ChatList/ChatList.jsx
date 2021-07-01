@@ -19,6 +19,7 @@ const ChatList = ({ rooms = [], changeModalVisibility }) => {
           key={room.room_id}
           content={room.room_name}
           id={room.room_id}
+          unreadCount={room.unreadCount}
         />
       ))}
       <StCreateRoom>

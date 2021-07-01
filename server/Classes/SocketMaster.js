@@ -29,11 +29,11 @@ class SocketMaster extends ChatManager {
                 try {
                     const answer = await this.setNewRoom({ ...newRoomInfo, id });
                     if (answer.error) return this.io.to(id).emit('error', { error: 'exists_error' })
-                    this.io.to(id).emit('join_new_room', answer);
+                    this.io.to(id).emit('join_new_room', { ...answer, unreadCount: 0 });
                     const { id: room_id } = answer;
                     socket.join(room_id);
                 }
-                catch (e) { console.log('socket error', e); this.io.to(id).emit('error', { error: 'server_error' }) }
+                catch (e) { this.io.to(id).emit('error', { error: 'server_error' }) }
             })
         });
     }

@@ -1,3 +1,4 @@
+const moment = require('moment');
 class ChatManager {
     constructor(connect) { this.connect = connect }
     getAllRooms = async (req, res) => {
@@ -15,12 +16,9 @@ class ChatManager {
                 const lastReadDate = await this.connect.query(`SELECT last_read_date FROM unread_state WHERE user_id = ${id} 
                 AND room_id = ${room.room_id}
                 `);
-                console.log('lastMessage', lastReadDate)
                 if (lastReadDate.length === 0) return { ...room, unreadCount: 0 };
                 const count = await this.connect.query(`SELECT COUNT(messages.time) as count from messages WHERE room_id = ${room.room_id}
-                AND time > '${lastReadDate[0].last_read_date.toISOString()
-                        .replace(/T/, ' ')
-                        .replace(/\..+/, '')}'`)
+                AND time > '${moment(lastReadDate[0].last_read_date).format('YYYY-MM-DD HH:mm:ss')}'`)
                 return { ...room, unreadCount: count[0]?.count };
             }))
             res.status(200).json(await userRoomsWithCount);
@@ -41,6 +39,7 @@ class ChatManager {
             users_messages,
             users
             where messages.id = users_messages.message_id
+            AND users_messages.user_id = ${id}
             AND users.id = ${id}
             ;`);
             res.status(200).json(userMessages);
@@ -88,10 +87,10 @@ class ChatManager {
             const { user_id, room_id, lastMessageTime } = body;
             const check = await this.connect.query(`SELECT * FROM unread_state where room_id = ${room_id} AND user_id = ${user_id}`);
             if (check.length > 0) {
-                await this.connect.query(`UPDATE unread_state SET last_read_date = '${lastMessageTime}' where room_id = ${room_id} AND user_id = ${user_id}`)
+                await this.connect.query(`UPDATE unread_state SET last_read_date = '${moment(lastMessageTime).format('YYYY-MM-DD HH:mm:ss')}' where room_id = ${room_id} AND user_id = ${user_id}`)
                 return res.status(200).json({ message: 'done' });
             }
-            await this.connect.query(`INSERT INTO unread_state (room_id, user_id, last_read_date) VALUES('${room_id}', '${user_id}', '${lastMessageTime}');`)
+            await this.connect.query(`INSERT INTO unread_state (room_id, user_id, last_read_date) VALUES('${room_id}', '${user_id}', '${moment(lastMessageTime).format('YYYY-MM-DD HH:mm:ss')}');`)
             res.status(200).json({ message: 'done' });
         } catch (e) {
             console.log(e);
