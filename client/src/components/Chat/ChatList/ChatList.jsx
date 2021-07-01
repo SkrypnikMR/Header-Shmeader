@@ -6,7 +6,7 @@ import ChatListItems from './ChatListItems';
 import { StChatList, StCreateRoom } from './styled';
 import Button from '../../UI/Button';
 
-const ChatList = ({ rooms, changeModalVisibility }) => {
+const ChatList = ({ rooms = [], changeModalVisibility }) => {
   const { t } = useTranslation();
   const handleCreateRoom = () => changeModalVisibility({
     isOpen: true, data: {}, modalType: 'createChat',

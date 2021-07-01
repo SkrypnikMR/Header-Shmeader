@@ -6,6 +6,7 @@ export const getRequest = async (url, optionalHeaders = {}) => {
   const headers = Object.assign({}, optionalHeaders);
   const options = { method: 'GET', headers };
   const answer = await fetch(`${baseUrl}${url}`, options);
+  if (!answer.ok) throw new Error(await answer.json());
   const result = await answer.json();
   return result;
 };

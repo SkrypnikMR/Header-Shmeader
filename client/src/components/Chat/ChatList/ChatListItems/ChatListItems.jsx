@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { StChatListItems, StPhoto } from './styled';
 
-const ChatListItems = ({ color, img, content, setValue, id }) => {
-  const handleClick = () => setValue({ name: 'currentRoom', value: { room_id: id, room_name: content } });
+const ChatListItems = ({ color, img, content, setValue, id, readAllMessagesInRoom }) => {
+  const handleClick = () => {
+    setValue({ name: 'currentRoom', value: { room_id: id, room_name: content } });
+    readAllMessagesInRoom({ room_id: id, room_name: content });
+  };
   const [state, setState] = useState({
     error: false,
     src: img,
@@ -27,6 +30,7 @@ ChatListItems.propTypes = {
   img: PropTypes.any,
   color: PropTypes.string,
   setValue: PropTypes.func,
+  readAllMessagesInRoom: PropTypes.func.isRequired,
   id: PropTypes.number,
 };
 

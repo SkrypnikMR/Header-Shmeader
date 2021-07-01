@@ -10,7 +10,7 @@ export const support = {
         const item = sessionStorage.getItem(name);
         return item?.charAt(0) === '{' ? JSON.parse(item) : item;
     },
-    getPrettyTime: time => `${new Date(Number(time)).toTimeString().substr(0, 8)}`,
+    getPrettyTime: time => time.replace(/T/, ' ').replace(/\..+/, ''),
     getMessagesFolders: (rooms) => {
         const messagesFolders = {};
         rooms.forEach((room) => {

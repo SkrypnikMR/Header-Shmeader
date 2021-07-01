@@ -7,5 +7,6 @@ export const routes = {
     chat: {
         rooms: 'chat/rooms',
         messages: 'chat/messages',
+        reed_all_messages: 'chat/read_all_messages',
     },
 };
