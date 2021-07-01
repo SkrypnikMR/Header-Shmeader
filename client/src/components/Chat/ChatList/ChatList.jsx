@@ -5,6 +5,7 @@ import Search from './Search';
 import ChatListItems from './ChatListItems';
 import { StChatList, StCreateRoom } from './styled';
 import Button from '../../UI/Button';
+import SearchNoRes from './Search/SearchNoRes';
 
 const ChatList = ({ rooms = [], changeModalVisibility }) => {
   const { t } = useTranslation();
@@ -14,7 +15,7 @@ const ChatList = ({ rooms = [], changeModalVisibility }) => {
   return (
     <StChatList>
       <Search />
-      {rooms?.map(room => (
+      {rooms?.length > 0 ? rooms.map(room => (
         <ChatListItems
           key={room.room_id}
           content={room.room_name}
@@ -31,10 +32,11 @@ const ChatList = ({ rooms = [], changeModalVisibility }) => {
           width="200px"
         />
       </StCreateRoom>
+      )) : <SearchNoRes/>
+      }
     </StChatList>
   );
 };
-
 ChatList.propTypes = {
   rooms: PropTypes.array,
   changeModalVisibility: PropTypes.func.isRequired,

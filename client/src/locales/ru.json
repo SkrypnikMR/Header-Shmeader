@@ -31,7 +31,7 @@
     "server_error_text": "Попробуйте позже...",
     "placeholder_control_input": "Написать сообщение...",
     "user_list": "участники",
-    "placeholder_shearch_input": "🔍  Поиск...",
+    "placeholder_search_input": "🔍  Поиск...",
     "logo": "Header&Shmeader",
     "english_translate_btn": "EN",
     "russian_translate_btn": "RU",
@@ -44,4 +44,6 @@
     "create_new_room_input_placeholder": "Введите название новой комнаты...",
     "create_room": "Создать новую комнату",
     "exists_error": "Такая комната уже существует"
+    "no_result": "Безрезультатно",
+    "try_new": "Попробуйте новый поиск."
 }

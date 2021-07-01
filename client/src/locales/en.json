@@ -31,7 +31,7 @@
     "server_error_text": "Try later...",
     "placeholder_control_input": "Write a message...",
     "user_list": "users",
-    "placeholder_shearch_input": "🔍  Search...",
+    "placeholder_search_input": "🔍  Search...",
     "logo": "Header&Shmeader",
     "english_translate_btn": "EN",
     "russian_translate_btn": "RU",
@@ -45,4 +45,8 @@
     "create_new_room_input_placeholder": "Enter the name of the new room...",
     "create_room": "Create new room",
     "exists_error": "This room already exists"
+    "no_result": "No result",
+    "try_new": "Try a new search.",
+    "invite_users": "Invite Users"
 }
+

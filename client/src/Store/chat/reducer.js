@@ -8,6 +8,8 @@ export const initialState = {
   currentRoom: { room_id: null, room_name: '' },
   error: false,
   isLoading: false,
+  users: [],
+  filterByRoomName: '',
 };
 
 export const reducer = (state = initialState, action) => {
@@ -80,6 +82,12 @@ export const reducer = (state = initialState, action) => {
       });
       return { ...state, rooms: newRooms };
     }
+    case actionTypes.SEND_USERS_REQUEST:
+        return { ...state, isLoading: true };
+    case actionTypes.USERS_REQUEST_SUCCESS:
+        return { ...state, users: action.payload, isLoading: false, error: false };
+    case actionTypes.USERS_REQUEST_ERROR:
+        return { ...state, isLoading: false, error: true };   
     default: return { ...state };
   }
 };

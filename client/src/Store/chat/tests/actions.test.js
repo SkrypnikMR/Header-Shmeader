@@ -82,6 +82,17 @@ describe('registration actions', () => {
             expect(actions.getAllRooms()).toEqual({ type: actionTypes.GET_ALL_ROOMS });
         });
     });
+    describe('actions.getAllUsers', () => {
+        it('toBe defined', () => {
+            expect(actions.getAllUsers).toBeDefined();
+        });
+        it('toBe function', () => {
+            expect(typeof actions.getAllUsers).toBe('function');
+        });
+        it('should return value', () => {
+            expect(actions.getAllUsers()).toEqual({ type: actionTypes.GET_ALL_USERS });
+        });
+    });
     describe('actions.getAllMessages', () => {
         it('toBe defined', () => {
             expect(actions.getAllMessages).toBeDefined();
