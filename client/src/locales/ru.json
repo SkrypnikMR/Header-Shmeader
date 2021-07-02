@@ -49,5 +49,7 @@
     "invite_users": "Пригласить пользователей",
     "modal_users_confirm": "Подтвердить",
     "modal_users_cancel": "Отменить",
-    "empty_users_list": "Вы не выбрали ни одного пользователя"
+    "empty_users_list": "Вы не выбрали ни одного пользователя",
+    "welcome": "Добро пожаловать,",
+    "find_interlocutors": "Выбери чат чтобы начать переписку"
 }

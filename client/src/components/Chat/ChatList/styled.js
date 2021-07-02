@@ -12,6 +12,8 @@ export const StChatList = styled.div`
     border-radius: 0px;
     position: relative;
     height: 90vh;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
 `;
 export const StSearch = styled.div`
     display: flex;
@@ -22,7 +24,6 @@ export const StSearch = styled.div`
     font-family: 'Play', sans-serif;
     border-radius: 0px;
 `;
-
 export const StCreateRoom = styled.div`
       display: flex;
       justify-self: flex-end;
@@ -37,8 +38,6 @@ export const StItems = styled.div`
      height: 68vh;
      flex-direction: column;
      width: 100%;
-     border-right: 1px solid black;
-
      overflow-y: hidden;
     :hover {
       overflow-y: auto;

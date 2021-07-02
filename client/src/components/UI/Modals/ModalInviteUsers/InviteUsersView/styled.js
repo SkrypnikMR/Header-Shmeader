@@ -3,8 +3,7 @@ import { bgColorDefault } from '/src/components/UI/baseLayout';
 
 export const StControlPanel = styled.div`
     display: flex;
-    border: solid 1px black;
-    justify-content: space-between;
+    justify-content: space-around;
 `;
 export const StContentModalUsers = styled.div`
     display: flex;
@@ -13,7 +12,7 @@ export const StContentModalUsers = styled.div`
 export const StUsersItem = styled.div`
     display: flex;
     flex-direction: column;
-    height: 270px;
+    min-height: 60vh;
     width: 100%;
     overflow: auto;
         ::-webkit-scrollbar {

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { textColorBlack } from '/src/components/UI/baseLayout';
+import { colorDefault } from '/src/components/UI/baseLayout';
 
 export const StChatListItems = styled.div`
     display: flex;
@@ -22,7 +22,7 @@ export const StUsersView = styled.div`
     width: 100%;
     height: 60px;
     align-items: center;
-    color: ${({ color = textColorBlack }) => color};
+    color: ${({ color = colorDefault }) => color};
         ul {
         padding-left: 1rem;
         list-style-type: none;

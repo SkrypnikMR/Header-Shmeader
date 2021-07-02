@@ -49,5 +49,7 @@
     "invite_users": "قم بدعوة المستخدمين",
     "modal_users_confirm": "تؤكد",
     "modal_users_cancel": "كانسل",
-    "empty_users_list": "لم تقم بتحديد أي مستخدم"
+    "empty_users_list": "لم تقم بتحديد أي مستخدم",
+    "welcome": ",مرحبا",
+    "find_interlocutors": "اختر دردشة لبدء دردشة"
 }

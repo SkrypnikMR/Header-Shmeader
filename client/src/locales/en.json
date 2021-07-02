@@ -49,5 +49,7 @@
     "exists_error": "This room already exists",
     "no_result": "No results",
     "try_new": "Try a new search.",
-    "empty_users_list": "You have not selected any user"
+    "empty_users_list": "You have not selected any user",
+    "welcome": "Welcome,",
+    "find_interlocutors": "Choose a chat to start a chat"
 }
