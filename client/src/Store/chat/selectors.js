@@ -28,3 +28,7 @@ export const filterByRoomName = createSelector(
     chatStore,
     ({ filterByRoomName }) => filterByRoomName,
 );
+export const users = createSelector(
+    chatStore,
+    ({ users }) => users,
+);

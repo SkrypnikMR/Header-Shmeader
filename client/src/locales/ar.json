@@ -30,7 +30,7 @@
     "server_error": "خطأ في الخادم",
     "server_error_text": "...حاول لاحقا",
     "placeholder_control_input": "...لكتابة رسالة",
-    "user_list": "المشاركون",
+    "user_list": "إضافة أعضاء",
     "placeholder_search_input": "...يبحث   🔍",
     "logo": "Header&Shmeader",
     "english_translate_btn": "EN",
@@ -39,5 +39,8 @@
     "without_room": "لم تقم باختيار دردشة",
     "without_text": "لا يمكنك إرسال رسالة فارغة",
     "no_result": "لا نتيجة",
-    "try_new": "جرب بحث جديد."
+    "try_new": "جرب بحث جديد.",
+    "invite_users": "قم بدعوة المستخدمين",
+    "modal_users_confirm": "تؤكد",
+    "modal_users_cancel": "كانسل"
 }

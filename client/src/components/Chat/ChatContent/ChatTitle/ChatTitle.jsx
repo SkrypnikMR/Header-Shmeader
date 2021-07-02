@@ -13,8 +13,8 @@ const ChatTitle = ({ currentRoomName, changeModalVisibility }) => {
       <span>
         {currentRoomName}
       </span>
-      <p>{t('user_list')}</p>
-      <button onClick={handleOpenModalInviteUsers}>OPEN USERS MODAL</button>
+      <p onClick={handleOpenModalInviteUsers}>{t('user_list')}</p>
+      {/* <button onClick={handleOpenModalInviteUsers}>{t('user_list')}</button> */}
     </StChatTitle>
   );
 };

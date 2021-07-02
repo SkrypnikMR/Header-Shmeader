@@ -30,7 +30,7 @@
     "server_error": "server error",
     "server_error_text": "Try later...",
     "placeholder_control_input": "Write a message...",
-    "user_list": "users",
+    "user_list": "add users",
     "placeholder_search_input": "🔍  Search...",
     "logo": "Header&Shmeader",
     "english_translate_btn": "EN",
@@ -40,5 +40,7 @@
     "without_text": "You cannot send an empty message",
     "no_result": "No result",
     "try_new": "Try a new search.",
-    "invite_users": "Invite Users"
+    "invite_users": "Invite Users",
+    "modal_users_confirm": "Confirm",
+    "modal_users_cancel": "Cancel"
 }

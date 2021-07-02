@@ -3,13 +3,14 @@ import ModalComponent from '../../Modal';
 import InviteUsersView from './InviteUsersView';
 
 const ModalInviteUsers = () => {
-        const modalType = 'usersInChat';
+        const modalType = 'usersInChat'; 
         return (
             <ModalComponent
-                headerTextKey='invite_users'
+                headerTextKey='invite_users' 
                 modalType={modalType}
+
             >
-                <InviteUsersView modalType={modalType}/>
+           <InviteUsersView modalType={modalType}/>
             </ModalComponent>
         );
 };
