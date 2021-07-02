@@ -43,5 +43,6 @@
     "age": "Age",
     "city": "City",
     "company": "Company",
-    "apply": "Apply"
+    "apply": "Apply",
+    "number_error": "Age must be a number"
 }

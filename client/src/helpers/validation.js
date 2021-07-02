@@ -14,4 +14,5 @@ export const validation = {
         if (!regExp.passwordRegExp.test(password) || !password) return { message: 'invalid_password', isValid: false };
         return { message: '', isValid: true };
     },
+    numberValidation: (age) => Number.isNaN(Number(age)),
 };

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
+import { MY_ACCOUNT_EDIT } from '../../constants/componentsСonsts';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
-import { StFieldText,
+import {
+        StFieldText,
         StMyAccountWrapper,
         StMyAccountTitle,
         StMyAccountHeader,
@@ -11,22 +14,24 @@ import { StFieldText,
         StMyAccountAvatarConteiner,
         StMyAccountFieldsConteiner,
         StMyAccountSignificance,
-        StMyAccountFooter} from './styled';
+        StMyAccountFooter }
+        from './styled';
 
 
-const MyAccount = ( { userInfo, changeUser, setValue } ) => {
-    const { firstName, lastName } = userInfo;
-    const { firstName: inputFirstName, lastName: inputLastName, age, hobby, city, company } = changeUser;
-    const [state, setState] = useState({ edit: false });
+const MyAccount = ({ userInfo, changeUser, changeUserData, setNewUserData }) => {
+    // const { firstName, lastName } = userInfo;
+    // const { firstName: inputFirstName, lastName: inputLastName, age, hobby, city, company } = changeUser;
+    const [isEdit, setIsEdit] = useState({ edit: false });
     const { t } = useTranslation();
     const handleEditClick = () => {
-        setState({ ...state, edit: true });
+        setIsEdit({ ...isEdit, edit: true });
     };
     const handleApplyClick = () => {
-        setState({...state, edit: false });
+        setNewUserData()
+        setIsEdit({ ...isEdit, edit: false });
     };
-    const handleOnChange = data => {
-        setValue(data);
+    const handleOnChange = (data) => {
+        changeUserData(data);
     };
     return (
         <StMyAccountWrapper>
@@ -39,88 +44,29 @@ const MyAccount = ( { userInfo, changeUser, setValue } ) => {
                     <img src='../../../public/assets/images/user.png' />
                 </StMyAccountAvatarConteiner>
                 <StMyAccountFieldsConteiner>
-                    <StFieldText>
-                        {t('first_name_label')} : { state.edit
-                        ? <Input
-                            id='first_name_update'
-                            name='firstName'
-                            onChange={handleOnChange}
-                            value={inputFirstName}
-                            margin='0 50px'
-                            width='300px'
-                            height='40px'
-                            isDisabled={false}
-                        /> : <StMyAccountSignificance>{ firstName }</StMyAccountSignificance> }
-                    </StFieldText>
-                    <StFieldText>
-                        {t('last_name_label')}: { state.edit
-                        ? <Input
-                            id='last_name_update'
-                            name='lastName'
-                            onChange={handleOnChange}
-                            value={inputLastName}
-                            margin='0 50px'
-                            width='300px'
-                            height='40px'
-                            isDisabled={false}
-                        /> : <StMyAccountSignificance>{ lastName }</StMyAccountSignificance> }
-                    </StFieldText>
-                    <StFieldText>
-                        {t('age')} : { state.edit
-                        ? <Input
-                            id='age'
-                            name='age'
-                            onChange={handleOnChange}
-                            value={age}
-                            margin='0 50px'
-                            width='300px'
-                            height='40px'
-                            isDisabled={false}
-                        /> : <StMyAccountSignificance></StMyAccountSignificance> }
-                    </StFieldText>
-                    <StFieldText>
-                        {t('city')} : { state.edit
-                        ? <Input
-                            id='city'
-                            name='city'
-                            onChange={handleOnChange}
-                            value={city}
-                            margin='0 50px'
-                            width='300px'
-                            height='40px'
-                            isDisabled={false}
-                        /> : <StMyAccountSignificance></StMyAccountSignificance> }
-                    </StFieldText>
-                    <StFieldText>
-                        {t('company')} : { state.edit
-                        ? <Input
-                            id='company'
-                            name='company'
-                            onChange={handleOnChange}
-                            value={company}
-                            margin='0 50px'
-                            width='300px'
-                            height='40px'
-                            isDisabled={false}
-                        /> : <StMyAccountSignificance></StMyAccountSignificance> }
-                    </StFieldText>
-                    <StFieldText>
-                        {t('hobby')} : { state.edit
-                        ? <Input
-                            id='hobby'
-                            name='hobby'
-                            onChange={handleOnChange}
-                            value={hobby}
-                            margin='0 50px'
-                            width='300px'
-                            height='40px'
-                            isDisabled={false}
-                        /> : <StMyAccountSignificance></StMyAccountSignificance> }
-                    </StFieldText>
+                    {MY_ACCOUNT_EDIT.map(input => (
+                        <StFieldText key={input.id}>
+                            <p> { t(input.label) } :</p>
+                            {isEdit.edit
+                                ? <Input
+                                    id={input.id}
+                                    name={input.id}
+                                    onChange={handleOnChange}
+                                    value={changeUser[input.id]}
+                                    margin='0 50px'
+                                    width='300px'
+                                    height='40px'
+                                    isDisabled={false}
+                                />
+                                : <StMyAccountSignificance>{userInfo[input.id]}</StMyAccountSignificance>
+                            }
+                        </StFieldText>
+                    ))}
                 </StMyAccountFieldsConteiner>
             </StMyAccountContent>
             <StMyAccountFooter>
-                {state.edit ? <Button
+                {isEdit.edit ? (
+                    <Button
                     id='apply'
                     name='apply'
                     onClick={handleApplyClick}
@@ -128,10 +74,18 @@ const MyAccount = ( { userInfo, changeUser, setValue } ) => {
                     content={t('apply')}
                     fontSize='25px'
                     height='50px'
-                /> : null}
+                    />
+                    ) : null}
             </StMyAccountFooter>
         </StMyAccountWrapper>
     );
+};
+
+MyAccount.propTypes = {
+    userInfo: PropTypes.object,
+    changeUser: PropTypes.object,
+    changeUserData: PropTypes.func,
+    setNewUserData: PropTypes.func,
 };
 
 export default MyAccount;

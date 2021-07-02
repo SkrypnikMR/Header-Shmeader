@@ -6,6 +6,7 @@ module.exports = {
     ACCOUNT: {
         REGISTRATION: '/registration',
         LOGIN: '/login',
+        UPDATE: '/update',
     },
     CHAT: {
         ROOMS: '/rooms',

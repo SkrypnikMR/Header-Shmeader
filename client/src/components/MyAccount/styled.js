@@ -13,7 +13,7 @@ export const StFieldText = styled.p`
         display: flex;
         justify-content: center;
         align-items: center;  
-        font-size: 30px;
+        font-size: 2vh;
 `;
 
 export const StMyAccountWrapper = styled.div`
@@ -35,7 +35,6 @@ export const StMyAccountTitle = styled.h3`
     font-size: 48px;
     width: 100%;
     text-align: center;
-    
 `;
 
 export const StMyAccountIcon = styled.span`
@@ -63,7 +62,6 @@ export const StMyAccountContent = styled.div`
       justify-content: center;
       width: 100%;
       height: 60vh;
-      
 `;
 
 export const StMyAccountAvatarConteiner = styled.div`
@@ -75,8 +73,8 @@ export const StMyAccountAvatarConteiner = styled.div`
       width: 60%;
       height: 60%;
     }
-  
 `;
+
 export const StMyAccountFieldsConteiner = styled.div`
     display: flex;
     justify-content: flex-start;
@@ -97,4 +95,5 @@ export const StMyAccountFooter = styled.div`
     align-items: center;
     width: 100%;
     height: 15vh;
+  border: solid;
 `;
