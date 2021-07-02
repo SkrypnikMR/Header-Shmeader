@@ -33,7 +33,7 @@ export const users = createSelector(
     chatStore,
     userId,
     ({ users, currentRoom }, id) => {
-        return users.filter(user => {
+        return users.filter((user) => {
             let result = true;
             user.rooms.forEach((room) => {
                 if (room.room_id === currentRoom.room_id || user.id === id) {
