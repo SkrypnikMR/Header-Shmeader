@@ -23,7 +23,6 @@ const UserItem = ({ img, email, id, isOnline, onChange, isSelected }) => {
             </div>
         </StChatListItems>
         <Input
-            label=''
             type="checkbox"
             id={id} 
             height="30px"
@@ -32,9 +31,9 @@ const UserItem = ({ img, email, id, isOnline, onChange, isSelected }) => {
             inputHeight="30px"
             borderRadius="0px"
             width="30px"
+            margin="0"
             value={isSelected}
             onChange={onChange}
-            margin="0"
             bgColor="transparent"
             fontSizeInp="10px"
             borderColor="transparent"

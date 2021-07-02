@@ -38,9 +38,16 @@
     "arabian_translate_btn": "AR",
     "without_room": "لم تقم باختيار دردشة",
     "without_text": "لا يمكنك إرسال رسالة فارغة",
+    "without_text_new_room": "لا يمكنك إنشاء غرفة بدون اسم",
+    "create": "إنشاء",
+    "create_chat": "قم بإنشاء غرفة جديدة",
+    "create_new_room_input_placeholder": "...أدخل اسم الغرفة الجديدة",
+    "create_room": "قم بإنشاء غرفة جديدة",
+    "exists_error": "هذه الغرفة موجودة بالفعل",
     "no_result": "لا نتيجة",
     "try_new": "جرب بحث جديد.",
     "invite_users": "قم بدعوة المستخدمين",
     "modal_users_confirm": "تؤكد",
-    "modal_users_cancel": "كانسل"
+    "modal_users_cancel": "كانسل",
+    "empty_users_list": "لم تقم بتحديد أي مستخدم"
 }

@@ -2,44 +2,36 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import UsersItem from '../../../UserItem'; 
 import Button from '/src/components/UI/Button';
-// import { NotificationManager } from 'react-notifications';
+import { NotificationManager } from 'react-notifications';
 import { useTranslation } from 'react-i18next';
 import { StContentModalUsers, StControlPanel, StUsersItem } from './styled';
 import { MODAL_USERS_BUTTON } from '/src/constants/componentsСonsts.js';
- 
-const InviteUsersView = ({ users, changeModalVisibility }) => {
-    const handleSendMessageClick = () => {  
-    };
+
+const InviteUsersView = ({ users, changeModalVisibility, setUserInRoom }) => {
     const { t } = useTranslation();
-    const [state, setState] = useState({ newRoomName: '', user_ids: [] });
+    const [state, setState] = useState({ user_ids: [] });
     const handleToggleUsers = (e) => {
-        console.log(e)
-        setState ({ 
+        setState({ 
             ...state,
             user_ids: state.user_ids.includes(e.name)
             ? state.user_ids.filter(id => id !== e.name) 
-            : [...state.user_ids, e.name],
+            : [...state.user_ids, Number(e.name)],
         });
-    }
-    // const handleCreateNewRoom = () => {
-    //     if (!state.newRoomName) {
-    //         return NotificationManager
-    //             .error(t('without_text_new_room'), t('input_error'), 2000);
-    //     }
-    //     createNewRoom(state);
-    //     changeModalVisibility({
-    //         isOpen: false, data: {}, modalType: 'createChat',
-    //     });
-    // };
+    };
     const handleCloseModal = () => changeModalVisibility({ modalType: 'usersInChat', data: {}, isOpen: false });
-
+    const handleSetNewUsersClick = () => {  
+        if (state.user_ids.length < 1) {
+            return NotificationManager.error(t('empty_users_list'), t('input_error'), 2000);
+        }
+        setUserInRoom(state.user_ids);
+        handleCloseModal();
+    };
     const getFunctionForButtons = (el) => {
         switch (el.id) {
-            case 'sendMessage': return handleSendMessageClick;
+            case 'sendMessage': return handleSetNewUsersClick;
             default: return handleCloseModal;
         }
     };
-    
     return (
         <StContentModalUsers> 
             <StUsersItem>
@@ -74,7 +66,7 @@ const InviteUsersView = ({ users, changeModalVisibility }) => {
 InviteUsersView.propTypes = {
     users: PropTypes.array,
     changeModalVisibility: PropTypes.func.isRequired,
-
+    setUserInRoom: PropTypes.func.isRequired,
 };
 
 export default InviteUsersView;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { bgColorDefault, bgColorDefaultFon, textColorBlack } from '/src/components/UI/baseLayout';
+import { bgColorDefault, bgColorDefaultFon, colorDefault } from '/src/components/UI/baseLayout';
 
 export const StChatTitle = styled.div`
     display: flex;
@@ -7,7 +7,7 @@ export const StChatTitle = styled.div`
     height: 60px;
     justify-content: space-between;
     align-items: center;
-    color: ${({ color = textColorBlack }) => color};
+    color: ${({ color = colorDefault }) => color};
     font-size: 24px;
     font-family: 'Play', sans-serif;
     border-top: 1px solid black;

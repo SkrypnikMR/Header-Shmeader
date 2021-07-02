@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { StChatDisplay } from './styled';
 import ChatMessages from './ChatMessages';
-import { support } from '../../../../helpers/support';
+import { support } from '/src/helpers/support';
 
 const ChatDisplay = ({ messages, currentUser, currentRoomName }) => {
+  useEffect(() => {
+    messagesEndRef.current.scrollIntoView();
+  }, [currentRoomName, messages]);
+  const messagesEndRef = useRef(null);
   return (
     <StChatDisplay>
       {messages[currentRoomName]?.length > 0 ? messages[currentRoomName].map((message) => {
@@ -13,13 +17,14 @@ const ChatDisplay = ({ messages, currentUser, currentRoomName }) => {
             author={message.author}
             key={message.time}
             messageText={message.text}
-            messageTime={support.getPrettyTime(message.time)}
+            messageTime={support.getFormatedDate(message.time)}
             alignSelf={currentUser === message.author
               ? 'flex-end'
               : 'flex-start'}
           />
         );
       }) : null}
+      <div ref={messagesEndRef} />
     </StChatDisplay>
   );
 };

@@ -10,6 +10,7 @@ module.exports = {
     CHAT: {
         ROOMS: '/rooms',
         MESSAGES: '/messages',
+        READ_ALL_MESSAGES: '/read_all_messages',
         USERS: '/users',
     },
 };
