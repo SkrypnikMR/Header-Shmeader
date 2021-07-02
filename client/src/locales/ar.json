@@ -31,7 +31,7 @@
     "server_error_text": "...حاول لاحقا",
     "placeholder_control_input": "...لكتابة رسالة",
     "user_list": "المشاركون",
-    "placeholder_shearch_input": "...يبحث   🔍",
+    "placeholder_search_input": "...يبحث   🔍",
     "logo": "Header&Shmeader",
     "english_translate_btn": "EN",
     "russian_translate_btn": "RU",
@@ -45,4 +45,12 @@
     "company": "شركة ",
     "apply": "تطبيق ",
     "number_error":  "يجب أن يكون العمر رقمًا"
+    "without_text_new_room": "لا يمكنك إنشاء غرفة بدون اسم",
+    "create": "إنشاء",
+    "create_chat": "قم بإنشاء غرفة جديدة",
+    "create_new_room_input_placeholder": "...أدخل اسم الغرفة الجديدة",
+    "create_room": "قم بإنشاء غرفة جديدة",
+    "exists_error": "هذه الغرفة موجودة بالفعل",
+    "no_result": "لا نتيجة",
+    "try_new": "جرب بحث جديد."
 }

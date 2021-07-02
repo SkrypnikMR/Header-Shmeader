@@ -54,3 +54,17 @@ CREATE TABLE `users_messages` (
         REFERENCES `messages` (`id`) ON DELETE CASCADE
 );
 INSERT INTO rooms (id, name) VALUES(1, 'global');
+
+CREATE TABLE `unread_state` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `room_id` INT(11) NOT NULL,
+    `user_id` INT(11) NOT NULL,
+    `last_read_date` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`id`)
+);
+
+ALTER DATABASE `header&shmeader_db` CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+ALTER TABLE rooms CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE messages CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE users CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;

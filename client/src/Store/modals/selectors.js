@@ -3,10 +3,14 @@ import { createSelector } from 'reselect';
 export const getModalState = state => state.modals;
 export const getModalVisibilityByType = createSelector(
     getModalState,
-     props => props.modalType,
+    (state, props) => props.modalType,
     (modals, modalType) => modals[modalType],
 );
+export const getModalDataByType = createSelector(
+    getModalVisibilityByType,
+    modalsByType => modalsByType?.data,
+);
 export const getModalVisibilityIsOpen = createSelector(
-    getModalState,
-    ({ isOpen }) => isOpen,
+    getModalVisibilityByType,
+    (modalsByType = {}) => modalsByType?.isOpen,
 );

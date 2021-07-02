@@ -8,6 +8,8 @@ export const initialState = {
   currentRoom: { room_id: null, room_name: '' },
   error: false,
   isLoading: false,
+  users: [],
+  filterByRoomName: '',
 };
 
 export const reducer = (state = initialState, action) => {
@@ -20,8 +22,17 @@ export const reducer = (state = initialState, action) => {
       const { room_name } = action.payload;
       const newMessages = { ...state.messages };
       newMessages[room_name]?.push(action.payload);
+      let newRoomsWithCount = [...state.rooms];
+      if (room_name !== state.currentRoom.room_name) {
+        newRoomsWithCount = newRoomsWithCount.map((room) => {
+          if (room.room_name === room_name) {
+            room.unreadCount += 1;
+          }
+          return room;
+        });
+      }
       return {
-        ...state, messages: newMessages,
+        ...state, messages: newMessages, rooms: newRoomsWithCount,
       };
     }
     case actionTypes.PUT_MESSAGES: {
@@ -52,6 +63,31 @@ export const reducer = (state = initialState, action) => {
       return { ...state, isLoading: false, error: true };
     case actionTypes.PUT_MESSAGES_FOLDERS:
       return { ...state, messages: action.payload };
+    case actionTypes.PUT_NEW_ROOM: {
+      return {
+        ...state,
+        messages: {
+          ...state.messages, [action.payload.room_name]: [],
+        },
+        rooms: [...state.rooms, action.payload],
+      };
+    }
+    case actionTypes.RESET_UNREAD_COUNT: {
+      let newRooms = [...state.rooms];
+      newRooms = newRooms.map((el) => {
+        if (el.room_name === action.payload) {
+          el.unreadCount = 0;
+        }
+        return el;
+      });
+      return { ...state, rooms: newRooms };
+    }
+    case actionTypes.SEND_USERS_REQUEST:
+        return { ...state, isLoading: true };
+    case actionTypes.USERS_REQUEST_SUCCESS:
+        return { ...state, users: action.payload, isLoading: false, error: false };
+    case actionTypes.USERS_REQUEST_ERROR:
+        return { ...state, isLoading: false, error: true };   
     default: return { ...state };
   }
 };

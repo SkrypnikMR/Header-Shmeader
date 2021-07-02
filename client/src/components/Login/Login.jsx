@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { APP_ROUTES } from '/src/constants/reactRoutes';
 import { StLoginDiv } from './styled';
 import Form from '../UI/Form';
-import Input from '../Ui/Input';
+import Input from '../UI/Input';
 import Button from '../UI/Button';
 
 const Login = ({ sendLoginRequest, setLoginValue, fields }) => {

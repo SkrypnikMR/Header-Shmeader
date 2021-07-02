@@ -13,6 +13,7 @@ const store = mockStore({
     currentRoom: { room_id: null, room_name: '' },
     error: false,
     isLoading: false,
+    filterByRoomName: '',
   },
   user: {
     userInfo: {
@@ -36,8 +37,27 @@ describe('ChatList', () => {
     const component = mountSmart(<ChatList />, store);
     expect(component.find('Search')).toHaveLength(1);
   });
-  it('Should render ChatListItems', () => {
+  it('Should no render ChatListItems', () => {
     const component = mountSmart(<ChatList />, store);
     expect(component.find('ChatListItems')).toHaveLength(0);
+  });
+  it('Should render ChatListItems filterByRoomName === "" ', () => {
+    const rooms = [{ room_id: 1, room_name: 'global' }];
+    const filterByRoomName = '';
+    const component = mountSmart(<ChatList rooms={rooms} filterByRoomName={filterByRoomName} />, store);
+    expect(component.find('ChatListItems')).toHaveLength(1);
+  });
+  it('Should render ChatListItems rooms includes filterValue ', () => {
+    const rooms = [{ room_id: 1, room_name: 'global' }];
+    const filterByRoomName = 'global';
+    const component = mountSmart(<ChatList rooms={rooms} filterByRoomName={filterByRoomName} />, store);
+    expect(component.find('ChatListItems')).toHaveLength(1);
+  });
+  it('Should render SearchNoRes', () => {
+    const rooms = [{ room_id: 1, room_name: 'global' }];
+    const filterByRoomName = 'globalF';
+    const component = mountSmart(<ChatList rooms={rooms} filterByRoomName={filterByRoomName} />, store);
+    expect(component.find('ChatListItems')).toHaveLength(0);
+    expect(component.find('SearchNoRes')).toHaveLength(1);
   });
 });

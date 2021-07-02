@@ -1,9 +1,22 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { StChatListItems, StPhoto } from './styled';
+import { StChatListItems, StPhoto, StRoom } from './styled';
 
-const ChatListItems = ({ color, img, content, setValue, id }) => {
-  const handleClick = () => setValue({ name: 'currentRoom', value: { room_id: id, room_name: content } });
+const ChatListItems = ({
+  id,
+  img,
+  color,
+  content,
+  setValue,
+  unreadCount,
+  resetUnreadCount,
+  readAllMessagesInRoom,
+}) => {
+  const handleClick = () => {
+    setValue({ name: 'currentRoom', value: { room_id: id, room_name: content } });
+    readAllMessagesInRoom({ room_id: id, room_name: content });
+    resetUnreadCount(content);
+  };
   const [state, setState] = useState({
     error: false,
     src: img,
@@ -15,19 +28,23 @@ const ChatListItems = ({ color, img, content, setValue, id }) => {
       <StPhoto>
         <img src={img ? state.src : state.defaultImg} onError={onError} />
       </StPhoto>
-      <div>
-        {content}
-      </div>
+      <StRoom>
+        <p>{content}</p>
+        {unreadCount ? <span>{unreadCount}</span> : null}
+      </StRoom>
     </StChatListItems>
   );
 };
 
 ChatListItems.propTypes = {
-  content: PropTypes.string,
   img: PropTypes.any,
+  id: PropTypes.number,
   color: PropTypes.string,
   setValue: PropTypes.func,
-  id: PropTypes.number,
+  content: PropTypes.string,
+  unreadCount: PropTypes.number,
+  readAllMessagesInRoom: PropTypes.func.isRequired,
+  resetUnreadCount: PropTypes.func.isRequired,
 };
 
 export default ChatListItems;

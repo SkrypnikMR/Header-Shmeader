@@ -17,12 +17,16 @@ import {
     reciveErrorMessagesRequest,
     connection,
     getAllMessages,
-    getAllRooms,
     putMessagesFolders,
+    putNewRoom,
+    sendUsersRequest,
+    getAllUsers,
+    reciveSuccessUsersRequest,
+    reciveErrorUsersRequest,
 } from './actions';
 import { userInfo } from '../user/selectors';
-import { newMessage, currentRoom } from './selectors';
-import { getRequest } from '../../helpers/requests';
+import { newMessage, currentRoom, messages } from './selectors';
+import { getRequest, postRequest } from '../../helpers/requests';
 import { routes } from '../../constants/routes';
 import { support } from '/src/helpers/support';
 
@@ -31,6 +35,10 @@ export let globalSocket = { emit: () => { }, on: () => { } };
 export const createSocketChannel = socket => eventChannel((emit) => {
     socket.on('users_online', data => emit(putOnlineUsers(data)));
     socket.on('messages', data => emit(putNewMessages(data)));
+    socket.on('join_new_room', data => emit(putNewRoom(data)));
+    socket.on('error', ({ error }) => {
+        NotificationManager.error(i18next.t(error), i18next.t('input_error'), 2000);
+    });
     return () => {
         socket.off('users_online', data => emit(putOnlineUsers(data)));
     };
@@ -46,8 +54,9 @@ export const connect = (user) => {
 };
 export function* initSaga() {
     yield put(connection());
-    yield put(getAllRooms());
+    yield call(getAllRoomsSaga);
     yield put(getAllMessages());
+    yield put(getAllUsers());
 }
 export function* connectionSaga() {
     try {
@@ -80,7 +89,7 @@ export function* sendMessageSaga() {
             text: message,
             room_name,
             room_id,
-            time: new Date().getTime(),
+            time: support.getFormatedDate(),
         };
         yield call([globalSocket, globalSocket.emit], 'messages', requestMessage);
     } catch (e) {
@@ -98,6 +107,7 @@ export function* getAllRoomsSaga() {
         const messagesFolders = yield call([support, support.getMessagesFolders], rooms);
         yield put(putMessagesFolders(messagesFolders));
         yield call([globalSocket, globalSocket.emit], 'join', rooms);
+        return rooms;
     } catch (e) {
         yield put(reciveErrorRoomsRequest());
         yield call([NotificationManager, NotificationManager.error],
@@ -117,10 +127,51 @@ export function* getAllMessagesSaga() {
             i18next.t('server_error_text'), i18next.t('server_error'), 2000);
     }
 }
+export function* getAllUsersSaga() {
+    try {
+        yield put(sendUsersRequest());
+        const users = yield call(getRequest, routes.chat.users);
+        yield put(reciveSuccessUsersRequest(users));
+    } catch (e) {
+        yield put(reciveErrorUsersRequest());
+        yield call([NotificationManager, NotificationManager.error],
+            i18next.t('server_error_text'), i18next.t('server_error'), 2000);
+    }
+}
+export function* createNewRoomSaga({ payload }) {
+    try {
+        const { id } = yield select(userInfo);
+        yield call([globalSocket, globalSocket.emit], 'new_room', { id, room_name: payload });
+    } catch (e) {
+        yield call([NotificationManager, NotificationManager.error],
+            i18next.t('server_error_text'), i18next.t('server_error'), 2000);
+    }
+}
+export function* setLastReadedSaga({ payload }) {
+    try {
+        const { id: user_id } = yield select(userInfo);
+        const allMessages = yield select(messages);
+        const neededRoomMessages = allMessages[payload.room_name];
+        if (neededRoomMessages.length === 0) return;
+        const lastNeededRoomMessage = neededRoomMessages[neededRoomMessages.length - 1];
+        const { time: lastMessageTime } = lastNeededRoomMessage;
+        const body = {
+            ...payload,
+            user_id,
+            lastMessageTime,
+        };
+        yield call(postRequest, `${routes.chat.reed_all_messages}`, body);
+    } catch (e) {
+        yield call([NotificationManager, NotificationManager.error],
+            i18next.t('server_error_text'), i18next.t('server_error'), 2000);
+    }
+}
 export function* watcherChatOperations() {
     yield takeEvery(actionTypes.INIT_CHAT, initSaga);
     yield takeEvery(actionTypes.CONNECT, connectionSaga);
     yield takeEvery(actionTypes.SEND_NEW_MESSAGE, sendMessageSaga);
-    yield takeEvery(actionTypes.GET_ALL_ROOMS, getAllRoomsSaga);
     yield takeEvery(actionTypes.GET_ALL_MESSAGES, getAllMessagesSaga);
+    yield takeEvery(actionTypes.CREATE_NEW_ROOM, createNewRoomSaga);
+    yield takeEvery(actionTypes.READ_ALL_MESSAGES_IN_ROOM, setLastReadedSaga);
+    yield takeEvery(actionTypes.GET_ALL_USERS, getAllUsersSaga);
 }

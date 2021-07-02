@@ -12,5 +12,4 @@ const ChatContent = () => (
   </StChatContant>
 );
 
-
 export default ChatContent;

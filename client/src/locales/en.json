@@ -31,7 +31,7 @@
     "server_error_text": "Try later...",
     "placeholder_control_input": "Write a message...",
     "user_list": "users",
-    "placeholder_shearch_input": "🔍  Search...",
+    "placeholder_search_input": "🔍  Search...",
     "logo": "Header&Shmeader",
     "english_translate_btn": "EN",
     "russian_translate_btn": "RU",
@@ -45,4 +45,13 @@
     "company": "Company",
     "apply": "Apply",
     "number_error": "Age must be a number"
+    "without_text_new_room": "You cannot create a room without a name",
+    "invite_users": "Invite Users",
+    "create": "Create",
+    "create_chat": "Create new room",
+    "create_new_room_input_placeholder": "Enter the name of the new room...",
+    "create_room": "Create new room",
+    "exists_error": "This room already exists",
+    "no_result": "No results",
+    "try_new": "Try a new search."
 }

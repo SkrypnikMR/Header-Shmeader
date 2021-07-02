@@ -46,25 +46,6 @@ describe('support', () => {
             expect(support.getSessionStorageItem('kek')).toEqual({ kek: 1 });
         });
     });
-    describe('getPrettyTime', () => {
-        const realGD = global.Date;
-        beforeEach(() => {
-            global.Date = jest.fn().mockReturnValue({ toTimeString: jest.fn().mockReturnValue('00:58:34Z') });
-        });
-        afterEach(() => {
-            global.Date = realGD;
-        });
-        it('should be defined', () => {
-            expect(support.getPrettyTime).toBeDefined();
-        });
-        it('should be function', () => {
-            expect(typeof support.getPrettyTime).toBe('function');
-        });
-        it('should return pretty Time', () => {
-            const time = '123454678';
-            expect(support.getPrettyTime(time)).toBe('00:58:34');
-        });
-    });
     describe('getMessagesFolders', () => {
         it('should be defined', () => {
             expect(support.getMessagesFolders).toBeDefined();
