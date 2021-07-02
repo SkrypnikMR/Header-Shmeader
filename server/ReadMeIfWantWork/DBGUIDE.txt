@@ -15,6 +15,10 @@ CREATE TABLE `users` (
     `lastName` VARCHAR(255) NOT NULL,
 	`email` VARCHAR(255) NOT NULL,
     `password` VARCHAR(255) NOT NULL,
+    `age` VARCHAR(255),
+    `hobby` VARCHAR(255),
+    `city` VARCHAR(255),
+    `company` VARCHAR(255),
     PRIMARY KEY (`id`)
 );
    

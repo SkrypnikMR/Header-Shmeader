@@ -19,8 +19,6 @@ import {
 
 
 const MyAccount = ({ userInfo, changeUser, changeUserData, setNewUserData }) => {
-    // const { firstName, lastName } = userInfo;
-    // const { firstName: inputFirstName, lastName: inputLastName, age, hobby, city, company } = changeUser;
     const [isEdit, setIsEdit] = useState({ edit: false });
     const { t } = useTranslation();
     const handleEditClick = () => {
