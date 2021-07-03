@@ -21,7 +21,11 @@ export const userThemeMode = createSelector(
   userStore,
   ({ themeMode }) => themeMode,
 );
+export const changeUser = createSelector(
+    userStore,
+    ({ changeUser }) => changeUser,
+);
 export const userId = createSelector(
     userInfo,
     ({ id }) => id,
-  );
+);

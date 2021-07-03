@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { colorDefault, TRANSPARENT_BACKGROUND } from '../baseLayout';
 
 export const StFormDiv = styled.div`
-    background-color: rgba(0, 0, 0, 0.4);
+    ${({ backgroundColor = TRANSPARENT_BACKGROUND }) => backgroundColor && `background-color: ${backgroundColor}`};
     min-height: 80vh;
     display: flex;
     width: 40%;
@@ -11,7 +12,7 @@ export const StFormDiv = styled.div`
     flex-direction: column;
     font-family: 'Play', sans-serif;
     border-radius: 20px;
-    color: white;
+    ${({ color = colorDefault }) => color && `color: ${color}`};
     ${({ transition = 'all 300ms ease-in-out' }) => transition && `transition: ${transition}`};
         p{
           font-size: 65px;

@@ -34,10 +34,33 @@ class AccountManager {
                 id: user.id,
                 firstName: user.firstName,
                 lastName: user.lastName,
-                email: user.email
+                email: user.email,
+                age: user.age,
+                hobby: user.hobby,
+                company: user.company,
+                city: user.city,
             }
             res.status(200).json({ token, userInfo, message: 'done' });
         } catch (e) { res.status(500).json({ message: 'something_wrong' }); }
+    }
+    update = async (req, res) => {
+        try {
+            if (!req.body) return res.status(400).json({ message: 'bad_request' })
+            const { id, firstName, lastName, age, city, company, hobby } = req.body;
+            const check = await this.connect.query(`SELECT * FROM users WHERE id = ${id} `)
+            if (check.length < 1) return res.status(400).json({ message: 'user_not_found' })
+            await this.connect.query(` UPDATE users SET firstName = '${firstName}',
+            lastName = '${lastName}', age = ${age}, city = '${city || ''}', company = '${company || ''}', hobby = '${hobby || ''}' 
+            WHERE id = ${id} `)
+            const newUserInfo = await this.connect.query(`SELECT users.id as id, users.firstName as firstName,
+            users.lastName as lastName, users.age as age, users.city as city, users.company as company, users.hobby as hobby
+            FROM users WHERE id = ${id} `)
+            const answer = newUserInfo[0]
+            res.status(200).json( answer )
+        } catch (e) {
+            console.log(e)
+            res.status(500).json({ message: 'something_wrong' });
+        }
     }
 }
 
