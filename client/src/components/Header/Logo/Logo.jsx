@@ -6,7 +6,7 @@ import { StLogo } from './styled';
 const Logo = ({ history }) => {
     const handleClick = () => {
         const { pathname } = history.location;
-        return pathname === '/' || '/registration' ? history.push('/') : history.push('/chat');
+        return pathname === '/' || pathname === '/registration' ? history.push('/') : history.push('/chat');
     };
     const { t } = useTranslation();
     return (

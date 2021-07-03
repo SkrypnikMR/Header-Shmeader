@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import ChatList from './ChatList';
 import ChatContent from './ChatContent';
 import { StChat } from './styled';
 
-const Chat = ({ init }) => {
-  useEffect(() => init(), []);
+const Chat = () => {
   return (
     <StChat>
       <ChatList />
@@ -14,8 +12,5 @@ const Chat = ({ init }) => {
   );
 };
 
-Chat.propTypes = {
-    init: PropTypes.func.isRequired,
-};
 
 export default Chat;

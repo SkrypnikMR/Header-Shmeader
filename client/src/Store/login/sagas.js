@@ -9,6 +9,7 @@ import { validation } from '/src/helpers/validation';
 import { setLoginValue, clearLoginInputs, reciveErrorRequest, reciveSuccessRequest } from './actions';
 import { support } from '/src/helpers/support';
 import { setAuthValues } from '../user/actions';
+import { init } from '../chat/actions';
 
 export function* workerLogin() {
     try {
@@ -26,6 +27,7 @@ export function* workerLogin() {
             yield call([support, support.setSessionStorageItem], 'userInfo', userInfo);
             yield put(setAuthValues({ token, userInfo }));
             yield put(setLoginValue({ name: 'success', value: true }));
+            yield put(init());
         } else {
             yield put(setLoginValue({ name: 'success', value: false }));
             yield put(reciveErrorRequest());
