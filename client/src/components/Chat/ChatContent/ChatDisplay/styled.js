@@ -10,11 +10,7 @@ export const StChatDisplay = styled.div`
     border-bottom: 1px solid black;
     border-right: 1px solid black;
     flex-direction: column;
-    overflow-y: hidden;
-    :hover {
-      overflow-y: auto;
-      overflow-x: auto;
-    }
+    overflow-y: auto;
         ::-webkit-scrollbar {
           width: 8px;
           height: 8px;

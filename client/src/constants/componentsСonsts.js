@@ -81,34 +81,45 @@ export const MY_ACCOUNT_EDIT = [{
     name: 'firstName',
     value: 'first_name_update',
 },
-    {
-       id: 'lastName',
-        label: 'last_name_label',
-        name: 'lastName',
-        value: 'last_name_update',
-    },
-    {
-        id: 'age',
-        label: 'age',
-        name: 'age',
-        value: 'age',
-    },
-    {
-        id: 'city',
-        label: 'city',
-        name: 'city',
-        value: 'city',
-    },
-    {
-        id: 'company',
-        label: 'company',
-        name: 'company',
-        value: 'company',
-    },
-    {
-        id: 'hobby',
-        label: 'hobby',
-        name: 'hobby',
-        value: 'hobby',
-    },
+{
+    id: 'lastName',
+    label: 'last_name_label',
+    name: 'lastName',
+    value: 'last_name_update',
+},
+{
+    id: 'age',
+    label: 'age',
+    name: 'age',
+    value: 'age',
+},
+{
+    id: 'city',
+    label: 'city',
+    name: 'city',
+    value: 'city',
+},
+{
+    id: 'company',
+    label: 'company',
+    name: 'company',
+    value: 'company',
+},
+{
+    id: 'hobby',
+    label: 'hobby',
+    name: 'hobby',
+    value: 'hobby',
+},
 ];
+};
+export const MODAL_USERS_BUTTON = [{
+    id: 'closeModal',
+    content: 'modal_users_cancel',
+    value: '',
+},
+{
+    id: 'sendMessage',
+    content: 'modal_users_confirm',
+    value: '',
+}];

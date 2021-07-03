@@ -20,7 +20,6 @@ import {
     putMessagesFolders,
     putNewRoom,
     sendUsersRequest,
-    getAllUsers,
     reciveSuccessUsersRequest,
     reciveErrorUsersRequest,
 } from './actions';
@@ -56,7 +55,6 @@ export function* initSaga() {
     yield put(connection());
     yield call(getAllRoomsSaga);
     yield put(getAllMessages());
-    yield put(getAllUsers());
 }
 export function* connectionSaga() {
     try {
@@ -147,6 +145,15 @@ export function* createNewRoomSaga({ payload }) {
             i18next.t('server_error_text'), i18next.t('server_error'), 2000);
     }
 }
+export function* setUserInRoomSaga({ payload }) {
+    try {
+        const selectedRoom = yield select(currentRoom);
+        yield call([globalSocket, globalSocket.emit], 'set_new_room', { room: selectedRoom, newRoomUsers: payload });
+    } catch (e) {
+        yield call([NotificationManager, NotificationManager.error],
+            i18next.t('server_error_text'), i18next.t('server_error'), 2000);
+    }
+}
 export function* setLastReadedSaga({ payload }) {
     try {
         const { id: user_id } = yield select(userInfo);
@@ -174,4 +181,5 @@ export function* watcherChatOperations() {
     yield takeEvery(actionTypes.CREATE_NEW_ROOM, createNewRoomSaga);
     yield takeEvery(actionTypes.READ_ALL_MESSAGES_IN_ROOM, setLastReadedSaga);
     yield takeEvery(actionTypes.GET_ALL_USERS, getAllUsersSaga);
+    yield takeEvery(actionTypes.SET_USER_IN_ROOM, setUserInRoomSaga);
 }

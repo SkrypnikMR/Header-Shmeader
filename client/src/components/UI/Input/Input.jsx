@@ -19,6 +19,7 @@ const Input = ({
     borderRadius,
     bgColor,
     padding,
+    color,
     bgFocusColor,
     fontSizeInp,
     borderColor,
@@ -39,6 +40,7 @@ const Input = ({
                 type={type}
                 value={value}
                 margin={margin}
+                color={color}
                 onChange={handleOnchange}
                 maxLength={maxLength}
                 borderRadius={borderRadius}
@@ -77,6 +79,7 @@ Input.propTypes = {
     errorMessage: PropTypes.string,
     bgFocusColor: PropTypes.string,
     onKeyUpEnter: PropTypes.func,
+    color: PropTypes.string,
 };
 
 export default Input;

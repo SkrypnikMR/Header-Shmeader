@@ -10,10 +10,35 @@ export const StChatList = styled.div`
     flex-direction: column;
     font-family: 'Play', sans-serif;
     border-radius: 0px;
-    border: 1px solid black;
     position: relative;
-    height: 89.8vh;
-    overflow-y: hidden;
+    height: 90vh;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+`;
+export const StSearch = styled.div`
+    display: flex;
+    width: 100%;
+    margin-right: 0;
+    font-size: 24px;
+    flex-direction: column;
+    font-family: 'Play', sans-serif;
+    border-radius: 0px;
+`;
+export const StCreateRoom = styled.div`
+      display: flex;
+      justify-self: flex-end;
+      align-items: flex-end;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      width: 100%;
+`;
+export const StItems = styled.div`
+     display: flex;
+     height: 68vh;
+     flex-direction: column;
+     width: 100%;
+     overflow-y: hidden;
     :hover {
       overflow-y: auto;
       overflow-x: auto;
@@ -26,14 +51,4 @@ export const StChatList = styled.div`
               width: 8px;
               background-color: ${({ color = bgColorDefault }) => color};
             }
-`;
-export const StCreateRoom = styled.div`
-      display: flex;
-      justify-self: flex-end;
-      align-items: flex-end;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      position: absolute;
-      bottom: 60px;
 `;
