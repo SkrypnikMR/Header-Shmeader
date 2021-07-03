@@ -44,7 +44,7 @@
     "city": "مدينة ",
     "company": "شركة ",
     "apply": "تطبيق ",
-    "number_error":  "يجب أن يكون العمر رقمًا"
+    "number_error":  "يجب أن يكون العمر رقمًا",
     "without_text_new_room": "لا يمكنك إنشاء غرفة بدون اسم",
     "create": "إنشاء",
     "create_chat": "قم بإنشاء غرفة جديدة",

@@ -44,7 +44,7 @@
     "city": "City",
     "company": "Company",
     "apply": "Apply",
-    "number_error": "Age must be a number"
+    "number_error": "Age must be a number",
     "without_text_new_room": "You cannot create a room without a name",
     "invite_users": "Invite Users",
     "create": "Create",

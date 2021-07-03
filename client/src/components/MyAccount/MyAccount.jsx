@@ -14,7 +14,8 @@ import {
         StMyAccountAvatarConteiner,
         StMyAccountFieldsConteiner,
         StMyAccountSignificance,
-        StMyAccountFooter }
+        StMyAccountFooter,
+}
         from './styled';
 
 
