@@ -29,6 +29,7 @@ const ChatControlPanel = (
         placeholder={INPUT__MESSAGE.placeholder}
         margin="0 auto"
         bgColor="transparent"
+        color="white"
         onKeyUpEnter={onKeyUpEnter}
         fontSizeInp="20px"
         borderColor="transparent"

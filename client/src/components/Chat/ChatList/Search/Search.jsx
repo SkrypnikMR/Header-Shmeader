@@ -17,6 +17,7 @@ const Search = ({ setValue, filterByRoomName }) => {
         onChange={setValue}
         placeholder='placeholder_search_input'
         margin="0 auto" 
+        color="white"
         bgColor="transparent"
         fontSizeInp="20px"
         borderColor="transparent"

@@ -12,7 +12,6 @@ export const StChatControlPanel = styled.div`
     color: ${({ color = textColorBlack }) => color};
     font-size: 24px;
     font-family: 'Play', sans-serif;
-    border-bottom: 1px solid black;
     border-right: 1px solid black;
     background-color: ${({ color = bgColorDefaultFon }) => color};
 `;

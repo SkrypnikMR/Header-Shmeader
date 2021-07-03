@@ -112,3 +112,14 @@ export const MY_ACCOUNT_EDIT = [{
     value: 'hobby',
 },
 ];
+};
+export const MODAL_USERS_BUTTON = [{
+    id: 'closeModal',
+    content: 'modal_users_cancel',
+    value: '',
+},
+{
+    id: 'sendMessage',
+    content: 'modal_users_confirm',
+    value: '',
+}];

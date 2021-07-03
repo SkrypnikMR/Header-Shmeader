@@ -25,3 +25,7 @@ export const changeUser = createSelector(
     userStore,
     ({ changeUser }) => changeUser,
 );
+export const userId = createSelector(
+    userInfo,
+    ({ id }) => id,
+);
