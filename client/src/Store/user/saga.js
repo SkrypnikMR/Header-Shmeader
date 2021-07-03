@@ -31,7 +31,6 @@ export function* setNewUserDataSaga() {
        yield call([support, support.setSessionStorageItem], 'userInfo', answer);
        yield put(setValue({ name: 'userInfo', value: answer }));
    } catch (e) {
-       console.log(e);
        yield call([NotificationManager, NotificationManager.error],
            i18next.t('server_error_text'), i18next.t('server_error'), 2000);
    }
