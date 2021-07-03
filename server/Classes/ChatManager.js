@@ -19,7 +19,7 @@ class ChatManager {
                 if (lastReadDate.length === 0) return { ...room, unreadCount: 0 };
                 const count = await this.connect.query(`SELECT COUNT(messages.time) as count from messages WHERE room_id = ${room.room_id}
                 AND time > '${dateConvert(lastReadDate[0].last_read_date)}'`)
-                return { ...room, unreadCount: count[0]?.count };
+                return { ...room, unreadCount: count[0].count || 0 };
             }))
             res.status(200).json(await userRoomsWithCount);
         } catch (e) { console.log(e); res.status(500).json({ message: 'something_wrong' }); }
@@ -105,7 +105,7 @@ class ChatManager {
              users.firstName as firstName,
              users.lastName as lastName
              from users`);
-            const answer = await Promise.all(allUsers.map( async el => {
+            const answer = await Promise.all(allUsers.map(async el => {
                 const allRooms = await this.connect.query(`SELECT rooms.id as room_id, rooms.name as room_name 
                 FROM rooms, users_rooms WHERE users_rooms.user_id = ${el.id} AND rooms.id = users_rooms.room_id`)
                 el.rooms = allRooms;
@@ -114,12 +114,12 @@ class ChatManager {
             res.status(200).json(answer);
         } catch (e) { res.status(500).json({ message: 'something_wrong' }); }
     }
-    setNewRoomForUsers = async ({room_id}, users) => {
-        try{
-            users.forEach(async user =>{
+    setNewRoomForUsers = async ({ room_id }, users) => {
+        try {
+            users.forEach(async user => {
                 await this.connect.query(`INSERT INTO users_rooms (user_id, room_id) VALUES ('${user}', '${room_id}');`)
             })
-        }catch (e) { console.log(e) }
-    } 
+        } catch (e) { console.log(e) }
+    }
 };
 module.exports = ChatManager;
