@@ -45,7 +45,7 @@ export const createSocketChannel = socket => eventChannel((emit) => {
     };
 });
 export const connect = (user) => {
-    globalSocket = io('localhost:2282');
+    globalSocket = io('http://54.157.157.209');
     return new Promise((resolve) => {
         globalSocket.on('connect', () => {
             globalSocket.emit('clientInfo', user);
@@ -176,22 +176,23 @@ export function* setLastReadedSaga({ payload }) {
     }
 }
 export function* logOutSaga() {
-        yield call([globalSocket, globalSocket.disconnect]);
-        yield put(setValue({ name: 'currentRoom', value: { room_id: null, room_name: '' } }));
-        yield put(setAuthValues({ token: null,
-            userInfo: {
-                email: '',
-                firstName: '',
-                lastName: '',
-                id: 0,
-                age: 0,
-                hobby: '',
-                company: '',
-                city: '',
-            },
-        }));
-        yield call([support, support.killSessionStorageItem], 'token');
-        yield call([support, support.killSessionStorageItem], 'userInfo');
+    yield call([globalSocket, globalSocket.disconnect]);
+    yield put(setValue({ name: 'currentRoom', value: { room_id: null, room_name: '' } }));
+    yield put(setAuthValues({
+        token: null,
+        userInfo: {
+            email: '',
+            firstName: '',
+            lastName: '',
+            id: 0,
+            age: 0,
+            hobby: '',
+            company: '',
+            city: '',
+        },
+    }));
+    yield call([support, support.killSessionStorageItem], 'token');
+    yield call([support, support.killSessionStorageItem], 'userInfo');
 }
 export function* watcherChatOperations() {
     yield takeEvery(actionTypes.INIT_CHAT, initSaga);
