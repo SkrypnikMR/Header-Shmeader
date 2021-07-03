@@ -15,6 +15,10 @@ CREATE TABLE `users` (
     `lastName` VARCHAR(255) NOT NULL,
 	`email` VARCHAR(255) NOT NULL,
     `password` VARCHAR(255) NOT NULL,
+    `age` VARCHAR(255),
+    `hobby` VARCHAR(255),
+    `city` VARCHAR(255),
+    `company` VARCHAR(255),
     PRIMARY KEY (`id`)
 );
    
@@ -27,7 +31,7 @@ CREATE TABLE `messages` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `author` VARCHAR(255) NOT NULL,
     `text` VARCHAR(255) NOT NULL,
-	`time` VARCHAR(255) NOT NULL,
+	`time` timestamp NOT NULL,
     `room_name` VARCHAR(255) NOT NULL,
     `room_id` INT(11) NOT NULL,
     PRIMARY KEY (`id`)
@@ -55,12 +59,12 @@ CREATE TABLE `users_messages` (
 );
 INSERT INTO rooms (id, name) VALUES(1, 'global');
 
-CREATE TABLE `unread_state` (
+CREATE TABLE `unread_state` ( 
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `room_id` INT(11) NOT NULL,
     `user_id` INT(11) NOT NULL,
-    `last_read_date` VARCHAR(255) NOT NULL,
-    PRIMARY KEY (`id`)
+    `last_read_date` timestamp NOT NULL,
+    PRIMARY KEY (`id`)   
 );
 
 ALTER DATABASE `header&shmeader_db` CHARACTER SET utf8 COLLATE utf8_general_ci;

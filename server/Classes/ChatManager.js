@@ -97,16 +97,29 @@ class ChatManager {
             res.status(500).json({ message: 'server_error' });
         }
     }
-    getAllUsers = async (req, res) => {
+    getAllUsers = async (_req, res) => {
         try {
-            const allUsers = await this.connect.query(`SELECT
+            let allUsers = await this.connect.query(`SELECT
              users.id as id, 
              users.email as email,
              users.firstName as firstName,
              users.lastName as lastName
              from users`);
-            res.status(200).json(allUsers);
+            const answer = await Promise.all(allUsers.map( async el => {
+                const allRooms = await this.connect.query(`SELECT rooms.id as room_id, rooms.name as room_name 
+                FROM rooms, users_rooms WHERE users_rooms.user_id = ${el.id} AND rooms.id = users_rooms.room_id`)
+                el.rooms = allRooms;
+                return el;
+            }));
+            res.status(200).json(answer);
         } catch (e) { res.status(500).json({ message: 'something_wrong' }); }
     }
+    setNewRoomForUsers = async ({room_id}, users) => {
+        try{
+            users.forEach(async user =>{
+                await this.connect.query(`INSERT INTO users_rooms (user_id, room_id) VALUES ('${user}', '${room_id}');`)
+            })
+        }catch (e) { console.log(e) }
+    } 
 };
 module.exports = ChatManager;

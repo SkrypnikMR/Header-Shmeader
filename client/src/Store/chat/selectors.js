@@ -1,13 +1,14 @@
 import { createSelector } from 'reselect';
+import { userId } from '../user/selectors';
 
 export const chatStore = state => state.chat;
 export const newMessage = createSelector(
-  chatStore,
-  ({ newMessage }) => newMessage,
+    chatStore,
+    ({ newMessage }) => newMessage,
 );
 export const messages = createSelector(
-  chatStore,
-  ({ messages }) => messages,
+    chatStore,
+    ({ messages }) => messages,
 );
 export const rooms = createSelector(
     chatStore,
@@ -17,14 +18,29 @@ export const rooms = createSelector(
     },
 );
 export const currentRoom = createSelector(
-  chatStore,
-  ({ currentRoom }) => currentRoom,
+    chatStore,
+    ({ currentRoom }) => currentRoom,
 );
 export const currentRoomName = createSelector(
-  currentRoom,
-  ({ room_name }) => room_name,
+    currentRoom,
+    ({ room_name }) => room_name,
 );
 export const filterByRoomName = createSelector(
     chatStore,
     ({ filterByRoomName }) => filterByRoomName,
+);
+export const users = createSelector(
+    chatStore,
+    userId,
+    ({ users, currentRoom }, id) => {
+        return users.filter((user) => {
+            let result = true;
+            user.rooms.forEach((room) => {
+                if (room.room_id === currentRoom.room_id || user.id === id) {
+                    result = false;
+                }
+            });
+            return result;
+        });
+    },
 );

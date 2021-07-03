@@ -33,3 +33,4 @@ export const sendUsersRequest = () => ({ type: actionTypes.SEND_USERS_REQUEST })
 export const reciveSuccessUsersRequest = payload => ({ type: actionTypes.USERS_REQUEST_SUCCESS, payload });
 export const reciveErrorUsersRequest = () => ({ type: actionTypes.USERS_REQUEST_ERROR });
 
+export const setUserInRoom = payload => ({ type: actionTypes.SET_USER_IN_ROOM, payload });

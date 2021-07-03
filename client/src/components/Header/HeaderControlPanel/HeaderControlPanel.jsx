@@ -44,7 +44,7 @@ const HeaderControlPanel = ({ themeMode, setValue, history, location }) => {
                         height="10vh"
                         borderRadius="0px"
                         value={el.value}
-                        bgColor={TRANSPARENT_BACKGROUND}
+                        bgColor="transparent"
                         onClick={getFunctionForButtons(el)}
                     />
                 );

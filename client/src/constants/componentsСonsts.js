@@ -68,3 +68,13 @@ export const INPUT__MESSAGE = {
     id: 'message',
     placeholder: 'placeholder_control_input',
 };
+export const MODAL_USERS_BUTTON = [{
+    id: 'closeModal',
+    content: 'modal_users_cancel',
+    value: '',
+},
+{
+    id: 'sendMessage',
+    content: 'modal_users_confirm',
+    value: '',
+}];
