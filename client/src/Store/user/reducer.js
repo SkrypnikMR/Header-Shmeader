@@ -16,14 +16,24 @@ export const initialState = {
     company: '',
     city: '',
   },
+  changeUser: support.getSessionStorageItem('userInfo') || null,
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_VALUE:
       return { ...state, [action.payload.name]: action.payload.value };
+    case actionTypes.CHANGE_USER_DATA:
+      return { ...state, changeUser: { ...state.changeUser, [action.payload.name]: action.payload.value } };
     case actionTypes.SET_AUTH_VALUES:
-      return { ...state, token: action.payload.token, userInfo: action.payload.userInfo };
+      return {
+        ...state,
+        token: action.payload.token,
+        userInfo: action.payload.userInfo,
+        changeUser: action.payload.userInfo,
+      };
+    case actionTypes.SIGN_IN_SUCCESS:
+      return { ...state, userInfo: { ...state.userInfo, [action.payload.name]: action.payload.value } };
     default: return { ...state };
   }
 };

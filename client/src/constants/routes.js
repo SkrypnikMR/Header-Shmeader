@@ -3,6 +3,7 @@ export const routes = {
     account: {
         registration: 'account/registration',
         login: 'account/login',
+        update: 'account/update',
     },
     chat: {
         rooms: 'chat/rooms',
