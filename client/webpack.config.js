@@ -70,7 +70,7 @@ module.exports = {
             patterns: [
                 {
                     from: path.resolve(__dirname, 'public/assets/images'),
-                    to: path.resolve(__dirname, 'dist/assets/images'),
+                    to: path.resolve(__dirname, 'dist/pulic/assets/images'),
                 },
             ],
         }),

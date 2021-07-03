@@ -1,8 +1,8 @@
 // import styled from 'styled-components';
 
 export const backgroundUrls = {
-  light: '../../../public/assets/images/lightTheme.jpg',
-  dark: '../../../public/assets/images/darkTheme.jpg',
+  light: './public/assets/images/lightTheme.jpg',
+  dark: './public/assets/images/darkTheme.jpg',
 };
 // default color for all transparent backgrounds, use this :)
 export const TRANSPARENT_BACKGROUND = 'rgba(0, 0, 0, 0.4)';

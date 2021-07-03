@@ -20,7 +20,7 @@ const ChatListItems = ({
   const [state, setState] = useState({
     error: false,
     src: img,
-    defaultImg: '../../../../public/assets/images/defaultChats.png',
+    defaultImg: './public/assets/images/defaultChats.png',
   });
   const onError = () => setState({ ...state, error: true, src: state.defaultImg });
   return (
