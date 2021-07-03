@@ -21,13 +21,14 @@ import {
     putNewRoom,
     sendUsersRequest,
     reciveSuccessUsersRequest,
-    reciveErrorUsersRequest,
+    reciveErrorUsersRequest, setValue,
 } from './actions';
 import { userInfo } from '../user/selectors';
 import { newMessage, currentRoom, messages } from './selectors';
 import { getRequest, postRequest } from '../../helpers/requests';
 import { routes } from '../../constants/routes';
 import { support } from '/src/helpers/support';
+import {setAuthValues} from "../user/actions";
 
 export let globalSocket = { emit: () => { }, on: () => { } };
 
@@ -173,6 +174,24 @@ export function* setLastReadedSaga({ payload }) {
             i18next.t('server_error_text'), i18next.t('server_error'), 2000);
     }
 }
+export function* logOutSaga() {
+        yield call([globalSocket, globalSocket.disconnect]);
+        yield put(setValue({ name: 'currentRoom', value: { room_id: null, room_name: '' } }));
+        yield put(setAuthValues({ token: null,
+            userInfo: {
+                email: '',
+                firstName: '',
+                lastName: '',
+                id: 0,
+                age: 0,
+                hobby: '',
+                company: '',
+                city: '',
+            },
+        }));
+        yield call([support, support.killSessionStorageItem], 'token');
+        yield call([support, support.killSessionStorageItem], 'userInfo');
+}
 export function* watcherChatOperations() {
     yield takeEvery(actionTypes.INIT_CHAT, initSaga);
     yield takeEvery(actionTypes.CONNECT, connectionSaga);
@@ -182,4 +201,5 @@ export function* watcherChatOperations() {
     yield takeEvery(actionTypes.READ_ALL_MESSAGES_IN_ROOM, setLastReadedSaga);
     yield takeEvery(actionTypes.GET_ALL_USERS, getAllUsersSaga);
     yield takeEvery(actionTypes.SET_USER_IN_ROOM, setUserInRoomSaga);
+    yield takeEvery(actionTypes.LOG_OUT, logOutSaga);
 }

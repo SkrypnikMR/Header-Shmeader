@@ -9,10 +9,13 @@ import Form from '../UI/Form';
 import Input from '../UI/Input';
 import Button from '../UI/Button';
 
-const Login = ({ sendLoginRequest, setLoginValue, fields }) => {
+const Login = ({ sendLoginRequest, setLoginValue, fields, setValue }) => {
   const { t } = useTranslation();
 
-  if (fields.success) return <Redirect to={APP_ROUTES.chat} />;
+  if (fields.success) {
+    setValue({ name: 'success', value: false });
+    return <Redirect to={APP_ROUTES.chat} />;
+  }
   return (
     <StLoginDiv>
       <Form>

@@ -11,6 +11,7 @@ class SocketMaster extends ChatManager {
         this.io.on('connection', (socket) => {
             console.log('user connected', socket.id);
             socket.on('disconnect', () => {
+                console.log('disconnect')
                 this.users = this.users.filter(user => user.socketId !== socket.id)
                 this.io.emit('users_online', this.users);
                 if (this.users.length === 0) console.log('all offline');

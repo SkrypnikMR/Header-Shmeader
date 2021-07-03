@@ -15,7 +15,7 @@ const Chat = ({ init }) => {
 };
 
 Chat.propTypes = {
-  init: PropTypes.func.isRequired,
+    init: PropTypes.func.isRequired,
 };
 
 export default Chat;
