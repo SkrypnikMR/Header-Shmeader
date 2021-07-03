@@ -21,14 +21,15 @@ import {
     putNewRoom,
     sendUsersRequest,
     reciveSuccessUsersRequest,
-    reciveErrorUsersRequest, setValue,
+    reciveErrorUsersRequest,
+    setValue,
 } from './actions';
 import { userInfo } from '../user/selectors';
 import { newMessage, currentRoom, messages } from './selectors';
 import { getRequest, postRequest } from '../../helpers/requests';
 import { routes } from '../../constants/routes';
 import { support } from '/src/helpers/support';
-import {setAuthValues} from "../user/actions";
+import { setAuthValues } from '../user/actions';
 
 export let globalSocket = { emit: () => { }, on: () => { } };
 

@@ -22,7 +22,6 @@ const HeaderControlPanel = ({ themeMode, setValue, history, location, logOut }) 
     const handleLogOutClick = () => {
         logOut();
         history.push(APP_ROUTES.login);
-        console.log(history)
     };
     const handleMyAccountClick = () => history.push(APP_ROUTES.account);
     const getFunctionForButtons = (el) => {
