@@ -63,6 +63,12 @@ export const HEADER_CONTROL_BTNS = [{
     content: '👨‍💻',
     rout: '/account',
     value: 'account',
+},
+{
+   id: 'logOut',
+   content: 'LOG',
+   rout: '/',
+   value: 'logOut',
 }];
 export const INPUT__MESSAGE = [{
     id: 'message',

@@ -6,7 +6,16 @@ export const initialState = {
   theme: backgroundUrls,
   themeMode: support.getSessionStorageItem('themeMode') || 'light',
   token: support.getSessionStorageItem('token') || null,
-  userInfo: support.getSessionStorageItem('userInfo') || null,
+  userInfo: support.getSessionStorageItem('userInfo') || {
+    email: '',
+    firstName: '',
+    lastName: '',
+    id: 0,
+    age: 0,
+    hobby: '',
+    company: '',
+    city: '',
+  },
   changeUser: support.getSessionStorageItem('userInfo') || null,
 };
 

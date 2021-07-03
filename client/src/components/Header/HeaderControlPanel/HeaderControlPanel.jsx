@@ -9,7 +9,7 @@ import { ROUTS_WITHOUT_MY_ACCOUNT } from '../../../constants/ui';
 import { support } from '../../../helpers/support';
 import { TRANSPARENT_BACKGROUND, colorDefault } from '../../UI/baseLayout';
 
-const HeaderControlPanel = ({ themeMode, setValue, history, location }) => {
+const HeaderControlPanel = ({ themeMode, setValue, history, location, logOut }) => {
     const { i18n } = useTranslation();
     const handleChangeLanguage = (e) => {
         i18n.changeLanguage(e.target.value);
@@ -19,10 +19,15 @@ const HeaderControlPanel = ({ themeMode, setValue, history, location }) => {
         support.setSessionStorageItem('themeMode', target.value);
         setValue({ name: 'themeMode', value: target.value });
     };
+    const handleLogOutClick = () => {
+        logOut();
+        history.push(APP_ROUTES.login);
+    };
     const handleMyAccountClick = () => history.push(APP_ROUTES.account);
     const getFunctionForButtons = (el) => {
         switch (el.id) {
             case 'theme_btn': return handleThemeClick;
+            case 'logOut': return handleLogOutClick;
             case 'account': return handleMyAccountClick;
             default: return handleChangeLanguage;
         }
@@ -58,6 +63,7 @@ HeaderControlPanel.propTypes = {
     themeMode: PropTypes.string,
     history: PropTypes.object,
     location: PropTypes.object,
+    logOut: PropTypes.func,
 };
 
 export default HeaderControlPanel;
