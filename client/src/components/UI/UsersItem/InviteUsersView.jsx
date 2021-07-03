@@ -5,7 +5,6 @@ import { StChatListItems, StPhoto, StUsersView } from './styled';
 import { INPUT__MESSAGE } from '/src/constants/componentsСonsts.js';
  
 const InviteUsersView = ({ img, email, reciveSuccessUsersRequest, id }) => {
-    // console.log(modalData, 'modalData');
     const handleClick = () => reciveSuccessUsersRequest({ name: 'currentUser', value: { user_id: id, user_email: email } });
     const [state, setState] = useState({
       error: false, 

@@ -105,13 +105,13 @@ class ChatManager {
              users.firstName as firstName,
              users.lastName as lastName
              from users`);
-            const kek = await Promise.all(allUsers.map( async el => {
+            const answer = await Promise.all(allUsers.map( async el => {
                 const allRooms = await this.connect.query(`SELECT rooms.id as room_id, rooms.name as room_name 
                 FROM rooms, users_rooms WHERE users_rooms.user_id = ${el.id} AND rooms.id = users_rooms.room_id`)
                 el.rooms = allRooms;
                 return el;
             }));
-            res.status(200).json(kek);
+            res.status(200).json(answer);
         } catch (e) { res.status(500).json({ message: 'something_wrong' }); }
     }
     setNewRoomForUsers = async ({room_id}, users) => {

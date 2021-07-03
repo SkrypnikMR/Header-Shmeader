@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Input from '/src/components/UI/Input';
 import { StChatListItems, StPhoto, StUsersView } from './styled';
-// import { INPUT__MESSAGE } from '/src/constants/componentsСonsts.js';
  
-const UserItem = ({ img, email, id, isOnline, onChange, isSelected }) => {
+const UserItem = ({ img, email, id, onChange, isSelected }) => {
     const [state, setState] = useState({
       error: false, 
       src: img,
@@ -48,7 +47,6 @@ UserItem.propTypes = {
     email: PropTypes.string,
     img: PropTypes.any,
     id: PropTypes.number,
-    isOnline: PropTypes.func,
     onChange: PropTypes.func,
     isSelected: PropTypes.string, 
 };

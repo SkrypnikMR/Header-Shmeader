@@ -148,7 +148,7 @@ export function* createNewRoomSaga({ payload }) {
 export function* setUserInRoomSaga({ payload }) {
     try {
         const selectedRoom = yield select(currentRoom);
-        globalSocket.emit('set_new_room', { room: selectedRoom, newRoomUsers: payload });
+        yield call([globalSocket, globalSocket.emit], 'set_new_room', { room: selectedRoom, newRoomUsers: payload });
     } catch (e) {
         yield call([NotificationManager, NotificationManager.error],
             i18next.t('server_error_text'), i18next.t('server_error'), 2000);
