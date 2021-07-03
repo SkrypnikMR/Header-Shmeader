@@ -4,7 +4,7 @@ import { bgMessage, textColorBlack, colorDefault } from '/src/components/UI/base
 export const StMessage = styled.div`
     display: flex;
     height: fit-content;
-    width: 70%;
+    width: 60%;
     font-size: 24px;
     font-family: 'Play', sans-serif;
     margin-top: 10px;
@@ -36,7 +36,7 @@ export const StTitle = styled.span`
 export const StPhoto = styled.div`
   display: flex;
   justify-content: center;
-  align-item: center;
+  align-items: center;
     img{
       margin: 0 10px 0 0;
       width: 50px;
