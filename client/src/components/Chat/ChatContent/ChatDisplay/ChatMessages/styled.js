@@ -53,6 +53,8 @@ export const StText = styled.p`
     font-size: 20px;
     font-family: 'Play', sans-serif;
     flex-direction: column;
+    color: ${({ color = textColorBlack }) => color};
+
     background-color: ${({ color = bgMessage }) => color};
     padding: 0 5px;
     border-radius: 5px;
