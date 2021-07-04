@@ -10,6 +10,14 @@ export const userToken = createSelector(
   userStore,
   ({ token }) => token,
 );
+export const userSettings = createSelector(
+  userStore,
+  ({ settings }) => settings,
+);
+export const userNotifSettings = createSelector(
+  userSettings,
+  ({ notifications }) => notifications,
+);
 
 export const userTheme = createSelector(
   userStore,

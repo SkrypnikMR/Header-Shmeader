@@ -9,7 +9,7 @@ import { ROUTS_WITHOUT_MY_ACCOUNT } from '../../../constants/ui';
 import { support } from '../../../helpers/support';
 import { colorDefault } from '../../UI/baseLayout';
 
-const HeaderControlPanel = ({ themeMode, setValue, history, location, logOut }) => {
+const HeaderControlPanel = ({ themeMode, setValue, history, location, logOut, userNotifSettings }) => {
     const { i18n } = useTranslation();
     const handleChangeLanguage = (e) => {
         i18n.changeLanguage(e.target.value);
@@ -23,12 +23,17 @@ const HeaderControlPanel = ({ themeMode, setValue, history, location, logOut }) 
         logOut();
         history.push(APP_ROUTES.login);
     };
+    const handleNotifClick = (e) => {
+        setValue({ name: 'settings', value: { notifications: Boolean(e.target.value) } });
+        support.setSessionStorageItem('settings', { notifications: Boolean(e.target.value) });
+    };
     const handleMyAccountClick = () => history.push(APP_ROUTES.account);
     const getFunctionForButtons = (el) => {
         switch (el.id) {
             case 'theme_btn': return handleThemeClick;
             case 'logOut': return handleLogOutClick;
             case 'account': return handleMyAccountClick;
+            case 'notif_btn': return handleNotifClick;
             default: return handleChangeLanguage;
         }
     };
@@ -36,6 +41,7 @@ const HeaderControlPanel = ({ themeMode, setValue, history, location, logOut }) 
         <StControl >
             {HEADER_CONTROL_BTNS.map((el) => {
                 if (el.value === themeMode) return null;
+                if (el.id === 'notif_btn' && Boolean(el.value) === userNotifSettings) return null;
                 if ((el.rout === '/account' && ROUTS_WITHOUT_MY_ACCOUNT.includes(location.pathname))
                     || el.rout === location.pathname) return null;
                 return (
@@ -64,6 +70,7 @@ HeaderControlPanel.propTypes = {
     history: PropTypes.object,
     location: PropTypes.object,
     logOut: PropTypes.func,
+    userNotifSettings: PropTypes.bool,
 };
 
 export default HeaderControlPanel;

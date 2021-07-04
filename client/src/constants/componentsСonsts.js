@@ -33,43 +33,54 @@ export const logInputs = [{
     label: 'password_label',
     placeholder: 'password_placeholder',
 }];
-export const HEADER_CONTROL_BTNS = [{
-    id: 'theme_btn',
-    value: 'light',
-    content: '🌗',
-},
-{
-    id: 'theme_btn',
-    value: 'dark',
-    content: '🌗',
-},
-{
-    id: 'en',
-    content: 'english_translate_btn',
-    value: 'en',
-},
-{
-    id: 'ru',
-    content: 'russian_translate_btn',
-    value: 'ru',
-},
-{
-    id: 'ar',
-    content: 'arabian_translate_btn',
-    value: 'ar',
-},
-{
-    id: 'account',
-    content: '👨‍💻',
-    rout: '/account',
-    value: 'account',
-},
-{
-    id: 'logOut',
-    content: '🚪',
-    rout: '/',
-    value: 'logOut',
-}];
+export const HEADER_CONTROL_BTNS = [
+    {
+        id: 'notif_btn',
+        value: '1',
+        content: '🔕',
+    },
+    {
+        id: 'notif_btn',
+        value: '',
+        content: '🔔',
+    },
+    {
+        id: 'theme_btn',
+        value: 'light',
+        content: '🌚',
+    },
+    {
+        id: 'theme_btn',
+        value: 'dark',
+        content: '🌞',
+    },
+    {
+        id: 'en',
+        content: 'english_translate_btn',
+        value: 'en',
+    },
+    {
+        id: 'ru',
+        content: 'russian_translate_btn',
+        value: 'ru',
+    },
+    {
+        id: 'ar',
+        content: 'arabian_translate_btn',
+        value: 'ar',
+    },
+    {
+        id: 'account',
+        content: '👨‍💻',
+        rout: '/account',
+        value: 'account',
+    },
+    {
+        id: 'logOut',
+        content: '🚪',
+        rout: '/',
+        value: 'logOut',
+    }];
 export const INPUT__MESSAGE = [{
     id: 'message',
     placeholder: 'placeholder_control_input',

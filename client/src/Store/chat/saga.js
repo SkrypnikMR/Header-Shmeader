@@ -25,7 +25,7 @@ import {
     setValue,
     putMessageAudio,
 } from './actions';
-import { userEmail, userInfo } from '../user/selectors';
+import { userEmail, userInfo, userNotifSettings } from '../user/selectors';
 import { newMessage, currentRoom, messages } from './selectors';
 import { getRequest, postRequest } from '../../helpers/requests';
 import { routes } from '../../constants/routes';
@@ -197,12 +197,15 @@ export function* logOutSaga() {
     }));
     yield call([support, support.killSessionStorageItem], 'token');
     yield call([support, support.killSessionStorageItem], 'userInfo');
+    yield call([support, support.killSessionStorageItem], 'settings');
 }
 export function* audioSaga({ payload }) {
     const { author } = payload;
     const currentUser = yield select(userEmail);
-    if (author !== currentUser) {
-        yield call([support, support.playAudio], './public/assets/music/message.mp3');
+    const notifSet = yield select(userNotifSettings);
+    if (author !== currentUser && notifSet) {
+        yield call([support, support.playAudio],
+            './public/assets/music/message.mp3');
     }
 }
 
