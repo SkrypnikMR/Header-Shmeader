@@ -1,5 +1,5 @@
 export const routes = {
-    baseUrl: 'http://localhost:2282/api/',
+    baseUrl: 'http://54.157.157.209:2282/api/',
     account: {
         registration: 'account/registration',
         login: 'account/login',

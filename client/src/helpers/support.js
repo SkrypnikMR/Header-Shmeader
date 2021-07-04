@@ -3,13 +3,13 @@ import moment from 'moment';
 export const support = {
     setSessionStorageItem: (name, data) => {
         if (typeof data !== 'string') data = JSON.stringify(data);
-        sessionStorage.setItem(name, data);
+        localStorage.setItem(name, data);
     },
     killSessionStorageItem: (name) => {
-        sessionStorage.removeItem(name);
+        localStorage.removeItem(name);
     },
     getSessionStorageItem: (name) => {
-        const item = sessionStorage.getItem(name);
+        const item = localStorage.getItem(name);
         return item?.charAt(0) === '{' ? JSON.parse(item) : item;
     },
     getMessagesFolders: (rooms) => {

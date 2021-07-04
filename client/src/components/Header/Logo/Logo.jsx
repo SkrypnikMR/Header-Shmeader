@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { StLogo } from './styled';
 
-const Logo = ({ history }) => {
+const Logo = ({ history, setValue }) => {
     const handleClick = () => {
         const { pathname } = history.location;
-        return pathname === '/' || pathname === '/registration' ? history.push('/') : history.push('/chat');
+        if (pathname === '/' || pathname === '/registration') return history.push('/');
+        setValue({ name: 'init', value: true });
+        history.push('/chat');
     };
     const { t } = useTranslation();
     return (
@@ -19,6 +21,7 @@ const Logo = ({ history }) => {
 
 Logo.propTypes = {
     history: PropTypes.object,
+    setValue: PropTypes.func,
 };
 
 export default Logo;

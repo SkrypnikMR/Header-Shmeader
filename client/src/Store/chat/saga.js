@@ -45,7 +45,7 @@ export const createSocketChannel = socket => eventChannel((emit) => {
     };
 });
 export const connect = (user) => {
-    globalSocket = io('http://localhost:2282');
+    globalSocket = io('http://54.157.157.209:2282');
     return new Promise((resolve) => {
         globalSocket.on('connect', () => {
             globalSocket.emit('clientInfo', user);
