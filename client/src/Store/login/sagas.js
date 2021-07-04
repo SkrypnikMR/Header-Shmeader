@@ -5,6 +5,7 @@ import i18next from 'i18next';
 import { NotificationManager } from 'react-notifications';
 import { actionTypes } from './actionTypes';
 import { logValues } from './selectors';
+import { userNotifSettings } from '../user/selectors';
 import { validation } from '/src/helpers/validation';
 import { setLoginValue, clearLoginInputs, reciveErrorRequest, reciveSuccessRequest } from './actions';
 import { support } from '/src/helpers/support';
@@ -29,7 +30,8 @@ export function* workerLogin() {
             yield put(setValue({ name: 'init', value: true }));
             yield put(setLoginValue({ name: 'success', value: true }));
             yield put(init());
-            yield call([support, support.playAudio], './public/assets/music/welcome.mp3');
+            const notif = yield select(userNotifSettings);
+            if (notif) yield call([support, support.playAudio], './public/assets/music/welcome.mp3');
         } else {
             yield put(setLoginValue({ name: 'success', value: false }));
             yield put(reciveErrorRequest());

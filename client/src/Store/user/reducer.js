@@ -17,7 +17,7 @@ export const initialState = {
     city: '',
   },
   init: false,
-  settings: support.getSessionStorageItem('settings') || { notifications: false },
+  settings: support.getSessionStorageItem('settings') || { notifications: true },
   changeUser: support.getSessionStorageItem('userInfo') || null,
 };
 
