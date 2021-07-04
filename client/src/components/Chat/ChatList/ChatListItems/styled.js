@@ -7,7 +7,6 @@ export const StChatListItems = styled.div`
     height: 60px;
     align-items: center;
     color: ${({ color = colorDefault }) => color};
-
     cursor: pointer;
         ul {
           padding-left: 1rem;

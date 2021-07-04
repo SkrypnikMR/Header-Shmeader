@@ -13,7 +13,6 @@ export const StChatList = styled.div`
     position: relative;
     height: 90vh;
     border-right: 1px solid black;
-    border-bottom: 1px solid black;
 `;
 export const StSearch = styled.div`
     display: flex;

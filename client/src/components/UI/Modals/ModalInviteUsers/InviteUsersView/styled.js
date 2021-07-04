@@ -8,11 +8,13 @@ export const StControlPanel = styled.div`
 export const StContentModalUsers = styled.div`
     display: flex;
     flex-direction: column;
+    min-height: 70vh;
+
 `;
 export const StUsersItem = styled.div`
     display: flex;
     flex-direction: column;
-    min-height: 60vh;
+    min-height: 65vh;
     width: 100%;
     overflow: auto;
         ::-webkit-scrollbar {
