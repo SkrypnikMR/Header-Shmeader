@@ -27,4 +27,5 @@ export const actionTypes = {
   USERS_REQUEST_ERROR: '@@chat/USERS_REQUEST_ERROR',
   SET_USER_IN_ROOM: '@@chat/SET_USER_IN_ROOM',
   LOG_OUT: '@@chat/LOG_OUT',
+  PUT_MESSAGE_AUDIO: '@@chat/PUT_MESSAGE_AUDIO',
 };
