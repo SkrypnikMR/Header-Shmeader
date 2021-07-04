@@ -5,18 +5,18 @@ import { MY_ACCOUNT_EDIT } from '../../constants/componentsСonsts';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
 import {
-        StFieldText,
-        StMyAccountWrapper,
-        StMyAccountTitle,
-        StMyAccountHeader,
-        StMyAccountIcon,
-        StMyAccountContent,
-        StMyAccountAvatarConteiner,
-        StMyAccountFieldsConteiner,
-        StMyAccountSignificance,
-        StMyAccountFooter,
+    StFieldText,
+    StMyAccountWrapper,
+    StMyAccountTitle,
+    StMyAccountHeader,
+    StMyAccountIcon,
+    StMyAccountContent,
+    StMyAccountAvatarConteiner,
+    StMyAccountFieldsConteiner,
+    StMyAccountSignificance,
+    StMyAccountFooter,
 }
-        from './styled';
+    from './styled';
 
 
 const MyAccount = ({ userInfo, changeUser, changeUserData, setNewUserData }) => {
@@ -26,7 +26,7 @@ const MyAccount = ({ userInfo, changeUser, changeUserData, setNewUserData }) => 
         setIsEdit({ ...isEdit, edit: true });
     };
     const handleApplyClick = () => {
-        setNewUserData()
+        setNewUserData();
         setIsEdit({ ...isEdit, edit: false });
     };
     const handleOnChange = (data) => {
@@ -36,7 +36,7 @@ const MyAccount = ({ userInfo, changeUser, changeUserData, setNewUserData }) => 
         <StMyAccountWrapper>
             <StMyAccountHeader>
                 <StMyAccountTitle>{t('my_account')}</StMyAccountTitle>
-                    <StMyAccountIcon onClick={handleEditClick}>🖉</StMyAccountIcon>
+                <StMyAccountIcon onClick={handleEditClick}>🖉</StMyAccountIcon>
             </StMyAccountHeader>
             <StMyAccountContent>
                 <StMyAccountAvatarConteiner>
@@ -45,18 +45,25 @@ const MyAccount = ({ userInfo, changeUser, changeUserData, setNewUserData }) => 
                 <StMyAccountFieldsConteiner>
                     {MY_ACCOUNT_EDIT.map(input => (
                         <StFieldText key={input.id}>
-                            <p> { t(input.label) } :</p>
+                            <p>
+                                {' '}
+                                {t(input.label)}
+                                {' '}
+                                :
+                            </p>
                             {isEdit.edit
-                                ? <Input
-                                    id={input.id}
-                                    name={input.id}
-                                    onChange={handleOnChange}
-                                    value={changeUser[input.id]}
-                                    margin='0 50px'
-                                    width='300px'
-                                    height='40px'
-                                    isDisabled={false}
-                                />
+                                ? (
+                                    <Input
+                                        id={input.id}
+                                        name={input.id}
+                                        onChange={handleOnChange}
+                                        value={changeUser[input.id]}
+                                        margin='0 50px'
+                                        width='300px'
+                                        height='40px'
+                                        isDisabled={false}
+                                    />
+                                )
                                 : <StMyAccountSignificance>{userInfo[input.id]}</StMyAccountSignificance>
                             }
                         </StFieldText>
@@ -66,15 +73,15 @@ const MyAccount = ({ userInfo, changeUser, changeUserData, setNewUserData }) => 
             <StMyAccountFooter>
                 {isEdit.edit ? (
                     <Button
-                    id='apply'
-                    name='apply'
-                    onClick={handleApplyClick}
-                    width='200px'
-                    content={t('apply')}
-                    fontSize='25px'
-                    height='50px'
+                        id='apply'
+                        name='apply'
+                        onClick={handleApplyClick}
+                        width='200px'
+                        content={t('apply')}
+                        fontSize='25px'
+                        height='50px'
                     />
-                    ) : null}
+                ) : null}
             </StMyAccountFooter>
         </StMyAccountWrapper>
     );
