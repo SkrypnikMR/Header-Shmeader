@@ -52,6 +52,10 @@ module.exports = {
                 },
             },
             {
+                test: /\.mp3$/,
+                loader: 'file-loader',
+            },
+            {
                 test: /\.(jsx|js)$/,
                 exclude: /node_modules/,
                 use: {
@@ -71,6 +75,10 @@ module.exports = {
                 {
                     from: path.resolve(__dirname, 'public/assets/images'),
                     to: path.resolve(__dirname, 'dist/public/assets/images'),
+                },
+                {
+                    from: path.resolve(__dirname, 'public/assets/music'),
+                    to: path.resolve(__dirname, 'dist/public/assets/music'),
                 },
             ],
         }),

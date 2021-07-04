@@ -16,6 +16,7 @@ export const initialState = {
     company: '',
     city: '',
   },
+  init: false,
   changeUser: support.getSessionStorageItem('userInfo') || null,
 };
 

@@ -65,10 +65,10 @@ export const HEADER_CONTROL_BTNS = [{
     value: 'account',
 },
 {
-   id: 'logOut',
-   content: 'LOG',
-   rout: '/',
-   value: 'logOut',
+    id: 'logOut',
+    content: '🚪',
+    rout: '/',
+    value: 'logOut',
 }];
 export const INPUT__MESSAGE = [{
     id: 'message',
@@ -76,10 +76,10 @@ export const INPUT__MESSAGE = [{
 }];
 
 export const INPUT_PLACEHOLDER_SEARCH = [
-{
-    id: 'search',
-    placeholder: 'placeholder_shearch_input',
-},
+    {
+        id: 'search',
+        placeholder: 'placeholder_shearch_input',
+    },
 ];
 export const MY_ACCOUNT_EDIT = [{
     id: 'firstName',
