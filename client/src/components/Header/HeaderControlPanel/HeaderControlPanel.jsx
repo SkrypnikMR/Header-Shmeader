@@ -48,7 +48,7 @@ const HeaderControlPanel = ({
         <StControl >
             <p>
                 {location.pathname === '/chat'
-                    ? `Online users: ${onlineUsersCount - 1}`
+                    ? `${i18n.t('online')}: ${onlineUsersCount === 0 ? 0 : onlineUsersCount - 1}`
                     : null}
             </p>
             {' '}

@@ -59,5 +59,6 @@
     "empty_users_list": "You have not selected any user",
     "welcome": "Welcome,",
     "find_interlocutors": "Choose a chat to start a chat",
-    "long_no_space": "You cannot send such a long word without spaces"
+    "long_no_space": "You cannot send such a long word without spaces",
+    "online": "Online Users"
 }
