@@ -8,6 +8,10 @@ export const StControlPanel = styled.div`
 export const StContentModalUsers = styled.div`
     display: flex;
     flex-direction: column;
+    min-height: 70vh;
+    width: 90%;
+    align-self: center;
+
 `;
 export const StUsersItem = styled.div`
     display: flex;

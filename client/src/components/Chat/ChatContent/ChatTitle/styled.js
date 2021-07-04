@@ -4,7 +4,7 @@ import { bgColorDefault, bgColorDefaultFon, colorDefault } from '/src/components
 export const StChatTitle = styled.div`
     display: flex;
     width: 100%;
-    height: 50px;
+    min-height: 50px;
     justify-content: space-between;
     align-items: center;
     color: ${({ color = colorDefault }) => color};
@@ -18,7 +18,6 @@ export const StChatTitle = styled.div`
         span{
           color: ${({ color = bgColorDefault }) => color};
           margin-left: 20px;
-          height: 50px;
         }
         p{
           cursor: pointer;

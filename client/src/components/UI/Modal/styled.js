@@ -11,7 +11,6 @@ export const StModalHeader = styled.div`
     font-size: 36px;
         button{
             margin-left: auto;
-            color: black;
         }
 `;
 export const StTextHeader = styled.div`
