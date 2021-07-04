@@ -23,8 +23,9 @@ import {
     reciveSuccessUsersRequest,
     reciveErrorUsersRequest,
     setValue,
+    putMessageAudio,
 } from './actions';
-import { userInfo } from '../user/selectors';
+import { userEmail, userInfo } from '../user/selectors';
 import { newMessage, currentRoom, messages } from './selectors';
 import { getRequest, postRequest } from '../../helpers/requests';
 import { routes } from '../../constants/routes';
@@ -35,7 +36,10 @@ export let globalSocket = { emit: () => { }, on: () => { } };
 
 export const createSocketChannel = socket => eventChannel((emit) => {
     socket.on('users_online', data => emit(putOnlineUsers(data)));
-    socket.on('messages', data => emit(putNewMessages(data)));
+    socket.on('messages', (data) => {
+        emit(putNewMessages(data));
+        emit(putMessageAudio(data));
+    });
     socket.on('join_new_room', data => emit(putNewRoom(data)));
     socket.on('error', ({ error }) => {
         NotificationManager.error(i18next.t(error), i18next.t('input_error'), 2000);
@@ -194,6 +198,14 @@ export function* logOutSaga() {
     yield call([support, support.killSessionStorageItem], 'token');
     yield call([support, support.killSessionStorageItem], 'userInfo');
 }
+export function* audioSaga({ payload }) {
+    const { author } = payload;
+    const currentUser = yield select(userEmail);
+    if (author !== currentUser) {
+        yield call([support, support.playAudio], './public/assets/music/message.mp3');
+    }
+}
+
 export function* watcherChatOperations() {
     yield takeEvery(actionTypes.INIT_CHAT, initSaga);
     yield takeEvery(actionTypes.CONNECT, connectionSaga);
@@ -204,4 +216,5 @@ export function* watcherChatOperations() {
     yield takeEvery(actionTypes.GET_ALL_USERS, getAllUsersSaga);
     yield takeEvery(actionTypes.SET_USER_IN_ROOM, setUserInRoomSaga);
     yield takeEvery(actionTypes.LOG_OUT, logOutSaga);
+    yield takeEvery(actionTypes.PUT_MESSAGE_AUDIO, audioSaga);
 }

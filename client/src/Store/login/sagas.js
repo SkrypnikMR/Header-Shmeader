@@ -29,7 +29,7 @@ export function* workerLogin() {
             yield put(setValue({ name: 'init', value: true }));
             yield put(setLoginValue({ name: 'success', value: true }));
             yield put(init());
-            yield call([support, support.playAudio]);
+            yield call([support, support.playAudio], './public/assets/music/welcome.mp3');
         } else {
             yield put(setLoginValue({ name: 'success', value: false }));
             yield put(reciveErrorRequest());

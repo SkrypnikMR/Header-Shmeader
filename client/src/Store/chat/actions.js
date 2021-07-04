@@ -35,3 +35,4 @@ export const reciveErrorUsersRequest = () => ({ type: actionTypes.USERS_REQUEST_
 
 export const setUserInRoom = payload => ({ type: actionTypes.SET_USER_IN_ROOM, payload });
 export const logOutAction = () => ({ type: actionTypes.LOG_OUT });
+export const putMessageAudio = payload => ({ type: actionTypes.PUT_MESSAGE_AUDIO, payload });
