@@ -27,8 +27,8 @@ export function* setNewUserDataSaga() {
             return yield call([NotificationManager, NotificationManager.error],
                 i18next.t(answer.message), i18next.t('server_error'), 2000);
         }
-        yield call([support, support.setSessionStorageItem], 'userInfo', answer);
         const email = yield select(userEmail);
+        yield call([support, support.setSessionStorageItem], 'userInfo', { ...answer, email });
         yield put(setValue({ name: 'userInfo', value: { ...answer, email } }));
     } catch (e) {
         yield call([NotificationManager, NotificationManager.error],
