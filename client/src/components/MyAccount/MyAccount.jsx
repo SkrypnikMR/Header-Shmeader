@@ -5,18 +5,18 @@ import { MY_ACCOUNT_EDIT } from '../../constants/componentsСonsts';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
 import {
-        StFieldText,
-        StMyAccountWrapper,
-        StMyAccountTitle,
-        StMyAccountHeader,
-        StMyAccountIcon,
-        StMyAccountContent,
-        StMyAccountAvatarConteiner,
-        StMyAccountFieldsConteiner,
-        StMyAccountSignificance,
-        StMyAccountFooter,
+    StFieldText,
+    StMyAccountWrapper,
+    StMyAccountTitle,
+    StMyAccountHeader,
+    StMyAccountIcon,
+    StMyAccountContent,
+    StMyAccountAvatarConteiner,
+    StMyAccountFieldsConteiner,
+    StMyAccountSignificance,
+    StMyAccountFooter,
 }
-        from './styled';
+    from './styled';
 
 
 const MyAccount = ({ userInfo, changeUser, changeUserData, setNewUserData }) => {
@@ -36,7 +36,7 @@ const MyAccount = ({ userInfo, changeUser, changeUserData, setNewUserData }) => 
         <StMyAccountWrapper>
             <StMyAccountHeader>
                 <StMyAccountTitle>{t('my_account')}</StMyAccountTitle>
-                    <StMyAccountIcon onClick={handleEditClick}>🖉</StMyAccountIcon>
+                <StMyAccountIcon onClick={handleEditClick}>🖉</StMyAccountIcon>
             </StMyAccountHeader>
             <StMyAccountContent>
                 <StMyAccountAvatarConteiner>
@@ -74,15 +74,15 @@ const MyAccount = ({ userInfo, changeUser, changeUserData, setNewUserData }) => 
             <StMyAccountFooter>
                 {isEdit.edit ? (
                     <Button
-                    id='apply'
-                    name='apply'
-                    onClick={handleApplyClick}
-                    width='200px'
-                    content={t('apply')}
-                    fontSize='25px'
-                    height='50px'
+                        id='apply'
+                        name='apply'
+                        onClick={handleApplyClick}
+                        width='200px'
+                        content={t('apply')}
+                        fontSize='25px'
+                        height='50px'
                     />
-                    ) : null}
+                ) : null}
             </StMyAccountFooter>
         </StMyAccountWrapper>
     );
