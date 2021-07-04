@@ -21,7 +21,6 @@ const Search = ({ setValue, filterByRoomName }) => {
         bgColor="transparent"
         fontSizeInp="20px"
         borderColor="transparent"
-        bgFocusColor="transparent"
         padding="17px"
       />
     </StSearch> 
