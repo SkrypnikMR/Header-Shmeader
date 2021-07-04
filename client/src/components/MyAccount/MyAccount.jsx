@@ -45,25 +45,26 @@ const MyAccount = ({ userInfo, changeUser, changeUserData, setNewUserData }) => 
                 <StMyAccountFieldsConteiner>
                     {MY_ACCOUNT_EDIT.map(input => (
                         <StFieldText key={input.id}>
-                            <p>
-                                {' '}
-                                {t(input.label)}
+                            <p> 
+                                { t(input.label) }
                                 {' '}
                                 :
                             </p>
                             {isEdit.edit
                                 ? (
-                                    <Input
-                                        id={input.id}
-                                        name={input.id}
-                                        onChange={handleOnChange}
-                                        value={changeUser[input.id]}
-                                        margin='0 50px'
-                                        width='300px'
-                                        height='40px'
-                                        isDisabled={false}
-                                    />
-                                )
+                                <Input
+                                    id={input.id}
+                                    name={input.id}
+                                    onChange={handleOnChange}
+                                    value={changeUser[input.id]}
+                                    margin='0 5px'
+                                    inputHeight="40px"
+                                    fontSizeInp="16px"
+                                    width='300px'
+                                    height='40px'
+                                    isDisabled={false}
+                                />
+                              )
                                 : <StMyAccountSignificance>{userInfo[input.id]}</StMyAccountSignificance>
                             }
                         </StFieldText>
