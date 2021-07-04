@@ -7,7 +7,7 @@ import Button from '../../UI/Button';
 import { APP_ROUTES } from '/src/constants/reactRoutes';
 import { ROUTS_WITHOUT_MY_ACCOUNT } from '../../../constants/ui';
 import { support } from '../../../helpers/support';
-import { TRANSPARENT_BACKGROUND, colorDefault } from '../../UI/baseLayout';
+import { colorDefault } from '../../UI/baseLayout';
 
 const HeaderControlPanel = ({ themeMode, setValue, history, location, logOut }) => {
     const { i18n } = useTranslation();

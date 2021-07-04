@@ -6,7 +6,7 @@ const ChatMessages = ({ img, author, messageText, messageTime, alignSelf }) => {
   const [state, setState] = useState({
     error: false,
     src: img,
-    defaultImg: '../../../../public/assets/images/user.png',
+    defaultImg: './public/assets/images/user.png',
   });
   const onError = () => setState({ ...state, error: true, src: state.defaultImg });
   return (

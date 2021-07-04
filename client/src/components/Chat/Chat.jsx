@@ -4,8 +4,10 @@ import ChatList from './ChatList';
 import ChatContent from './ChatContent';
 import { StChat } from './styled';
 
-const Chat = ({ init }) => {
-  useEffect(() => init(), []);
+const Chat = ({ userInit, userToken, init }) => {
+  useEffect(() => {
+    if (!userInit && userToken) init();
+  }, [userInit]);
   return (
     <StChat>
       <ChatList />
@@ -15,7 +17,9 @@ const Chat = ({ init }) => {
 };
 
 Chat.propTypes = {
-    init: PropTypes.func.isRequired,
+  userInit: PropTypes.bool,
+  userToken: PropTypes.any,
+  init: PropTypes.func,
 };
 
 export default Chat;

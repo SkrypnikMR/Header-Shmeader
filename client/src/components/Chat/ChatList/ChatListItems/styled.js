@@ -14,6 +14,9 @@ export const StChatListItems = styled.div`
         }
         :hover{
             color: ${({ color = bgColorDefault }) => color};
+            span{
+                color: ${({ color = colorDefault }) => color};
+            }
         }
 `;
 export const StPhoto = styled.div`
