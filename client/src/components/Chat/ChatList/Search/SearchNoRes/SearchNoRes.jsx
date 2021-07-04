@@ -1,6 +1,6 @@
 import React from 'react';
-import { StNoResTitle, StNoResWrapper, StNoResText } from './styled';
 import { useTranslation } from 'react-i18next';
+import { StNoResTitle, StNoResWrapper, StNoResText } from './styled';
 
 const SearchNoRes = () => {
     const { t } = useTranslation();
