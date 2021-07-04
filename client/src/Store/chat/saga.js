@@ -80,9 +80,13 @@ export function* sendMessageSaga() {
         const { email } = yield select(userInfo);
         const message = yield select(newMessage);
         const { room_name, room_id } = yield select(currentRoom);
-        if (!message) {
+        if (!message || /^ *$/.test(message)) {
             return yield call([NotificationManager, NotificationManager.error],
                 i18next.t('without_text'), i18next.t('input_error'), 2000);
+        }
+        if (message === message.replace(' ', '') && message.length > 58) {
+            return yield call([NotificationManager, NotificationManager.error],
+                i18next.t('long_no_space'), i18next.t('input_error'), 2000);
         }
         if (!room_name) {
             return yield call([NotificationManager, NotificationManager.error],

@@ -44,7 +44,7 @@
     "city": "مدينة ",
     "company": "شركة ",
     "apply": "تطبيق ",
-    "number_error":  "يجب أن يكون العمر رقمًا",
+    "number_error": "يجب أن يكون العمر رقمًا",
     "without_text_new_room": "لا يمكنك إنشاء غرفة بدون اسم",
     "create": "إنشاء",
     "create_chat": "قم بإنشاء غرفة جديدة",
@@ -58,5 +58,6 @@
     "modal_users_cancel": "كانسل",
     "empty_users_list": "لم تقم بتحديد أي مستخدم",
     "welcome": ",مرحبا",
-    "find_interlocutors": "اختر دردشة لبدء دردشة"
+    "find_interlocutors": "اختر دردشة لبدء دردشة",
+    "long_no_space": "لا يمكنك إرسال مثل هذه الكلمة الطويلة بدون مسافات"
 }
