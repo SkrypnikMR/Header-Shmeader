@@ -9,7 +9,14 @@ import { ROUTS_WITHOUT_MY_ACCOUNT } from '../../../constants/ui';
 import { support } from '../../../helpers/support';
 import { colorDefault } from '../../UI/baseLayout';
 
-const HeaderControlPanel = ({ themeMode, setValue, history, location, logOut, userNotifSettings }) => {
+const HeaderControlPanel = ({
+    themeMode,
+    setValue,
+    history,
+    location,
+    logOut,
+    userNotifSettings,
+    onlineUsersCount }) => {
     const { i18n } = useTranslation();
     const handleChangeLanguage = (e) => {
         i18n.changeLanguage(e.target.value);
@@ -39,6 +46,12 @@ const HeaderControlPanel = ({ themeMode, setValue, history, location, logOut, us
     };
     return (
         <StControl >
+            <p>
+                {location.pathname === '/chat'
+                    ? `Online users: ${onlineUsersCount - 1}`
+                    : null}
+            </p>
+            {' '}
             {HEADER_CONTROL_BTNS.map((el) => {
                 if (el.value === themeMode) return null;
                 if (el.id === 'notif_btn' && Boolean(el.value) === userNotifSettings) return null;
@@ -71,6 +84,7 @@ HeaderControlPanel.propTypes = {
     location: PropTypes.object,
     logOut: PropTypes.func,
     userNotifSettings: PropTypes.bool,
+    onlineUsersCount: PropTypes.number,
 };
 
 export default HeaderControlPanel;

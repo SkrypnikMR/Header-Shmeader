@@ -6,6 +6,14 @@ export const newMessage = createSelector(
     chatStore,
     ({ newMessage }) => newMessage,
 );
+export const onlineUsersEmails = createSelector(
+    chatStore,
+    ({ onlineUsers }) => onlineUsers.map(el => el.email),
+);
+export const onlineUsersCount = createSelector(
+    chatStore,
+    ({ onlineUsers }) => onlineUsers.length,
+);
 export const messages = createSelector(
     chatStore,
     ({ messages }) => messages,

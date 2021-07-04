@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 import { setValue } from '/src/Store/user/actions';
 import { userThemeMode, userNotifSettings } from '/src/Store/user/selectors';
 import { logOutAction } from '/src/Store/chat/actions';
+import { onlineUsersCount } from '/src/Store/chat/selectors';
 
 const mapStateToProps = state => ({
+    onlineUsersCount: onlineUsersCount(state),
     themeMode: userThemeMode(state),
     userNotifSettings: userNotifSettings(state),
 });
