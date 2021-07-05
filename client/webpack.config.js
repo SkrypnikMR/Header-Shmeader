@@ -9,7 +9,7 @@ const pages = [
         filename: 'index.html',
     },
 ];
-const getFileLoader = (regExp) => ({
+const getFileLoader = regExp => ({
     test: regExp,
     use: ['file-loader'],
 });
@@ -19,15 +19,21 @@ const getStyleLoader = (regExp, additionalLoaders) => {
         use: ['style-loader', 'css-loader'],
     };
     if (additionalLoaders && additionalLoaders.length) {
-        additionalLoaders.forEach((loader) => rules.use.push(loader));
+        additionalLoaders.forEach(loader => rules.use.push(loader));
     }
     return rules;
 };
-const getPath = (url) => path.resolve(__dirname, `src/${url}`);
+const getPath = url => path.resolve(__dirname, `src/${url}`);
 
 module.exports = {
     entry: {
         bundle: getPath('index.js'),
+    },
+    resolve: {
+        alias: {
+            js: path.resolve(__dirname, './src'),
+            jsx: path.resolve(__dirname, './src'),
+        },
     },
     module: {
         rules: [
@@ -46,25 +52,33 @@ module.exports = {
                 },
             },
             {
+                test: /\.mp3$/,
+                loader: 'file-loader',
+            },
+            {
                 test: /\.(jsx|js)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-react','@babel/preset-env'],
+                        presets: ['@babel/preset-react', '@babel/preset-env'],
                     },
                 },
             },
         ],
     },
     plugins: [
-        ...pages.map((config) => new HTMLWebpackPlugin(config)),
+        ...pages.map(config => new HTMLWebpackPlugin(config)),
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin({
             patterns: [
                 {
                     from: path.resolve(__dirname, 'public/assets/images'),
-                    to: path.resolve(__dirname, 'dist/assets/images'),
+                    to: path.resolve(__dirname, 'dist/public/assets/images'),
+                },
+                {
+                    from: path.resolve(__dirname, 'public/assets/music'),
+                    to: path.resolve(__dirname, 'dist/public/assets/music'),
                 },
             ],
         }),
@@ -80,5 +94,8 @@ module.exports = {
     },
     devServer: {
         port: 7777,
+        historyApiFallback: true,
+        contentBase: './',
+        hot: true,
     },
 };

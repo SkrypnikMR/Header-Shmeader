@@ -10,12 +10,35 @@
         "browser": true
     },
     "rules": {
-        "indent": ["error", 4],
-        "react/jsx-indent": [ "error", 4],
-        "react/jsx-indent-props": [ "error", 4 ],
-        "react/jsx-filename-extension": [1, {"extensions": [".js",".jsx"]}],
+        "react/prefer-stateless-function": "off",
+        "indent": [
+            "off",
+            2
+        ],
+        "react/jsx-indent": [
+            "off",
+            2
+        ],
+        "react/jsx-indent-props": [
+            "off",
+            2
+        ],
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        ],
         "jsx-quotes": "off",
-        "quotes": "off",
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "react/jsx-props-no-spreading": "off",
+        "linebreak-style": "off",
         "camelcase": "off",
         "arrow-body-style": "off",
         "react/jsx-tag-spacing": "off",
@@ -35,6 +58,7 @@
         "import/no-extraneous-dependencies": "off",
         "function-paren-newline": "off",
         "import/no-dynamic-require": "off",
+        "import/no-absolute-path": "off",
         "consistent-return": "off",
         "react/forbid-prop-types": "off",
         "no-use-before-define": [

@@ -1,0 +1,1 @@
+module.exports = { SOCKET_CFG: { cors: { origin: '*' }, path: '/socket' } };
